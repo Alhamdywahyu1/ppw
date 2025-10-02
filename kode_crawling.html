@@ -388,6 +388,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukann-praprosess-data-teks">melakukann praprosess data teks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pra-proses-untuk-isi-berita">pra proses untuk isi berita</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-tfidf-dan-word-embedding-ntuk-berita-yang-telah-di-bersihkan">melakukan tfidf dan word embedding ntuk berita yang telah di bersihkan</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praproses-untuk-abstrak-pta">praproses untuk abstrak pta</a></li>
 </ul>
 </li>
@@ -421,7 +422,7 @@ document.write(`
 Requirement already satisfied: six in /usr/local/lib/python3.12/dist-packages (from builtwith) (1.17.0)
 Building wheels for collected packages: builtwith
   Building wheel for builtwith (setup.py) ... ?25l?25hdone
-  Created wheel for builtwith: filename=builtwith-1.3.4-py3-none-any.whl size=36077 sha256=31934737992a5d70ecf64f784f53026390c6e7b463c9d4dc3181a8f5857652c9
+  Created wheel for builtwith: filename=builtwith-1.3.4-py3-none-any.whl size=36077 sha256=66440497a57e57cc65b536d1b40333352a6044a20c6befc53fdff9433406230b
   Stored in directory: /root/.cache/pip/wheels/7f/2d/b2/606e3df914d4aeeab99c4a4e3e9a61673d2293c2e346db00c8
 Successfully built builtwith
 Installing collected packages: builtwith
@@ -507,11 +508,11 @@ URL: #  | Teks:
 URL: #  | Teks:   
 URL: #  | Teks:   
 URL: # | Teks: Tentang
-URL: https://www2.trunojoyo.ac.id/index.php/sejarahutm/ | Teks: Sejarah
+URL: https://www2.trunojoyo.ac.id/sejarahutm/ | Teks: Sejarah
 URL: https://www2.trunojoyo.ac.id/index.php/profil-singkat/ | Teks: Profil Singkat
-URL: https://www2.trunojoyo.ac.id/index.php/visimisi/ | Teks: Visi dan Misi
-URL: https://www2.trunojoyo.ac.id/index.php/lhm/ | Teks: Logo, Hymne dan Mars
-URL: https://www2.trunojoyo.ac.id/index.php/organ-utm/ | Teks: Organisasi UTM
+URL: https://www2.trunojoyo.ac.id/visimisi/ | Teks: Visi dan Misi
+URL: https://www2.trunojoyo.ac.id/lhm/ | Teks: Logo, Hymne dan Mars
+URL: https://www2.trunojoyo.ac.id/organ-utm/ | Teks: Organisasi UTM
 URL: # | Teks: Alumni
 URL: # | Teks: Kelembagaan
 URL: # | Teks: Fakultas
@@ -540,19 +541,19 @@ URL: # | Teks: UPA. Sertifikasi
 URL: https://labterpadu.trunojoyo.ac.id/ | Teks: UPA. Laboratorium Terpadu
 URL: # | Teks: UPA. Pengembangan Karier dan Kewirausahaan
 URL: # | Teks: Data
-URL: https://www2.trunojoyo.ac.id/index.php/data-penelitian-2/ | Teks: Data Penelitian
+URL: https://www2.trunojoyo.ac.id/data-penelitian-2/ | Teks: Data Penelitian
 URL: # | Teks: Data Pengabdian Kepada Masyarakat
-URL: https://www2.trunojoyo.ac.id/index.php/data-kerjasama/ | Teks: Data Kerjasama
+URL: https://www2.trunojoyo.ac.id/data-kerjasama/ | Teks: Data Kerjasama
 URL: # | Teks: Admisi
 URL: # | Teks: SNPMB
 URL: # | Teks: Mandiri
 URL: # | Teks: RPL
 URL: # | Teks: Dokumen
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-penelitian-pengabdian/ | Teks: Dokumen Penelitian &amp; Pengabdian
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-sarana-prasarana/ | Teks: Dokumen Sarana &amp; Prasarana
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-standar-pelayanan/ | Teks: Dokumen Standar Pelayanan
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-sumber-daya-manusia/ | Teks: Dokumen Sumber Daya Manusia
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-tata-pamong/ | Teks: Dokumen Tata Pamong
+URL: https://www2.trunojoyo.ac.id/dokumen-penelitian-pengabdian/ | Teks: Dokumen Penelitian &amp; Pengabdian
+URL: https://www2.trunojoyo.ac.id/dokumen-sarana-prasarana/ | Teks: Dokumen Sarana &amp; Prasarana
+URL: https://www2.trunojoyo.ac.id/dokumen-standar-pelayanan/ | Teks: Dokumen Standar Pelayanan
+URL: https://www2.trunojoyo.ac.id/dokumen-sumber-daya-manusia/ | Teks: Dokumen Sumber Daya Manusia
+URL: https://www2.trunojoyo.ac.id/dokumen-tata-pamong/ | Teks: Dokumen Tata Pamong
 URL: https://ppid.trunojoyo.ac.id | Teks: PPID
 URL: mailto:support.industrie@gmail.com | Teks: 
 
@@ -571,17 +572,12 @@ WA. +62811-3333-0046
 
 URL: https://www.trunojoyo.ac.id/ | Teks: 
  
-URL: https://drive.google.com/drive/folders/1G8tmMYJ6S58BtzwRP9V_78XkNOl3aR8y?usp=sharing | Teks: 
-
- 
-Download Center
-
 URL: # | Teks: Tentang 
-URL: https://www2.trunojoyo.ac.id/index.php/sejarahutm/ | Teks: Sejarah
+URL: https://www2.trunojoyo.ac.id/sejarahutm/ | Teks: Sejarah
 URL: https://www2.trunojoyo.ac.id/index.php/profil-singkat/ | Teks: Profil Singkat
-URL: https://www2.trunojoyo.ac.id/index.php/visimisi/ | Teks: Visi dan Misi
-URL: https://www2.trunojoyo.ac.id/index.php/lhm/ | Teks: Logo, Hymne dan Mars
-URL: https://www2.trunojoyo.ac.id/index.php/organ-utm/ | Teks: Organisasi UTM
+URL: https://www2.trunojoyo.ac.id/visimisi/ | Teks: Visi dan Misi
+URL: https://www2.trunojoyo.ac.id/lhm/ | Teks: Logo, Hymne dan Mars
+URL: https://www2.trunojoyo.ac.id/organ-utm/ | Teks: Organisasi UTM
 URL: # | Teks: Alumni
 URL: # | Teks: Kelembagaan 
 URL: # | Teks: Fakultas 
@@ -610,102 +606,107 @@ URL: # | Teks: UPA. Sertifikasi
 URL: https://labterpadu.trunojoyo.ac.id/ | Teks: UPA. Laboratorium Terpadu
 URL: # | Teks: UPA. Pengembangan Karier dan Kewirausahaan
 URL: # | Teks: Data 
-URL: https://www2.trunojoyo.ac.id/index.php/data-penelitian-2/ | Teks: Data Penelitian
+URL: https://www2.trunojoyo.ac.id/data-penelitian-2/ | Teks: Data Penelitian
 URL: # | Teks: Data Pengabdian Kepada Masyarakat
-URL: https://www2.trunojoyo.ac.id/index.php/data-kerjasama/ | Teks: Data Kerjasama
+URL: https://www2.trunojoyo.ac.id/data-kerjasama/ | Teks: Data Kerjasama
 URL: # | Teks: Admisi 
 URL: # | Teks: SNPMB
 URL: # | Teks: Mandiri
 URL: # | Teks: RPL
 URL: # | Teks: Dokumen 
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-penelitian-pengabdian/ | Teks: Dokumen Penelitian &amp; Pengabdian
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-sarana-prasarana/ | Teks: Dokumen Sarana &amp; Prasarana
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-standar-pelayanan/ | Teks: Dokumen Standar Pelayanan
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-sumber-daya-manusia/ | Teks: Dokumen Sumber Daya Manusia
-URL: https://www2.trunojoyo.ac.id/index.php/dokumen-tata-pamong/ | Teks: Dokumen Tata Pamong
+URL: https://www2.trunojoyo.ac.id/dokumen-penelitian-pengabdian/ | Teks: Dokumen Penelitian &amp; Pengabdian
+URL: https://www2.trunojoyo.ac.id/dokumen-sarana-prasarana/ | Teks: Dokumen Sarana &amp; Prasarana
+URL: https://www2.trunojoyo.ac.id/dokumen-standar-pelayanan/ | Teks: Dokumen Standar Pelayanan
+URL: https://www2.trunojoyo.ac.id/dokumen-sumber-daya-manusia/ | Teks: Dokumen Sumber Daya Manusia
+URL: https://www2.trunojoyo.ac.id/dokumen-tata-pamong/ | Teks: Dokumen Tata Pamong
 URL: https://ppid.trunojoyo.ac.id | Teks: PPID
+URL: https://drive.google.com/drive/folders/1G8tmMYJ6S58BtzwRP9V_78XkNOl3aR8y?usp=sharing | Teks: 
+
+ 
+Download Center
+
 URL: https://industrie.rstheme.com/laboratory/about/ | Teks: 
 Selengkapnya 
 									
   
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/09/09/prodi-pendidikan-informatika-utm-sukses-selenggarakan-national-conference-on-informatics-education-perdana/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/isotonic-bittern-bukti-nyata-hilirisasi-garam-madura-hasil-kolaborasi-prodi-psda-dan-lppm-utm/ | Teks: 
  
 
 
 
-								09 Sep 2025							
+								18 Sep 2025							
 
 
 									Headlines									
 
-Prodi Pendidikan Informatika UTM Sukses Selenggarakan National Conference on Informatics Education Perdana
+“Isotonic Bittern” Bukti Nyata Hilirisasi Garam Madura Hasil Kolaborasi Prodi PSDA dan LPPM UTM
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/24/universitas-trunojoyo-madura-kukuhkan-994-wisudawan-pada-sesi-kedua-wisuda-ke-39/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/pelatihan-peer-counselor-universitas-trunojoyo-madura-ciptakan-ruang-aman-dan-sehat-bagi-mahasiswa/ | Teks: 
  
 
 
 
-								24 Agu 2025							
+								18 Sep 2025							
+
+
+									Kegiatan									
+
+PELATIHAN PEER COUNSELOR: UNIVERSITAS TRUNOJOYO MADURA CIPTAKAN RUANG AMAN DAN SEHAT BAGI MAHASISWA
+
+
+URL: https://www2.trunojoyo.ac.id/pascasarjana-utm-gelar-stadium-general-perkuat-komitmen-cetak-sdm-unggul-dalam-riset-inovasi-dan-teknologi/ | Teks: 
+ 
+
+
+
+								17 Sep 2025							
 
 
 									Headlines									
 
-Universitas Trunojoyo Madura Kukuhkan 994 Wisudawan pada Sesi Kedua Wisuda ke-39
+Pascasarjana UTM Gelar Stadium General: Perkuat Komitmen Cetak SDM Unggul dalam Riset, Inovasi, dan Teknologi
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/23/rapat-senat-terbuka-dalam-rangka-wisuda-ke-xxxix-987-lulusan-dikukuhkan-pada-sesi-hari-pertama/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/keanekaragaman-hayati-perairan-sampang-jadi-fokus-riset-utm-dan-petronas-melalui-program-fish-shelter/ | Teks: 
  
 
 
 
-								23 Agu 2025							
-
-
-									Headlines									
-
-Rapat Senat Terbuka dalam Rangka Wisuda ke-XXXIX, 987 Lulusan Dikukuhkan pada Sesi Hari Pertama
-
-
-URL: https://www2.trunojoyo.ac.id/index.php/2025/09/04/utm-lepas-jamaah-penerima-hadiah-umroh-wujud-syukur-dies-natalis-ke-24/ | Teks: 
- 
-
-
-
-								04 Sep 2025							
+								23 Sep 2025							
 
 
 									Berita									
 
-UTM Lepas Jamaah Penerima Hadiah Umroh, Wujud Syukur Dies Natalis ke-24
+KEANEKARAGAMAN HAYATI PERAIRAN SAMPANG JADI FOKUS RISET UTM DAN PETRONAS MELALUI PROGRAM FISH SHELTER
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/29/utm-raih-penghargaan-entrepreneurial-marketing-campus-for-impact-dari-markplus-institute-dan-mcorp/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/utm-mantapkan-komitmen-layanan-publik-melalui-audit-iso-90012015/ | Teks: 
  
 
 
 
-								29 Agu 2025							
+								19 Sep 2025							
 
 
 									Berita									
 
-UTM Raih Penghargaan Entrepreneurial Marketing Campus For Impact dari Markplus Institute dan MCORP
+UTM Mantapkan Komitmen Layanan Publik Melalui Audit ISO 9001:2015
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/04/utm-canangkan-green-campus-menko-ahy-tanam-pohon-eboni-di-samping-warisan-sang-ayah/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/utm-kenalkan-konsep-pemrograman-kepada-siswa-sd-melalui-pelatihan-unplugged-coding-bersama-mahasiswa-universitas-palacky/ | Teks: 
  
 
 
 
-								04 Agu 2025							
+								19 Sep 2025							
 
 
 									Berita									
 
-UTM Canangkan Green Campus, Menko AHY Tanam Pohon Eboni di Samping Warisan Sang Ayah
+UTM KENALKAN KONSEP PEMROGRAMAN KEPADA SISWA SD MELALUI PELATIHAN UNPLUGGED CODING BERSAMA MAHASISWA UNIVERSITAS PALACKY
 
 
 URL: https://www2.trunojoyo.ac.id/index.php/halber/ | Teks: 
@@ -714,7 +715,20 @@ More
   
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/20/pengumuman-penerima-bantuan-keringanan-uang-kuliah-tunggal-bagi-mahasiswa-universitas-trunojoyo-madura-berupa-pembebasan-dan-uang-kuliah-tunggal-50-semester-gasal-tahap-ii-tahun-akademik-2025-2026/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/pengumuman-pengembalian-kelebihan-pembayaran-uang-kuliah-tunggalbagi-mahasiswa-semester-gasal-tahun-akademik-2025-2026/ | Teks: 
+ 
+
+
+
+								23 Sep 2025							
+
+
+									Headlines									
+
+PENGUMUMAN PENGEMBALIAN KELEBIHAN PEMBAYARAN UANG KULIAH TUNGGALBAGI MAHASISWA SEMESTER GASAL TAHUN AKADEMIK 2025/2026
+
+
+URL: https://www2.trunojoyo.ac.id/pengumuman-penerima-bantuan-keringanan-uang-kuliah-tunggal-bagi-mahasiswa-universitas-trunojoyo-madura-berupa-pembebasan-dan-uang-kuliah-tunggal-50-semester-gasal-tahap-ii-tahun-akademik-2025-2026/ | Teks: 
  
 
 
@@ -727,7 +741,7 @@ URL: https://www2.trunojoyo.ac.id/index.php/2025/08/20/pengumuman-penerima-bantu
 PENGUMUMAN PENERIMA BANTUAN KERINGANAN UANG KULIAH TUNGGAL BAGI MAHASISWA UNIVERSITAS TRUNOJOYO MADURA BERUPA PEMBEBASAN DAN  UANG KULIAH TUNGGAL 50% SEMESTER GASAL TAHAP II  TAHUN AKADEMIK 2025/2026
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/19/pengumuman-jadwal-wisuda-xxxix-tahun-2025/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/pengumuman-jadwal-wisuda-xxxix-tahun-2025/ | Teks: 
  
 
 
@@ -740,62 +754,49 @@ URL: https://www2.trunojoyo.ac.id/index.php/2025/08/19/pengumuman-jadwal-wisuda-
 PENGUMUMAN JADWAL WISUDA XXXIX TAHUN 2025
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/14/pengumuman-penerima-bantuan-keringanan-uang-kuliah-tunggal-bagi-mahasiswa-universitas-trunojoyo-madura-berupa-pembebasan-dan-uang-kuliah-tunggal-50-semester-gasal-tahun-akademik-2025-2026/ | Teks: 
- 
-
-
-
-								14 Agu 2025							
-
-
-									Headlines									
-
-PENGUMUMAN PENERIMA BANTUAN KERINGANAN UANG KULIAH TUNGGAL BAGI MAHASISWA UNIVERSITAS TRUNOJOYO MADURA BERUPA PEMBEBASAN DAN  UANG KULIAH TUNGGAL 50% SEMESTER GASAL  TAHUN AKADEMIK 2025/2026
-
-
 URL: https://www2.trunojoyo.ac.id/index.php/halinformasi/ | Teks: 
 More 
 									
   
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/09/09/prodi-pendidikan-informatika-utm-sukses-selenggarakan-national-conference-on-informatics-education-perdana/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/isotonic-bittern-bukti-nyata-hilirisasi-garam-madura-hasil-kolaborasi-prodi-psda-dan-lppm-utm/ | Teks: 
  
 
 
 
-								09 Sep 2025							
+								18 Sep 2025							
 
 
 									Headlines									
 
-Prodi Pendidikan Informatika UTM Sukses Selenggarakan National Conference on Informatics Education Perdana
+“Isotonic Bittern” Bukti Nyata Hilirisasi Garam Madura Hasil Kolaborasi Prodi PSDA dan LPPM UTM
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/24/universitas-trunojoyo-madura-kukuhkan-994-wisudawan-pada-sesi-kedua-wisuda-ke-39/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/pelatihan-peer-counselor-universitas-trunojoyo-madura-ciptakan-ruang-aman-dan-sehat-bagi-mahasiswa/ | Teks: 
  
 
 
 
-								24 Agu 2025							
+								18 Sep 2025							
 
 
-									Headlines									
+									Kegiatan									
 
-Universitas Trunojoyo Madura Kukuhkan 994 Wisudawan pada Sesi Kedua Wisuda ke-39
+PELATIHAN PEER COUNSELOR: UNIVERSITAS TRUNOJOYO MADURA CIPTAKAN RUANG AMAN DAN SEHAT BAGI MAHASISWA
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/2025/08/23/rapat-senat-terbuka-dalam-rangka-wisuda-ke-xxxix-987-lulusan-dikukuhkan-pada-sesi-hari-pertama/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/pascasarjana-utm-gelar-stadium-general-perkuat-komitmen-cetak-sdm-unggul-dalam-riset-inovasi-dan-teknologi/ | Teks: 
  
 
 
 
-								23 Agu 2025							
+								17 Sep 2025							
 
 
 									Headlines									
 
-Rapat Senat Terbuka dalam Rangka Wisuda ke-XXXIX, 987 Lulusan Dikukuhkan pada Sesi Hari Pertama
+Pascasarjana UTM Gelar Stadium General: Perkuat Komitmen Cetak SDM Unggul dalam Riset, Inovasi, dan Teknologi
 
 
 URL: https://www2.trunojoyo.ac.id/index.php/halaman-kegiatan/ | Teks: 
@@ -811,41 +812,41 @@ Data Lengkap
   
 
 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/safi/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/safi/ | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/safi/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/safi/ | Teks: 
 											
 											Prof. Dr. Safi’, S.H., M.H.
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/lawrence-peter/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/lawrence-peter/ | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/lawrence-peter/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/lawrence-peter/ | Teks: 
 											
 											Prof. Dr. Achmad Amzeri, S.P., M.P.
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/bradley-roy/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/bradley-roy/ | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/bradley-roy/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/bradley-roy/ | Teks: 
 											
 											Ir. Ari Basuki, S.T., M.T.
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/john-maxwell/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/john-maxwell/ | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
 URL: # | Teks: 
-URL: https://www2.trunojoyo.ac.id/index.php/teams/john-maxwell/ | Teks: 
+URL: https://www2.trunojoyo.ac.id/teams/john-maxwell/ | Teks: 
 											
 											Surokim, S.Sos., S.H., M.Si.
 URL: # | Teks: 
@@ -982,8 +983,12 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/soupsieve/css_parser.py:876: FutureWarning: The pseudo class &#39;:contains&#39; is deprecated, &#39;:-soup-contains&#39; should be used moving forward.
+  warnings.warn(  # noqa: B028
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-a3a12b67-b5bf-4fb4-8c65-a1037c36b8a4" class="colab-df-container">
+  <div id="df-67f83688-e307-498f-8d4a-18ee87ecd40f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1015,52 +1020,52 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
     <tr>
       <th>0</th>
       <td>Siliwangi Fitra Rachmawanto S.T.</td>
-      <td>OPTIMASI PEMILIHAN PORTOFOLIO SAHAM PERUSAHAAN SEKTOR TAMBANG DENGAN MENGGUNAKAN GOAL PROGRAMMING</td>
+      <td>OPTIMASI PEMILIHAN PORTOFOLIO SAHAM PERUSAHAAN...</td>
       <td>Heri Awalul Ilhamsah S.T., M.T.</td>
       <td>Retno Indriartiningtias S.T., M.T.</td>
-      <td>Portofolio adalah sekumpulan saham yang dimiliki investor. Dalam setiap saham pada portofolio memiliki resiko yang harus diminimalkan dengan cara diversifikasi yaitu dengan mengalokasikan dana pad...</td>
+      <td>Portofolio adalah sekumpulan saham yang dimili...</td>
       <td>Teknik Industri</td>
-      <td>Portofolio is a collection of stock owned by investors. In every stock on the portofolio have risk must be minimized by diversification to allocate funds on a variety of investments alternative at...</td>
+      <td>Portofolio is a collection of stock owned by i...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>AHMAD MAS'UD</td>
-      <td>PERANCANGAN TATA LETAK FASILITAS LANTAI PRODUKSI PT. ABC MENGGUNAKAN MEDOTE SYSTEMATIC LAYOUT PLANNING (SLP) DAN ALGORITMA GENETIK</td>
+      <td>PERANCANGAN TATA LETAK FASILITAS LANTAI PRODUK...</td>
       <td>SABARUDIN AKHMAD, S.T., M.T.</td>
       <td>SUGENG PURWOKO, S.T., M.T.</td>
-      <td>PT. ABC merupakan perusahaan yang bergerak dibidang manufaktur kayu yaitu memproduksi meja, kursi dan lain-lain. Terdapat berbagai jenis mesin yang berada dalam lantai produksi PT. ABC untuk menun...</td>
+      <td>PT. ABC merupakan perusahaan yang bergerak dib...</td>
       <td>Teknik Industri</td>
-      <td>PT. ABC is a company engaged in the manufacture of wood that produces tables, chairs and others. There are different types of machines that are in production floor of PT. ABC to support the course...</td>
+      <td>PT. ABC is a company engaged in the manufactur...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Yulianto Fauzanta</td>
-      <td>PERUMUSAN STRATEGI BISNIS UD. BUDI JAYA BANGKALAN ?DENGAN PENDEKATAN MODEL FRED R. DAVID</td>
+      <td>PERUMUSAN STRATEGI BISNIS UD. BUDI JAYA BANGKA...</td>
       <td>Fitri Agustina, S.T., M.T</td>
       <td>Retno Indriartiningtias, S.T., M.T</td>
-      <td>Bangkalan merupakan salah satu kabupaten yang memiliki potensi alam salak. ?Potensi alam tersebut dimanfaatkan oleh UD. Budi Jaya yang terletak di Desa ?Kramat? Bangkalan dengan memproduksi produk...</td>
+      <td>Bangkalan merupakan salah satu kabupaten yang ...</td>
       <td>Teknik Industri</td>
-      <td>Bangkalan is one of the districts that have the potential of natural bark. Natural ?potential use by UD. Budi Jaya is located in the village of Kramat Bangkalan to ?produce refined products barked...</td>
+      <td>Bangkalan is one of the districts that have th...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>M Mundir Muhlisin</td>
-      <td>USULAN PERBAIKAN UTILITAS RESOURCES PADA LANTAI PRODUKSI PT INDOSPRING TBK DENGAN PENDEKATAN SIMULASI</td>
+      <td>USULAN PERBAIKAN UTILITAS RESOURCES PADA LANTA...</td>
       <td>Mu'alim ST MT</td>
       <td>Sugeng Purwoko ST MT</td>
-      <td>Simulasi adalah duplikasi atau abstraksi dari persoalan dalam kehidupan nyata ke dalam model matematika. Berdasarkan hasil survey pendahuluan di lantai produksi PT Indospring tbk masih sering terj...</td>
+      <td>Simulasi adalah duplikasi atau abstraksi dari ...</td>
       <td>Teknik Industri</td>
-      <td>Simulation is a duplication or abstraction of real-life problems into mathematical models. Based on the results of a preliminary survey on the production floor PT Indospring tbk is often not optim...</td>
+      <td>Simulation is a duplication or abstraction of ...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Muhibbin</td>
-      <td>Peningkatan Kepuasan Masyarakat Terhadap Pelayanan Aparatur Kepolisian dengan Menggunakan Integrasi Importance Performance Analysis (IPA) dan Model Kano\r\n(Studi Kasus pada Bagian Pengurusan Sura...</td>
+      <td>Peningkatan Kepuasan Masyarakat Terhadap Pelay...</td>
       <td>Rahmad Hidayat</td>
       <td>Retno Indriartiningtias</td>
-      <td>Kepuasan adalah tingkat perasaan seseorang terhadap pelayanan setelah membandingkan antara kinerja dengan harapan yang diinginkan. Dalam penelitian ini dilakukan studi kualitas layanan dalam menin...</td>
+      <td>Kepuasan adalah tingkat perasaan seseorang ter...</td>
       <td>Teknik Industri</td>
-      <td>Satisfaction is feeling level of someone to service after comparing between performance on the chance of which wanted. This research is done service quality study in to increase social satisfactio...</td>
+      <td>Satisfaction is feeling level of someone to se...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1075,12 +1080,12 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
     <tr>
       <th>99</th>
       <td>MOH TAUFIK HIDAYAT</td>
-      <td>ALAT PENGGULUNG UNTUK MENGATUR KERAPATAN KERTAS DENGAN METODE CASCADE FUZZY- PID</td>
+      <td>ALAT PENGGULUNG UNTUK MENGATUR KERAPATAN KERTA...</td>
       <td>FAIKUL UMAM., S.KOM., M.T</td>
       <td>SRI WAHYUNI., S.KOM., M.T</td>
-      <td>ABSTRAK\n\nKertas merupakan kebutuhan yang dibutuhkan manusia pada saat ini terutama pada perindustrian, perkantoran dan pendidikan. Salah satu produk olahan yang diproses pada pabrik adalah kerta...</td>
+      <td>ABSTRAK\n\nKertas merupakan kebutuhan yang dib...</td>
       <td>Teknik Mekatronika</td>
-      <td>ABSTRACT\n\nPaper is a necessity needed by humans at this time, especially in industry, offices and education. One of the processing products processed at the factory is paper in the form of rolls...</td>
+      <td>ABSTRACT\n\nPaper is a necessity needed by hum...</td>
     </tr>
     <tr>
       <th>100</th>
@@ -1088,39 +1093,39 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
       <td>Optimasi Penguapan Air Laut Tua Pada Rumah Kaca</td>
       <td>Hairil Budiarto, S.T., M.T.</td>
       <td>Faikul Umam, S.Kom., M.T.</td>
-      <td>Pembuatan garam di Madura umumnya dilakukan dengan cara pemanasan air laut menggunakan sinar matahari. Proses itu mulai dari menampung air laut pada sebuah tambak kemudian diendapkan selama 2 ming...</td>
+      <td>Pembuatan garam di Madura umumnya dilakukan de...</td>
       <td>Teknik Mekatronika</td>
-      <td>Making salt in Madura is generally done by heating sea water using sunlight. The process starts from storing sea water in a pond and then deposited for 2 weeks to become old sea water that is read...</td>
+      <td>Making salt in Madura is generally done by hea...</td>
     </tr>
     <tr>
       <th>101</th>
       <td>ADINDA DEBTIANA DWIKA HILDA</td>
-      <td>KESTABILAN KECEPATAN MOBILE ROBOT PADA LINTASAN MENDATAR, TANJAKAN SERTA TURUNAN</td>
+      <td>KESTABILAN KECEPATAN MOBILE ROBOT PADA LINTASA...</td>
       <td>Faikul Umam, S.Kom., M.T.</td>
       <td>Sri Wahyuni, S.Kom., M.T.</td>
-      <td>Mobile robot merupakan salah satu kategori robot yang memiliki fungsi untuk berpindah tempat. Pengembangan dari mobile robot yaitu implementasi perubahan lintasan mendatar¸ tanjakan serta turunan....</td>
+      <td>Mobile robot merupakan salah satu kategori rob...</td>
       <td>Teknik Mekatronika</td>
-      <td>Mobile robot is one of the robot categories that has the function to move places. The development of a mobile robot is the implementation of changes in leveling and descending trajectories. When t...</td>
+      <td>Mobile robot is one of the robot categories th...</td>
     </tr>
     <tr>
       <th>102</th>
       <td>Nafizatul Jamilah</td>
-      <td>Rancang Bangun Sistem Otomasi Robot Pengecatan Marka Jalan Raya Garis Putus-Putus</td>
+      <td>Rancang Bangun Sistem Otomasi Robot Pengecatan...</td>
       <td>Hairil Budiarto, S.T., M.T</td>
       <td>Sri Wahyuni, S.Kom., M.T</td>
-      <td>ABSTRAK\n\nMarka jalan raya adalah sebuah tanda bisa berupa garis, simbol, atau tulisan yang mempunyai fungsi untuk mengatur, memperingatkan dan memandu lalu lintas. Marka jalan dan rambu merupaka...</td>
+      <td>ABSTRAK\n\nMarka jalan raya adalah sebuah tand...</td>
       <td>Teknik Mekatronika</td>
-      <td>ABSTRACT\n\nA highway mark is a sign that can be a line, symbol, or inscription that has the function to organize, warn and guide traffic. Road markings and signposts are part of the road equipmen...</td>
+      <td>ABSTRACT\n\nA highway mark is a sign that can ...</td>
     </tr>
     <tr>
       <th>103</th>
       <td>Agus Salim</td>
-      <td>Sistem Kestabilan Gerak Robot Omnidirection Mengikuti Arah Gerak Mata Angin</td>
+      <td>Sistem Kestabilan Gerak Robot Omnidirection Me...</td>
       <td>Vivi Tri W, S.Kom., M.T</td>
       <td>Ahmad Sahru R, S.Kom., M.T</td>
-      <td>Di era globalisasi ini sangatlah mungkin teknologi modern menjadi salah satu syarat dalam perkembangan teknologi di dunia. Hal ini disebabkan oleh perkembangan daya pikir manusia untuk menciptakan...</td>
+      <td>Di era globalisasi ini sangatlah mungkin tekno...</td>
       <td>Teknik Mekatronika</td>
-      <td>In this globalization era, it is very possible that modern technology will be one of the requirements in the development of technology in the world. This is caused by the development of human thou...</td>
+      <td>In this globalization era, it is very possible...</td>
     </tr>
   </tbody>
 </table>
@@ -1129,7 +1134,7 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a3a12b67-b5bf-4fb4-8c65-a1037c36b8a4')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-67f83688-e307-498f-8d4a-18ee87ecd40f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1181,12 +1186,12 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
 
     <script>
       const buttonEl =
-        document.querySelector('#df-a3a12b67-b5bf-4fb4-8c65-a1037c36b8a4 button.colab-df-convert');
+        document.querySelector('#df-67f83688-e307-498f-8d4a-18ee87ecd40f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a3a12b67-b5bf-4fb4-8c65-a1037c36b8a4');
+        const element = document.querySelector('#df-67f83688-e307-498f-8d4a-18ee87ecd40f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1206,8 +1211,8 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
   </div>
 
 
-    <div id="df-0f404dc4-d446-4ff1-92b1-9004d4b84cb6">
-      <button class="colab-df-quickchart" onclick="quickchart('df-0f404dc4-d446-4ff1-92b1-9004d4b84cb6')"
+    <div id="df-135ee3f6-56b6-44fe-9728-e866d87c5945">
+      <button class="colab-df-quickchart" onclick="quickchart('df-135ee3f6-56b6-44fe-9728-e866d87c5945')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -1326,7 +1331,7 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-0f404dc4-d446-4ff1-92b1-9004d4b84cb6 button');
+            document.querySelector('#df-135ee3f6-56b6-44fe-9728-e866d87c5945 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -1449,13 +1454,13 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mengambil data dari halaman: 1 (Total artikel terkumpul: 0)
-Mengambil data dari halaman: 2 (Total artikel terkumpul: 2)
-Mengambil data dari halaman: 3 (Total artikel terkumpul: 19)
+Mengambil data dari halaman: 2 (Total artikel terkumpul: 13)
+Mengambil data dari halaman: 3 (Total artikel terkumpul: 27)
 Tidak ada artikel lagi ditemukan. Proses berhenti.
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-0a835df2-21c1-4737-834f-f2fcfacc7310" class="colab-df-container">
+  <div id="df-d37d2fab-7770-41ee-a7eb-26ad84ec064f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1484,135 +1489,191 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>syahdan-husein-disebut-lakukan-aksi-mogok-maka...</td>
+      <td>penjelasan-dasco-soal-beda-tugas-tim-transform...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaSyahdan Husein(SH), admin...</td>
+      <td>Liputan6.com, Jakarta -Wakil Ketua DPR RI Sufm...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>mensesneg-beberkan-beban-berat-erick-thohir-ja...</td>
+      <td>kpk-tangkap-dirut-pt-wahana-menas-erwin-terkai...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaMenteri Sekretaris Negara...</td>
+      <td>Liputan6.com, Jakarta-Komisi Pemberantasan Kor...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>nasib-jabatan-ketum-pssi-erick-thohir-setelah-...</td>
+      <td>prabowo-dan-pm-kanada-carney-bahas-penguatan-k...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaPresiden Prabowo Subianto...</td>
+      <td>Liputan6.com, Jakarta -Presiden Prabowo Subian...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>infografis-daftar-reshuffle-menteri-dan-wamen-...</td>
-      <td>Infografis</td>
-      <td>Liputan6.com, Jakarta -Presiden Prabowo Subian...</td>
+      <td>polri-bongkar-sindikat-pengiriman-tki-ilegal-d...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, JakartaUpaya penyelundupan 19Pek...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>prabowo-bentuk-tim-reformasi-kepolisian-kapolr...</td>
-      <td>Politik</td>
-      <td>Liputan6.com, Jakarta -KapolriJenderal Listyo ...</td>
+      <td>prabowo-tegaskan-komitmen-kerja-sama-indonesia...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Presiden Prabowo Subian...</td>
     </tr>
     <tr>
       <th>5</th>
       <td>6</td>
-      <td>momen-ojol-foto-bareng-anggota-polri-dan-tni-t...</td>
+      <td>mencari-penyebab-keracunan-mbg-sampai-ada-yang...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaAksidemopengemudi ojek on...</td>
+      <td>Liputan6.com, Jakarta-Korbankeracunanprogram M...</td>
     </tr>
     <tr>
       <th>6</th>
       <td>7</td>
-      <td>cerita-di-balik-hijrah-bima-ke-malang-setelah-...</td>
+      <td>top-3-news-duduk-satu-meja-dengan-prabowo-dan-...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaMisteri hilangnya Bima Pe...</td>
+      <td>Liputan6.com, Jakarta -Presiden Prabowo Subian...</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
-      <td>kementerian-transmigrasi-bentuk-satu-batalion-...</td>
-      <td>Megapolitan</td>
-      <td>Liputan6.com, JakartaKementerian Transmigrasi ...</td>
+      <td>bmkg-prediksi-mayoritas-cuaca-indonesia-diguyu...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Badan Meteorologi, Klim...</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
-      <td>ini-alasan-prabowo-beri-kenaikan-pangkat-ke-dj...</td>
+      <td>momen-hangat-diaspora-sambut-kedatangan-presid...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaPresidenPrabowo Subiantom...</td>
+      <td>Liputan6.com, Jakarta -Momen hangat dan antusi...</td>
     </tr>
     <tr>
       <th>9</th>
       <td>10</td>
-      <td>dishub-jakarta-tiap-rabu-asn-wajib-naik-angkut...</td>
+      <td>ini-penyebab-jakarta-macet-parah-pada-rabu-mal...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, Jakarta -Program Rabu Wajib Tran...</td>
+      <td>Liputan6.com, Jakarta -Penumpang bus TransJaka...</td>
     </tr>
     <tr>
       <th>10</th>
       <td>11</td>
-      <td>presiden-prabowo-tak-akan-bentuk-tgpf-demo-rus...</td>
+      <td>presiden-prabowo-ke-ottawa-indonesia-dan-kanad...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaPresiden Prabowo Subianto...</td>
+      <td>Liputan6.com, Jakarta -Dari Amerika Serikat, P...</td>
     </tr>
     <tr>
       <th>11</th>
       <td>12</td>
-      <td>dilaporkan-hilang-saat-demo-rusuh-di-jakarta-b...</td>
+      <td>cek-lokasi-sim-keliling-di-jakarta-hari-ini-ka...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaBima Permana Putra (29), ...</td>
+      <td>Liputan6.com, Jakarta -Direktorat Lalu Lintas ...</td>
     </tr>
     <tr>
       <th>12</th>
       <td>13</td>
-      <td>kondisi-delpedro-marhaen-usai-2-pekan-mendekam...</td>
-      <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaDirektur Eksekutif Lokata...</td>
+      <td>parpol-non-parlemen-bentuk-sekber-dukung-hapus...</td>
+      <td>Politik</td>
+      <td>Liputan6.com, Jakarta -Ketua umum atau Ketum P...</td>
     </tr>
     <tr>
       <th>13</th>
       <td>14</td>
-      <td>erick-thohir-dilantik-jadi-menpora-siapa-jabat...</td>
-      <td>Politik</td>
-      <td>Liputan6.com, Jakarta -Presiden Prabowo Subian...</td>
+      <td>kiprah-prabowo-di-pbb-yang-tuai-pujian</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Kiprah Presiden RIPrabo...</td>
     </tr>
     <tr>
       <th>14</th>
       <td>15</td>
-      <td>tim-reformasi-kepolisian-segera-dibentuk-nama-...</td>
+      <td>tanggal-25-september-diperingati-sebagai-hari-...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, JakartaMenteri Sekretaris Negara...</td>
+      <td>Liputan6.com, Jakarta -Tanggal 25 September di...</td>
     </tr>
     <tr>
       <th>15</th>
       <td>16</td>
-      <td>motif-pembunuhan-terungkap-keluarga-kepala-cab...</td>
-      <td>Megapolitan</td>
-      <td>Liputan6.com, JakartaKasus penculikan disertai...</td>
+      <td>bmkg-cuaca-jakarta-kamis-25-september-2025-dip...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, JakartaBadan Meteorologi, Klimat...</td>
     </tr>
     <tr>
       <th>16</th>
       <td>17</td>
-      <td>dilantik-jadi-kepala-badan-komunikasi-pemerint...</td>
-      <td>Politik</td>
-      <td>Liputan6.com, Jakarta -PresidenPrabowoSubianto...</td>
+      <td>keracunan-mbg-di-banyak-tempat-ada-apa</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, JakartaKasus dugaan keracunan di...</td>
     </tr>
     <tr>
       <th>17</th>
       <td>18</td>
-      <td>wakil-ketua-komisi-x-tunggu-gebrakan-erick-tho...</td>
-      <td>Politik</td>
-      <td>Liputan6.com, Jakarta -Wakil Ketua Komisi X DP...</td>
+      <td>prabowo-dan-presiden-fifa-bertemu-komitmen-kol...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Presiden Prabowo Subian...</td>
     </tr>
     <tr>
       <th>18</th>
       <td>19</td>
-      <td>prabowo-beri-gelar-jenderal-kehormatan-ke-djam...</td>
+      <td>pdip-puji-pidato-prabowo-di-pbb-sangat-wakili-...</td>
       <td>Peristiwa</td>
-      <td>Liputan6.com, Jakarta -PresidenPrabowo Subiant...</td>
+      <td>Liputan6.com, Jakarta -SekjenPDIPHasto Kristiy...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>dasco-pastikan-ruu-perampasan-aset-tidak-berta...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -DPR RI tengah menggodok...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>penerima-bsu-september-2025-cek-status-penyalu...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Pemerintah Indonesia se...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>cak-imin-ajak-publik-tunggu-kpk-umumkan-tersan...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Ketua Umum Dewan Pimpin...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>kasus-djka-kpk-masih-dalami-hasil-pemeriksaan-...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Komisi Pemberantasan Ko...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>gerindra-apbn-2026-jadi-katalisator-pertumbuha...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Rapat Paripurna ke-5 DP...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>tinggalkan-new-york-prabowo-lanjut-lawatan-ke-...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, JakartaPresidenPrabowo Subiantom...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>gerindra-pidato-bersejarah-prabowo-di-pbb-indo...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Ketua Fraksi PartaiGeri...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>warga-depok-bubarkan-puluhan-pelajar-bermotor-...</td>
+      <td>Peristiwa</td>
+      <td>Liputan6.com, Jakarta -Sebuah video viral di m...</td>
     </tr>
   </tbody>
 </table>
@@ -1620,7 +1681,7 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-0a835df2-21c1-4737-834f-f2fcfacc7310')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d37d2fab-7770-41ee-a7eb-26ad84ec064f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1672,12 +1733,12 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
 
     <script>
       const buttonEl =
-        document.querySelector('#df-0a835df2-21c1-4737-834f-f2fcfacc7310 button.colab-df-convert');
+        document.querySelector('#df-d37d2fab-7770-41ee-a7eb-26ad84ec064f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-0a835df2-21c1-4737-834f-f2fcfacc7310');
+        const element = document.querySelector('#df-d37d2fab-7770-41ee-a7eb-26ad84ec064f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1697,8 +1758,8 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
   </div>
 
 
-    <div id="df-bf4cd9dd-6488-4894-80a9-7e229d9eff3a">
-      <button class="colab-df-quickchart" onclick="quickchart('df-bf4cd9dd-6488-4894-80a9-7e229d9eff3a')"
+    <div id="df-58f34874-65fc-4f75-88ea-76bb85bab84f">
+      <button class="colab-df-quickchart" onclick="quickchart('df-58f34874-65fc-4f75-88ea-76bb85bab84f')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -1817,7 +1878,7 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-bf4cd9dd-6488-4894-80a9-7e229d9eff3a button');
+            document.querySelector('#df-58f34874-65fc-4f75-88ea-76bb85bab84f button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -1918,313 +1979,6 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-5abf9eca-bcfa-48cc-9443-b6d49e8a1c39" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>page_sumber</th>
-      <th>link_ditemukan</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>https://pta.trunojoyo.ac.id/</td>
-      <td>https://pta.trunojoyo.ac.id/index.html</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>https://pta.trunojoyo.ac.id/</td>
-      <td>https://pta.trunojoyo.ac.id/</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>https://pta.trunojoyo.ac.id/</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>https://pta.trunojoyo.ac.id/</td>
-      <td>https://pta.trunojoyo.ac.id/c_template/</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>https://pta.trunojoyo.ac.id/</td>
-      <td>https://library.trunojoyo.ac.id/detil.php?id=23</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>378</th>
-      <td>379</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7</td>
-      <td>https://pta.trunojoyo.ac.id/welcome/detail/110...</td>
-    </tr>
-    <tr>
-      <th>379</th>
-      <td>380</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7</td>
-      <td>https://pta.trunojoyo.ac.id/welcome/detail/110...</td>
-    </tr>
-    <tr>
-      <th>380</th>
-      <td>381</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7/2</td>
-    </tr>
-    <tr>
-      <th>381</th>
-      <td>382</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7/3</td>
-    </tr>
-    <tr>
-      <th>382</th>
-      <td>383</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7</td>
-      <td>https://pta.trunojoyo.ac.id/c_search/byfac/7/462</td>
-    </tr>
-  </tbody>
-</table>
-<p>383 rows × 3 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-5abf9eca-bcfa-48cc-9443-b6d49e8a1c39')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-5abf9eca-bcfa-48cc-9443-b6d49e8a1c39 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-5abf9eca-bcfa-48cc-9443-b6d49e8a1c39');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-da07d7dc-4340-45ab-8b4a-7ff825fa753e">
-      <button class="colab-df-quickchart" onclick="quickchart('df-da07d7dc-4340-45ab-8b4a-7ff825fa753e')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-da07d7dc-4340-45ab-8b4a-7ff825fa753e button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-    </div>
-  </div>
-</div></div>
 </div>
 </section>
 </section>
@@ -2242,7 +1996,7 @@ Tidak ada artikel lagi ditemukan. Proses berhenti.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas in /usr/local/lib/python3.12/dist-packages (2.2.2)
 Requirement already satisfied: nltk in /usr/local/lib/python3.12/dist-packages (3.9.1)
 Requirement already satisfied: sastrawi in /usr/local/lib/python3.12/dist-packages (1.0.1)
-Requirement already satisfied: numpy&gt;=1.26.0 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.0.2)
+Requirement already satisfied: numpy&gt;=1.26.0 in /usr/local/lib/python3.12/dist-packages (from pandas) (1.26.4)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
@@ -2260,6 +2014,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2268,6 +2023,8 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
 [nltk_data]   Package punkt is already up-to-date!
 [nltk_data] Downloading package stopwords to /root/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
@@ -2327,7 +2084,13 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
     <span class="k">return</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">teks</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">tokenisasi</span><span class="p">(</span><span class="n">teks</span><span class="p">):</span>
+    <span class="c1"># Mengembalikan list token</span>
     <span class="k">return</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">teks</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gabung_token</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="c1"># Menggabungkan list token menjadi string</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
 
 <span class="c1"># @title ▶️ Jalankan Proses Utama (Scraping &amp; Preprocessing)</span>
 
@@ -2362,8 +2125,14 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    (5/6) Stemming...&quot;</span><span class="p">)</span>
     <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;isi_bersih&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;isi_bersih&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">stemming_teks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stemmer</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    (6/6) Tokenisasi Akhir...&quot;</span><span class="p">)</span>
+    <span class="c1"># Tokenisasi tetap menghasilkan list untuk digunakan di langkah selanjutnya jika diperlukan</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    (6/6) Tokenisasi Akhir (dalam bentuk list)...&quot;</span><span class="p">)</span>
     <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;isi_bersih&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenisasi</span><span class="p">)</span>
+
+    <span class="c1"># Menggabungkan token menjadi string</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    (7/7) Menggabungkan token menjadi string...&quot;</span><span class="p">)</span>
+    <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens_string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">gabung_token</span><span class="p">)</span>
+
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Preprocessing selesai!&quot;</span><span class="p">)</span>
 
@@ -2374,7 +2143,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
     <span class="c1"># Menampilkan perbandingan sebelum dan sesudah (seperti di tutorial referensi)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔎 Contoh Perbandingan Hasil Akhir (5 baris pertama):&quot;</span><span class="p">)</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> <span class="c1"># Agar teks berita tidak terpotong</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">df_processed</span><span class="p">[[</span><span class="s1">&#39;isi_berita&#39;</span><span class="p">,</span> <span class="s1">&#39;tokens&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_processed</span><span class="p">[[</span><span class="s1">&#39;isi_berita&#39;</span><span class="p">,</span> <span class="s1">&#39;tokens&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span> <span class="c1"># Menampilkan kolom string</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tidak ada data untuk diproses. Pastikan proses scraping berhasil.&quot;</span><span class="p">)</span>
 </pre></div>
@@ -2386,8 +2155,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
 
 🎉 Semua library dan paket data siap digunakan!
 Mengambil data dari halaman: 1 (Total artikel terkumpul: 0)
-Mengambil data dari halaman: 2 (Total artikel terkumpul: 2)
-Mengambil data dari halaman: 3 (Total artikel terkumpul: 19)
+Mengambil data dari halaman: 2 (Total artikel terkumpul: 7)
 Tidak ada artikel lagi ditemukan. Proses berhenti.
 
 Memulai proses preprocessing data...
@@ -2396,7 +2164,8 @@ Memulai proses preprocessing data...
     (3/6) Normalisasi Kata...
     (4/6) Menghapus Stopword...
     (5/6) Stemming...
-    (6/6) Tokenisasi Akhir...
+    (6/6) Tokenisasi Akhir (dalam bentuk list)...
+    (7/7) Menggabungkan token menjadi string...
 
 ✅ Preprocessing selesai!
 Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
@@ -2405,7 +2174,7 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-1cd4d910-69e5-49fa-9411-ab7b3c37a948" class="colab-df-container">
+  <div id="df-e847a5e1-3491-4731-872e-6b8e6a4b5829" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2431,28 +2200,28 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
   <tbody>
     <tr>
       <th>0</th>
-      <td>Liputan6.com, JakartaSyahdan Husein(SH), admin akun instagram @gejayanmemanggil, melakukan aksi mogok makan sebagai bentuk perlawanan dari balik jeruji Polda Metro Jaya. Aksimogok makanitu disebut...</td>
-      <td>[liputan6com, jakartasyahdan, huseinsh, admin, akun, instagram, gejayanmemanggil, aksi, mogok, makan, bentuk, lawan, jeruji, polda, metro, jaya, aksimogok, makanitu, 11, september, 2025, baca, kab...</td>
+      <td>Liputan6.com, Jakarta -Tentara Nasional Indonesia Angkatan Darat (TNI AD) mengubah syarat usia maksimal menjadi 24 tahun dari 22 tahun serta tinggi badan minimal menjadi 158 cm dari 163 cm bagi ca...</td>
+      <td>[liputan6com, jakarta, tentara, nasional, indonesia, angkat, darat, tni, ad, ubah, syarat, usia, maksimal, 24, 22, badan, minimal, 158, cm, 163, cm, calon, prajurit, bintara, tamtama, temu, jakart...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Liputan6.com, JakartaMenteri Sekretaris Negara (Mensesneg) Prasetyo Hadi mengatakan, Erick Thohir memiliki beban yang berat menjadi Menteri Pemuda dan Olahraga (Menpora). Menurut dia, PresidenPrab...</td>
-      <td>[liputan6com, jakartamenteri, sekretaris, negara, mensesneg, prasetyo, had, erick, thohir, milik, beban, berat, menteri, pemuda, olahraga, menpora, presidenprabowo, subiantoingin, sepak, bola, kel...</td>
+      <td>Liputan6.com, Jakarta -Anggota Komisi IX DPR RIMuazzim Akbarmengatakan, dapurMakan Bergizi Gratis(MBG) atau Satuan Pelayanan Pemenuhan Gizi (SPPG) karyawannya berisi dari satu keluarga. Bahkan, ju...</td>
+      <td>[liputan6com, jakarta, anggota, komisi, ix, dpr, rimuazzim, akbarmengatakan, dapurmakan, gizi, gratismbg, satu, layan, penuh, gizi, sppg, karyawannya, isi, keluarga, capai, 47, orang, rapat, kerja...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Liputan6.com, JakartaPresiden Prabowo Subianto resmi melantikErick Thohirmenjadi Menteri Pemuda dan Olahraga (Menpora) di Istana Negara Jakarta, Rabu (17/9/2025). Meski sudah menjabat menpora, Eri...</td>
-      <td>[liputan6com, jakartapresiden, prabowo, subianto, resmi, melantikerick, thohirmenjadi, menteri, pemuda, olahraga, menpora, istana, negara, jakarta, rabu, 1792025, jabat, menpora, erick, putus, mun...</td>
+      <td>Liputan6.com, Jakarta -Komisi Pemberantasan Korupsi (KPK) mengungkapkan kasus dugaan korupsi dalam penentuan kuota dan penyelenggaraan ibadah haji pada Kementerian Agama tahun 2023–2024 tidak meli...</td>
+      <td>[liputan6com, jakarta, komisi, berantas, korupsi, kpk, duga, korupsi, tentu, kuota, selenggara, ibadah, haji, menteri, agama, 20232024, libat, jabat, kantor, wilayah, menteri, agama, kanwil, kemen...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Liputan6.com, Jakarta -Presiden Prabowo Subianto kembali melakukanreshuffleKabinet Merah Putih. Pelantikan digelar di Istana Negara Jakarta pada hari ini, Rabu (17/9/2025). Pelantikan ini berdasar...</td>
-      <td>[liputan6com, jakarta, presiden, prabowo, subianto, melakukanreshufflekabinet, merah, putih, lantik, gelar, istana, negara, jakarta, rabu, 1792025, lantik, dasar, putus, presiden, keppres, 96, p, ...</td>
+      <td>Liputan6.com, Jakarta -Badan Meteorologi, Klimatologi, dan Geofisika (BMKG) merilis prakiraan cuaca untuk wilayah DKIJakartapada Kamis, (2/10/2025). Sejumlah wilayah diperkirakan diguyur hujan dis...</td>
+      <td>[liputan6com, jakarta, badan, meteorologi, klimatologi, geofisika, bmkg, rilis, prakira, cuaca, wilayah, dkijakartapada, kamis, 2102025, wilayah, guyur, hujan, serta, petir, pagi, malam, pagi, huj...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Liputan6.com, Jakarta -KapolriJenderal Listyo Sigit Prabowo terbuka dengan rencana pembentukan Tim Reformasi Kepolisian yang dibentuk Presiden. Dia memastikan kepolisian akan menindaklanjuti apapu...</td>
-      <td>[liputan6com, jakarta, kapolrijenderal, listyo, sigit, prabowo, buka, rencana, bentuk, tim, reformasi, polisi, bentuk, presiden, polisi, menindaklanjuti, apa, bijak, tim, reformasi, polisi, bentuk...</td>
+      <td>Liputan6.com, Jakarta -Komisi Pemberantasan Korupsi (KPK) mengungkapkan telah menelusuri aliran dana kasusBank BJBkepada keluarga mantan Gubernur Jawa BaratRidwan Kamil, termasuk ke istrinya sekal...</td>
+      <td>[liputan6com, jakarta, komisi, berantas, korupsi, kpk, telusur, alir, dana, kasusbank, bjbkepada, keluarga, mantan, gubernur, jawa, baratridwan, kamil, istri, anggota, dpr, ri, atalia, praratya, k...</td>
     </tr>
   </tbody>
 </table>
@@ -2460,7 +2229,7 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1cd4d910-69e5-49fa-9411-ab7b3c37a948')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-e847a5e1-3491-4731-872e-6b8e6a4b5829')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2512,12 +2281,12 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
 
     <script>
       const buttonEl =
-        document.querySelector('#df-1cd4d910-69e5-49fa-9411-ab7b3c37a948 button.colab-df-convert');
+        document.querySelector('#df-e847a5e1-3491-4731-872e-6b8e6a4b5829 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1cd4d910-69e5-49fa-9411-ab7b3c37a948');
+        const element = document.querySelector('#df-e847a5e1-3491-4731-872e-6b8e6a4b5829');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2537,8 +2306,8 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
   </div>
 
 
-    <div id="df-e985c2c9-f137-40ad-852f-ed2b46a5c068">
-      <button class="colab-df-quickchart" onclick="quickchart('df-e985c2c9-f137-40ad-852f-ed2b46a5c068')"
+    <div id="df-024e2b7c-e80f-4063-8573-b79b29c01369">
+      <button class="colab-df-quickchart" onclick="quickchart('df-024e2b7c-e80f-4063-8573-b79b29c01369')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -2657,7 +2426,7 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-e985c2c9-f137-40ad-852f-ed2b46a5c068 button');
+            document.querySelector('#df-024e2b7c-e80f-4063-8573-b79b29c01369 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -2667,6 +2436,911 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
     </div>
   </div>
 </div></div>
+</div>
+</section>
+<section id="melakukan-tfidf-dan-word-embedding-ntuk-berita-yang-telah-di-bersihkan">
+<h3>melakukan tfidf dan word embedding ntuk berita yang telah di bersihkan<a class="headerlink" href="#melakukan-tfidf-dan-word-embedding-ntuk-berita-yang-telah-di-bersihkan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uninstall and reinstall gensim and numpy to resolve potential compatibility issues</span>
+<span class="o">!</span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>gensim<span class="w"> </span>numpy
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>gensim<span class="w"> </span>numpy
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Pastikan dataframe df_processed sudah ada dari langkah preprocessing sebelumnya</span>
+<span class="c1"># Jika belum, muat dari file CSV</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">df_processed</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df_processed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;berita_liputan6_bersih.csv&#39;</span><span class="p">)</span>
+        <span class="c1"># Mengubah kolom &#39;tokens&#39; dari string representasi list menjadi list sebenarnya</span>
+        <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">eval</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memuat data dari &#39;berita_liputan6_bersih.csv&#39;&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: File &#39;berita_liputan6_bersih.csv&#39; tidak ditemukan. Harap jalankan langkah preprocessing terlebih dahulu.&quot;</span><span class="p">)</span>
+        <span class="c1"># Keluar dari eksekusi jika file tidak ditemukan</span>
+        <span class="k">raise</span>
+
+<span class="c1"># Kolom yang akan digunakan untuk TF-IDF</span>
+<span class="n">kolom_teks_string</span> <span class="o">=</span> <span class="s1">&#39;tokens_string&#39;</span>
+
+<span class="c1"># Periksa apakah kolom yang dibutuhkan ada</span>
+<span class="k">if</span> <span class="n">kolom_teks_string</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_processed</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Kolom &#39;</span><span class="si">{</span><span class="n">kolom_teks_string</span><span class="si">}</span><span class="s2">&#39; tidak ditemukan dalam dataframe.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Proses TF-IDF ===&quot;</span><span class="p">)</span>
+    <span class="c1"># Inisialisasi TfidfVectorizer</span>
+    <span class="c1"># max_features bisa disesuaikan untuk membatasi jumlah kata yang dipertimbangkan</span>
+    <span class="n">tfidf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># Contoh: ambil 1000 fitur teratas</span>
+
+    <span class="c1"># Terapkan TF-IDF pada kolom teks</span>
+    <span class="c1"># Handle potential NaN values by converting to string</span>
+    <span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_processed</span><span class="p">[</span><span class="n">kolom_teks_string</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+
+    <span class="c1"># tfidf_matrix adalah representasi sparse matrix</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dimensi matriks TF-IDF:&quot;</span><span class="p">,</span> <span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># Untuk melihat nama fitur (kata-kata)</span>
+    <span class="n">nama_fitur</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh nama fitur (kata):&quot;</span><span class="p">,</span> <span class="n">nama_fitur</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># Tampilkan 20 kata pertama</span>
+
+    <span class="c1"># Mengubah sparse matrix menjadi dense matrix dan membuat DataFrame</span>
+    <span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">nama_fitur</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriks TF-IDF dalam bentuk DataFrame (5 baris pertama):&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_tfidf</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Proses TF-IDF selesai dan ditampilkan dalam bentuk tabel.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Proses TF-IDF ===
+
+Dimensi matriks TF-IDF: (7, 339)
+
+Contoh nama fitur (kata): [&#39;110&#39; &#39;1102025&#39; &#39;12837&#39; &#39;1445&#39; &#39;158&#39; &#39;163&#39; &#39;20212023&#39; &#39;20232024&#39;
+ &#39;20252030&#39; &#39;2049&#39; &#39;2102025&#39; &#39;22&#39; &#39;24&#39; &#39;2729&#39; &#39;30&#39; &#39;47&#39; &#39;61&#39; &#39;761&#39; &#39;77&#39;
+ &#39;ad&#39;]
+
+Matriks TF-IDF dalam bentuk DataFrame (5 baris pertama):
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-cde4bc50-6bfa-41de-bb53-55493f91b7ae" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>110</th>
+      <th>1102025</th>
+      <th>12837</th>
+      <th>1445</th>
+      <th>158</th>
+      <th>163</th>
+      <th>20212023</th>
+      <th>20232024</th>
+      <th>20252030</th>
+      <th>2049</th>
+      <th>...</th>
+      <th>ubah</th>
+      <th>usia</th>
+      <th>utama</th>
+      <th>utara</th>
+      <th>wajib</th>
+      <th>wakil</th>
+      <th>wenang</th>
+      <th>wib</th>
+      <th>wilayah</th>
+      <th>ya</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.049576</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.080478</td>
+      <td>0.066804</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.160956</td>
+      <td>0.080478</td>
+      <td>0.066804</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.080478</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.049576</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.058120</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.058120</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.064819</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.105222</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.105222</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.149317</td>
+      <td>0.129638</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.230757</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.122797</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.049809</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.080857</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.067118</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.049809</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 339 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-cde4bc50-6bfa-41de-bb53-55493f91b7ae')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-cde4bc50-6bfa-41de-bb53-55493f91b7ae button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-cde4bc50-6bfa-41de-bb53-55493f91b7ae');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-440e7bae-464d-434b-a397-8f2795533abc">
+      <button class="colab-df-quickchart" onclick="quickchart('df-440e7bae-464d-434b-a397-8f2795533abc')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-440e7bae-464d-434b-a397-8f2795533abc button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Proses TF-IDF selesai dan ditampilkan dalam bentuk tabel.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Pastikan dataframe df_processed sudah ada dari langkah preprocessing sebelumnya</span>
+<span class="c1"># Jika belum, muat dari file CSV</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">df_processed</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df_processed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;berita_liputan6_bersih.csv&#39;</span><span class="p">)</span>
+        <span class="c1"># Mengubah kolom &#39;tokens&#39; dari string representasi list menjadi list sebenarnya</span>
+        <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">eval</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memuat data dari &#39;berita_liputan6_bersih.csv&#39;&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: File &#39;berita_liputan6_bersih.csv&#39; tidak ditemukan. Harap jalankan langkah preprocessing terlebih dahulu.&quot;</span><span class="p">)</span>
+        <span class="c1"># Keluar dari eksekusi jika file tidak ditemukan</span>
+        <span class="k">raise</span>
+
+
+<span class="c1"># Kolom yang akan digunakan untuk Word Embedding (list of tokens)</span>
+<span class="n">kolom_tokens</span> <span class="o">=</span> <span class="s1">&#39;tokens&#39;</span>
+
+<span class="k">if</span> <span class="n">kolom_tokens</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_processed</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Kolom &#39;</span><span class="si">{</span><span class="n">kolom_tokens</span><span class="si">}</span><span class="s2">&#39; tidak ditemukan dalam dataframe.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Proses Word Embedding (Word2Vec) ===&quot;</span><span class="p">)</span>
+    <span class="c1"># Inisialisasi dan latih model Word2Vec</span>
+    <span class="c1"># vector_size: dimensi vektor untuk setiap kata</span>
+    <span class="c1"># window: ukuran jendela konteks</span>
+    <span class="c1"># min_count: mengabaikan kata-kata dengan frekuensi kurang dari ini</span>
+    <span class="n">word2vec_model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="o">=</span><span class="n">df_processed</span><span class="p">[</span><span class="n">kolom_tokens</span><span class="p">],</span> <span class="n">vector_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># Fungsi untuk mendapatkan vektor dokumen (rata-rata vektor kata)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_document_vector</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="n">vectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">vectors</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">vector_size</span><span class="p">)</span> <span class="c1"># Mengembalikan vektor nol jika tidak ada kata dalam model</span>
+
+    <span class="c1"># Terapkan fungsi untuk mendapatkan vektor untuk setiap dokumen (berita)</span>
+    <span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;document_vector&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="n">kolom_tokens</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_document_vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">word2vec_model</span><span class="p">))</span>
+
+    <span class="c1"># Membuat DataFrame dari vektor dokumen untuk tampilan yang lebih baik</span>
+    <span class="c1"># Memberikan nama kolom generik seperti &#39;dim_0&#39;, &#39;dim_1&#39;, ...</span>
+    <span class="n">document_vector_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_processed</span><span class="p">[</span><span class="s1">&#39;document_vector&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+                                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;dim_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">word2vec_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">vector_size</span><span class="p">)])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh vektor dokumen (vektor rata-rata dari kata-kata dalam berita) dalam bentuk tabel:&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">document_vector_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Proses Word Embedding selesai. Vektor dokumen disimpan dalam kolom &#39;document_vector&#39; pada dataframe asli dan ditampilkan dalam tabel terpisah.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Proses Word Embedding (Word2Vec) ===
+
+Contoh vektor dokumen (vektor rata-rata dari kata-kata dalam berita) dalam bentuk tabel:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-bdb666a2-61ab-4da7-95bd-ea36091fb5fa" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dim_0</th>
+      <th>dim_1</th>
+      <th>dim_2</th>
+      <th>dim_3</th>
+      <th>dim_4</th>
+      <th>dim_5</th>
+      <th>dim_6</th>
+      <th>dim_7</th>
+      <th>dim_8</th>
+      <th>dim_9</th>
+      <th>...</th>
+      <th>dim_90</th>
+      <th>dim_91</th>
+      <th>dim_92</th>
+      <th>dim_93</th>
+      <th>dim_94</th>
+      <th>dim_95</th>
+      <th>dim_96</th>
+      <th>dim_97</th>
+      <th>dim_98</th>
+      <th>dim_99</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.000031</td>
+      <td>-0.000988</td>
+      <td>-0.000397</td>
+      <td>0.001147</td>
+      <td>-0.000281</td>
+      <td>-0.001311</td>
+      <td>0.000458</td>
+      <td>0.001633</td>
+      <td>-0.000141</td>
+      <td>-0.000931</td>
+      <td>...</td>
+      <td>0.000777</td>
+      <td>0.000671</td>
+      <td>0.000279</td>
+      <td>0.000845</td>
+      <td>0.000517</td>
+      <td>0.000227</td>
+      <td>0.001188</td>
+      <td>-0.001201</td>
+      <td>0.000414</td>
+      <td>0.000744</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000475</td>
+      <td>-0.000239</td>
+      <td>0.000735</td>
+      <td>-0.000088</td>
+      <td>0.001161</td>
+      <td>-0.000333</td>
+      <td>0.000331</td>
+      <td>0.001782</td>
+      <td>-0.000319</td>
+      <td>-0.000330</td>
+      <td>...</td>
+      <td>0.001540</td>
+      <td>0.000174</td>
+      <td>-0.000038</td>
+      <td>0.002185</td>
+      <td>0.001738</td>
+      <td>0.001063</td>
+      <td>-0.000233</td>
+      <td>-0.000632</td>
+      <td>0.000288</td>
+      <td>-0.000275</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.000573</td>
+      <td>0.002252</td>
+      <td>-0.001026</td>
+      <td>-0.000957</td>
+      <td>0.000791</td>
+      <td>-0.000943</td>
+      <td>0.001292</td>
+      <td>0.002857</td>
+      <td>-0.000877</td>
+      <td>-0.000402</td>
+      <td>...</td>
+      <td>0.001145</td>
+      <td>0.000349</td>
+      <td>0.000199</td>
+      <td>-0.000945</td>
+      <td>0.001709</td>
+      <td>-0.000361</td>
+      <td>0.000534</td>
+      <td>-0.001427</td>
+      <td>0.000421</td>
+      <td>-0.001324</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.001118</td>
+      <td>0.000235</td>
+      <td>0.000895</td>
+      <td>0.001991</td>
+      <td>-0.003326</td>
+      <td>-0.001927</td>
+      <td>0.002378</td>
+      <td>0.001510</td>
+      <td>-0.001624</td>
+      <td>-0.001305</td>
+      <td>...</td>
+      <td>0.001421</td>
+      <td>0.001413</td>
+      <td>0.000194</td>
+      <td>0.000417</td>
+      <td>0.003181</td>
+      <td>0.001783</td>
+      <td>-0.000344</td>
+      <td>-0.001065</td>
+      <td>0.001076</td>
+      <td>0.001583</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.000160</td>
+      <td>0.001604</td>
+      <td>0.000716</td>
+      <td>-0.000655</td>
+      <td>0.001447</td>
+      <td>-0.001557</td>
+      <td>-0.001553</td>
+      <td>0.001733</td>
+      <td>-0.000755</td>
+      <td>0.000218</td>
+      <td>...</td>
+      <td>0.001231</td>
+      <td>-0.000954</td>
+      <td>0.000064</td>
+      <td>-0.000635</td>
+      <td>0.000112</td>
+      <td>0.000652</td>
+      <td>-0.000780</td>
+      <td>-0.001085</td>
+      <td>-0.000100</td>
+      <td>-0.000818</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 100 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bdb666a2-61ab-4da7-95bd-ea36091fb5fa')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-bdb666a2-61ab-4da7-95bd-ea36091fb5fa button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-bdb666a2-61ab-4da7-95bd-ea36091fb5fa');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-eac55b67-3dcc-4c3b-adfc-e433b1618ad8">
+      <button class="colab-df-quickchart" onclick="quickchart('df-eac55b67-3dcc-4c3b-adfc-e433b1618ad8')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-eac55b67-3dcc-4c3b-adfc-e433b1618ad8 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Proses Word Embedding selesai. Vektor dokumen disimpan dalam kolom &#39;document_vector&#39; pada dataframe asli dan ditampilkan dalam tabel terpisah.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="praproses-untuk-abstrak-pta">
@@ -2794,21 +3468,13 @@ Hasil disimpan dalam file &#39;berita_liputan6_bersih.csv&#39;
 ✅ Paket NLTK &quot;stopwords&quot; sudah ada.
 
 🎉 Semua library dan paket data siap digunakan!
-
-Memulai proses scraping data abstrak dari PTA Trunojoyo...
-    Mengambil data dari prodi &#39;Teknik Industri&#39;, halaman 1...
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/soupsieve/css_parser.py:876: FutureWarning: The pseudo class &#39;:contains&#39; is deprecated, &#39;:-soup-contains&#39; should be used moving forward.
   warnings.warn(  # noqa: B028
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Mengambil data dari prodi &#39;Teknik Informatika&#39;, halaman 1...
-    Mengambil data dari prodi &#39;Sistem Informasi&#39;, halaman 1...
-
-✅ Scraping selesai. 10 data abstrak disimpan di &#39;pta_trunojoyo_raw.csv&#39;
-
-Memulai proses preprocessing data abstrak...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memulai proses preprocessing data abstrak...
     (1/6) Case Folding...
     (2/6) Menghilangkan Simbol/Tanda Baca...
     (3/6) Normalisasi Kata...
@@ -2823,7 +3489,7 @@ Hasil disimpan dalam file &#39;pta_trunojoyo_bersih.csv&#39;
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-ea929647-05d5-4ac1-b674-325590b775ea" class="colab-df-container">
+  <div id="df-1605a0e7-9045-4c01-aced-96be2705fb2d" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2878,7 +3544,7 @@ Hasil disimpan dalam file &#39;pta_trunojoyo_bersih.csv&#39;
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-ea929647-05d5-4ac1-b674-325590b775ea')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-1605a0e7-9045-4c01-aced-96be2705fb2d')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2930,12 +3596,12 @@ Hasil disimpan dalam file &#39;pta_trunojoyo_bersih.csv&#39;
 
     <script>
       const buttonEl =
-        document.querySelector('#df-ea929647-05d5-4ac1-b674-325590b775ea button.colab-df-convert');
+        document.querySelector('#df-1605a0e7-9045-4c01-aced-96be2705fb2d button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-ea929647-05d5-4ac1-b674-325590b775ea');
+        const element = document.querySelector('#df-1605a0e7-9045-4c01-aced-96be2705fb2d');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2955,8 +3621,8 @@ Hasil disimpan dalam file &#39;pta_trunojoyo_bersih.csv&#39;
   </div>
 
 
-    <div id="df-7e15b5b6-6e1f-4269-8e1b-89caa290d676">
-      <button class="colab-df-quickchart" onclick="quickchart('df-7e15b5b6-6e1f-4269-8e1b-89caa290d676')"
+    <div id="df-2bb2f741-1c93-45e0-9242-a0e26054a1e9">
+      <button class="colab-df-quickchart" onclick="quickchart('df-2bb2f741-1c93-45e0-9242-a0e26054a1e9')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -3075,7 +3741,7 @@ Hasil disimpan dalam file &#39;pta_trunojoyo_bersih.csv&#39;
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-7e15b5b6-6e1f-4269-8e1b-89caa290d676 button');
+            document.querySelector('#df-2bb2f741-1c93-45e0-9242-a0e26054a1e9 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -3157,6 +3823,7 @@ Hasil disimpan dalam file &#39;pta_trunojoyo_bersih.csv&#39;
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukann-praprosess-data-teks">melakukann praprosess data teks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pra-proses-untuk-isi-berita">pra proses untuk isi berita</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-tfidf-dan-word-embedding-ntuk-berita-yang-telah-di-bersihkan">melakukan tfidf dan word embedding ntuk berita yang telah di bersihkan</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praproses-untuk-abstrak-pta">praproses untuk abstrak pta</a></li>
 </ul>
 </li>
