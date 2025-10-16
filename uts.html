@@ -1,0 +1,2332 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>uts &#8212; ppw</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uts';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="klasifikasi menggunakann LDA" href="modeling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="ppw - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="ppw - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    perkenalan
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="crawling.html">web crawling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kode_crawling.html">crawling halaman web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modeling.html">klasifikasi menggunakann LDA</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">uts</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Futs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uts.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>uts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-1-klasifikasi-berita">Analisis Soal 1: Klasifikasi Berita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data-berita-membaca-dataset-berita-dari-file-csv">1.  <strong>Memuat Data Berita</strong>: Membaca dataset berita dari file CSV.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pra-pemrosesan-teks-membersihkan-teks-berita-dari-karakter-yang-tidak-relevan-angka-dan-stop-words-kata-kata-umum-yang-tidak-memiliki-makna-diskriminatif">2.  <strong>Pra-pemrosesan Teks</strong>: Membersihkan teks berita dari karakter yang tidak relevan, angka, dan <em>stop words</em> (kata-kata umum yang tidak memiliki makna diskriminatif).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-topic-modeling-lda-mengubah-teks-bersih-menjadi-representasi-numerik-menggunakan-latent-dirichlet-allocation-lda-untuk-mengekstrak-topik-topik-utama-dalam-berita-hasilnya-akan-digunakan-sebagai-fitur-untuk-klasifikasi">3.  <strong>Ekstraksi Fitur (Topic Modeling - LDA)</strong>: Mengubah teks bersih menjadi representasi numerik menggunakan Latent Dirichlet Allocation (LDA) untuk mengekstrak topik-topik utama dalam berita. Hasilnya akan digunakan sebagai fitur untuk klasifikasi.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru">4.  <strong>Klasifikasi</strong>: Melatih model Naive Bayes dan SVM menggunakan fitur yang diekstraksi dan mengevaluasi performa kedua model dalam mengklasifikasikan berita baru.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method">Analisis Soal 2: Clustering Email dengan Pencarian K Otomatis (Elbow Method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impor-library-mengimpor-semua-library-python-yang-diperlukan">1.  <strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dan-membersihkan-data-email-membaca-dataset-email-dari-file-csv-dan-melakukan-pra-pemrosesan-teks-dasar-untuk-membersihkan-email">2.  <strong>Memuat dan Membersihkan Data Email</strong>: Membaca dataset email dari file CSV dan melakukan pra-pemrosesan teks dasar untuk membersihkan email.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorisasi-teks-tf-idf-mengubah-teks-email-yang-sudah-bersih-menjadi-representasi-numerik-menggunakan-tf-idf-term-frequency-inverse-document-frequency-ini-memberikan-bobot-pada-kata-kata-berdasarkan-seberapa-sering-muncul-dalam-dokumen-dan-seberapa-unik-kata-tersebut-di-seluruh-koleksi-dokumen">3.  <strong>Vektorisasi Teks (TF-IDF)</strong>: Mengubah teks email yang sudah bersih menjadi representasi numerik menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Ini memberikan bobot pada kata-kata berdasarkan seberapa sering muncul dalam dokumen dan seberapa unik kata tersebut di seluruh koleksi dokumen.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-jumlah-cluster-optimal-dengan-elbow-method-menggunakan-metode-elbow-untuk-menghitung-within-cluster-sum-of-squares-wcss-untuk-berbagai-jumlah-cluster-k-grafik-wcss-versus-k-akan-dibuat-untuk-membantu-visualisasi-dan-penentuan-titik-siku-elbow-yang-menunjukkan-jumlah-cluster-optimal">4.  <strong>Mencari Jumlah Cluster Optimal dengan Elbow Method</strong>: Menggunakan metode Elbow untuk menghitung <em>Within-Cluster Sum of Squares</em> (WCSS) untuk berbagai jumlah cluster (k). Grafik WCSS versus k akan dibuat untuk membantu visualisasi dan penentuan “titik siku” (elbow) yang menunjukkan jumlah cluster optimal.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-final-dengan-k-yang-optimal-menerapkan-algoritma-k-means-dengan-jumlah-cluster-k-yang-ditentukan-dari-metode-elbow">5.  <strong>Melakukan Clustering Final dengan K yang Optimal</strong>: Menerapkan algoritma K-Means dengan jumlah cluster (k) yang ditentukan dari metode Elbow.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-clustering-menampilkan-distribusi-dokumen-di-setiap-cluster-dan-kata-kata-paling-penting-top-terms-di-setiap-cluster">6.  <strong>Menampilkan Hasil Clustering</strong>: Menampilkan distribusi dokumen di setiap cluster dan kata-kata paling penting (top terms) di setiap cluster.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-clustering-final-mengurangi-dimensi-data-tf-idf-menjadi-2-dimensi-menggunakan-principal-component-analysis-pca-untuk-memvisualisasikan-hasil-clustering-dalam-scatter-plot-2d-setiap-titik-dalam-plot-merepresentasikan-email-dan-warnanya-menunjukkan-cluster-tempat-email-tersebut-dikelompokkan">7.  <strong>Visualisasi Hasil Clustering Final</strong>: Mengurangi dimensi data TF-IDF menjadi 2 dimensi menggunakan Principal Component Analysis (PCA) untuk memvisualisasikan hasil clustering dalam scatter plot 2D. Setiap titik dalam plot merepresentasikan email, dan warnanya menunjukkan cluster tempat email tersebut dikelompokkan.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uts">
+<h1>uts<a class="headerlink" href="#uts" title="Link to this heading">#</a></h1>
+<p>Soal uts</p>
+<ol class="arabic simple">
+<li><p>Lakukan analisa klasifikasikan berita dengan extraksi fitur model topik modelling dengan classifier naïve bayes dan SVM (data <a class="reference external" href="https://drive.google.com/file/d/1a776C4mmVbC-84gx_No0is9QDfpWFIme/view?usp=drive_link">https://drive.google.com/file/d/1a776C4mmVbC-84gx_No0is9QDfpWFIme/view?usp=drive_link</a></p></li>
+<li><p>Lakukan  analisa clutering dokumen pada data email berikut
+<a class="reference external" href="https://drive.google.com/file/d/1wyFO8424PDG8sDZ_6mBJvoKfiwbWnDe7/view?usp=drive_link">https://drive.google.com/file/d/1wyFO8424PDG8sDZ_6mBJvoKfiwbWnDe7/view?usp=drive_link</a></p></li>
+</ol>
+<section id="analisis-soal-1-klasifikasi-berita">
+<h2>Analisis Soal 1: Klasifikasi Berita<a class="headerlink" href="#analisis-soal-1-klasifikasi-berita" title="Link to this heading">#</a></h2>
+<p>Bagian ini bertujuan untuk melakukan klasifikasi berita ke dalam kategori yang sudah ditentukan menggunakan dua algoritma klasifikasi: Naive Bayes dan Support Vector Machine (SVM). Langkah-langkah yang dilakukan meliputi:</p>
+<ol class="arabic simple">
+<li><p><strong>Memuat Data Berita</strong>: Membaca dataset berita dari file CSV.</p></li>
+<li><p><strong>Pra-pemrosesan Teks</strong>: Membersihkan teks berita dari karakter yang tidak relevan, angka, dan <em>stop words</em> (kata-kata umum yang tidak memiliki makna diskriminatif).</p></li>
+<li><p><strong>Ekstraksi Fitur (Topic Modeling - LDA)</strong>: Mengubah teks bersih menjadi representasi numerik menggunakan Latent Dirichlet Allocation (LDA) untuk mengekstrak topik-topik utama dalam berita. Hasilnya akan digunakan sebagai fitur untuk klasifikasi.</p></li>
+<li><p><strong>Klasifikasi</strong>: Melatih model Naive Bayes dan SVM menggunakan fitur yang diekstraksi dan mengevaluasi performa kedua model dalam mengklasifikasikan berita baru.</p></li>
+</ol>
+<section id="memuat-data-berita-membaca-dataset-berita-dari-file-csv">
+<h3>1.  <strong>Memuat Data Berita</strong>: Membaca dataset berita dari file CSV.<a class="headerlink" href="#memuat-data-berita-membaca-dataset-berita-dari-file-csv" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># --- Analisis Soal 1: Klasifikasi Berita ---</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Analisis Soal 1: Klasifikasi Berita ---&quot;</span><span class="p">)</span>
+    <span class="c1"># 1. Memuat Data Berita</span>
+    <span class="c1"># Memuat dataset dari file CSV. Pastikan file &#39;Berita.csv&#39; ada di direktori yang sama.</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountVectorizer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">LatentDirichletAllocation</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultinomialNB</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span>
+
+    <span class="n">df_berita</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Berita.csv&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Berita.csv berhasil dimuat.&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_berita</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Analisis Soal 1: Klasifikasi Berita ---
+Data Berita.csv berhasil dimuat.
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-3b9f099a-1d54-43b2-a914-70be65e5d312" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>No</th>
+      <th>judul</th>
+      <th>berita</th>
+      <th>tanggal</th>
+      <th>kategori</th>
+      <th>link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Airlangga Harap Kenaikan UMP Tingkatkan Daya B...</td>
+      <td>Menteri Koordinator (Menko) Bidang Perekonomia...</td>
+      <td>Minggu, 01 Des 2024 23:40 WIB</td>
+      <td>Ekonomi</td>
+      <td>https://www.cnnindonesia.com/ekonomi/202412012...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>PT SIER Beri Penghargaan untuk 50 Tenant Terba...</td>
+      <td>Dalam rangka memeriahkan hari jadi ke-50, PT S...</td>
+      <td>Minggu, 01 Des 2024 20:45 WIB</td>
+      <td>Ekonomi</td>
+      <td>https://www.cnnindonesia.com/ekonomi/202412012...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Prabowo Bakal Bentuk Kementerian Penerimaan Ne...</td>
+      <td>Wacana Presiden Prabowo Subianto akan membentu...</td>
+      <td>Minggu, 01 Des 2024 19:40 WIB</td>
+      <td>Ekonomi</td>
+      <td>https://www.cnnindonesia.com/ekonomi/202412011...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Sinergi Kemenag &amp; BPJS Ketenagakerjaan Lindung...</td>
+      <td>BPJS Ketenagakerjaan dan Kementerian Agama (Ke...</td>
+      <td>Minggu, 01 Des 2024 19:03 WIB</td>
+      <td>Ekonomi</td>
+      <td>https://www.cnnindonesia.com/ekonomi/202412011...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Pemerintah Segera Bentuk Satgas PHK Usai Tetap...</td>
+      <td>Pemerintah akan segera membentuk Satuan Tugas ...</td>
+      <td>Minggu, 01 Des 2024 19:00 WIB</td>
+      <td>Ekonomi</td>
+      <td>https://www.cnnindonesia.com/ekonomi/202412011...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1495</th>
+      <td>1496</td>
+      <td>Laporan Sebab Tabrakan Pesawat-Black Hawk Dita...</td>
+      <td>Anggota Dewan Keselamatan Transportasi Nasiona...</td>
+      <td>Jumat, 31 Jan 2025 04:40 WIB</td>
+      <td>Internasional</td>
+      <td>https://www.cnnindonesia.com/internasional/202...</td>
+    </tr>
+    <tr>
+      <th>1496</th>
+      <td>1497</td>
+      <td>Israel Bebaskan 110 Sandera Palestina, Diantar...</td>
+      <td>Israel telah membebaskan 110 tahanan Palestina...</td>
+      <td>Jumat, 31 Jan 2025 03:01 WIB</td>
+      <td>Internasional</td>
+      <td>https://www.cnnindonesia.com/internasional/202...</td>
+    </tr>
+    <tr>
+      <th>1497</th>
+      <td>1498</td>
+      <td>Hamas Konfirmasi Kematian Komandan Al Qassam M...</td>
+      <td>Hamas mengonfirmasi kematian kepala militernya...</td>
+      <td>Jumat, 31 Jan 2025 02:30 WIB</td>
+      <td>Internasional</td>
+      <td>https://www.cnnindonesia.com/internasional/202...</td>
+    </tr>
+    <tr>
+      <th>1498</th>
+      <td>1499</td>
+      <td>Black Box American Airlines Ditemukan Usai Tab...</td>
+      <td>Tim penyelam diduga menemukan satu dari dua bl...</td>
+      <td>Jumat, 31 Jan 2025 01:00 WIB</td>
+      <td>Internasional</td>
+      <td>https://www.cnnindonesia.com/internasional/202...</td>
+    </tr>
+    <tr>
+      <th>1499</th>
+      <td>1500</td>
+      <td>Trump Salahkan Biden soal Penurunan Standar Ke...</td>
+      <td>Presiden AS Donald Trump menyalahkan pemerinta...</td>
+      <td>Jumat, 31 Jan 2025 00:40 WIB</td>
+      <td>Internasional</td>
+      <td>https://www.cnnindonesia.com/internasional/202...</td>
+    </tr>
+  </tbody>
+</table>
+<p>1500 rows × 6 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3b9f099a-1d54-43b2-a914-70be65e5d312')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-3b9f099a-1d54-43b2-a914-70be65e5d312 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-3b9f099a-1d54-43b2-a914-70be65e5d312');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-34e4c073-ed9c-4d83-862a-be81757d206c">
+      <button class="colab-df-quickchart" onclick="quickchart('df-34e4c073-ed9c-4d83-862a-be81757d206c')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-34e4c073-ed9c-4d83-862a-be81757d206c button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_a37c7357-65d3-4330-8613-284918b45408">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df_berita')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_a37c7357-65d3-4330-8613-284918b45408 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df_berita');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="pra-pemrosesan-teks-membersihkan-teks-berita-dari-karakter-yang-tidak-relevan-angka-dan-stop-words-kata-kata-umum-yang-tidak-memiliki-makna-diskriminatif">
+<h3>2.  <strong>Pra-pemrosesan Teks</strong>: Membersihkan teks berita dari karakter yang tidak relevan, angka, dan <em>stop words</em> (kata-kata umum yang tidak memiliki makna diskriminatif).<a class="headerlink" href="#pra-pemrosesan-teks-membersihkan-teks-berita-dari-karakter-yang-tidak-relevan-angka-dan-stop-words-kata-kata-umum-yang-tidak-memiliki-makna-diskriminatif" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 2. Pra-pemrosesan Teks</span>
+    <span class="c1"># Memilih kolom &#39;berita&#39; (teks berita) dan &#39;kategori&#39; (label kelas).</span>
+    <span class="c1"># Menghapus baris yang memiliki nilai kosong (NaN) pada kolom yang dipilih.</span>
+    <span class="n">df_berita</span> <span class="o">=</span> <span class="n">df_berita</span><span class="p">[[</span><span class="s1">&#39;berita&#39;</span><span class="p">,</span> <span class="s1">&#39;kategori&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_berita</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Daftar stop words dalam Bahasa Indonesia. Stop words adalah kata-kata umum yang sering muncul</span>
+    <span class="c1"># tetapi tidak memiliki makna diskriminatif untuk klasifikasi, sehingga perlu dihapapus.</span>
+    <span class="n">stop_words_indonesia_manual</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;ada&#39;</span><span class="p">,</span> <span class="s1">&#39;adalah&#39;</span><span class="p">,</span> <span class="s1">&#39;adanya&#39;</span><span class="p">,</span> <span class="s1">&#39;adapun&#39;</span><span class="p">,</span> <span class="s1">&#39;agak&#39;</span><span class="p">,</span> <span class="s1">&#39;agaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;agar&#39;</span><span class="p">,</span> <span class="s1">&#39;akan&#39;</span><span class="p">,</span> <span class="s1">&#39;akankah&#39;</span><span class="p">,</span> <span class="s1">&#39;akhir&#39;</span><span class="p">,</span> <span class="s1">&#39;akhiri&#39;</span><span class="p">,</span> <span class="s1">&#39;akhirnya&#39;</span><span class="p">,</span> <span class="s1">&#39;aku&#39;</span><span class="p">,</span> <span class="s1">&#39;akulah&#39;</span><span class="p">,</span> <span class="s1">&#39;amat&#39;</span><span class="p">,</span> <span class="s1">&#39;amatlah&#39;</span><span class="p">,</span> <span class="s1">&#39;anda&#39;</span><span class="p">,</span> <span class="s1">&#39;andalah&#39;</span><span class="p">,</span> <span class="s1">&#39;antar&#39;</span><span class="p">,</span> <span class="s1">&#39;antara&#39;</span><span class="p">,</span> <span class="s1">&#39;antaranya&#39;</span><span class="p">,</span> <span class="s1">&#39;apa&#39;</span><span class="p">,</span> <span class="s1">&#39;apaan&#39;</span><span class="p">,</span> <span class="s1">&#39;apabila&#39;</span><span class="p">,</span> <span class="s1">&#39;apakah&#39;</span><span class="p">,</span> <span class="s1">&#39;apalagi&#39;</span><span class="p">,</span> <span class="s1">&#39;apatah&#39;</span><span class="p">,</span> <span class="s1">&#39;artinya&#39;</span><span class="p">,</span> <span class="s1">&#39;asal&#39;</span><span class="p">,</span> <span class="s1">&#39;asalkan&#39;</span><span class="p">,</span> <span class="s1">&#39;atas&#39;</span><span class="p">,</span> <span class="s1">&#39;atau&#39;</span><span class="p">,</span> <span class="s1">&#39;ataukah&#39;</span><span class="p">,</span> <span class="s1">&#39;ataupun&#39;</span><span class="p">,</span> <span class="s1">&#39;awal&#39;</span><span class="p">,</span> <span class="s1">&#39;awalnya&#39;</span><span class="p">,</span> <span class="s1">&#39;bagaimana&#39;</span><span class="p">,</span> <span class="s1">&#39;bagaimanakah&#39;</span><span class="p">,</span> <span class="s1">&#39;bagaimanapun&#39;</span><span class="p">,</span> <span class="s1">&#39;bagi&#39;</span><span class="p">,</span> <span class="s1">&#39;bagian&#39;</span><span class="p">,</span> <span class="s1">&#39;bahkan&#39;</span><span class="p">,</span> <span class="s1">&#39;bahwa&#39;</span><span class="p">,</span> <span class="s1">&#39;bahwasanya&#39;</span><span class="p">,</span> <span class="s1">&#39;bakal&#39;</span><span class="p">,</span> <span class="s1">&#39;bakalan&#39;</span><span class="p">,</span> <span class="s1">&#39;balik&#39;</span><span class="p">,</span> <span class="s1">&#39;banyak&#39;</span><span class="p">,</span> <span class="s1">&#39;bapak&#39;</span><span class="p">,</span> <span class="s1">&#39;baru&#39;</span><span class="p">,</span> <span class="s1">&#39;bawah&#39;</span><span class="p">,</span> <span class="s1">&#39;beberapa&#39;</span><span class="p">,</span> <span class="s1">&#39;begini&#39;</span><span class="p">,</span> <span class="s1">&#39;beginian&#39;</span><span class="p">,</span> <span class="s1">&#39;beginikah&#39;</span><span class="p">,</span> <span class="s1">&#39;beginilah&#39;</span><span class="p">,</span> <span class="s1">&#39;begitu&#39;</span><span class="p">,</span> <span class="s1">&#39;begitukah&#39;</span><span class="p">,</span> <span class="s1">&#39;begitulah&#39;</span><span class="p">,</span> <span class="s1">&#39;begitupun&#39;</span><span class="p">,</span> <span class="s1">&#39;bekerja&#39;</span><span class="p">,</span> <span class="s1">&#39;belakang&#39;</span><span class="p">,</span> <span class="s1">&#39;belakangan&#39;</span><span class="p">,</span> <span class="s1">&#39;belum&#39;</span><span class="p">,</span> <span class="s1">&#39;belumlah&#39;</span><span class="p">,</span> <span class="s1">&#39;benar&#39;</span><span class="p">,</span> <span class="s1">&#39;benarkah&#39;</span><span class="p">,</span> <span class="s1">&#39;benarlah&#39;</span><span class="p">,</span> <span class="s1">&#39;berada&#39;</span><span class="p">,</span> <span class="s1">&#39;berakhir&#39;</span><span class="p">,</span> <span class="s1">&#39;berakhirlah&#39;</span><span class="p">,</span> <span class="s1">&#39;berakhirnya&#39;</span><span class="p">,</span> <span class="s1">&#39;berapa&#39;</span><span class="p">,</span> <span class="s1">&#39;berapakah&#39;</span><span class="p">,</span> <span class="s1">&#39;berapalah&#39;</span><span class="p">,</span> <span class="s1">&#39;berapapun&#39;</span><span class="p">,</span> <span class="s1">&#39;berarti&#39;</span><span class="p">,</span> <span class="s1">&#39;berawal&#39;</span><span class="p">,</span> <span class="s1">&#39;berbagai&#39;</span><span class="p">,</span> <span class="s1">&#39;berdatangan&#39;</span><span class="p">,</span> <span class="s1">&#39;beri&#39;</span><span class="p">,</span> <span class="s1">&#39;berikan&#39;</span><span class="p">,</span> <span class="s1">&#39;berikut&#39;</span><span class="p">,</span> <span class="s1">&#39;berikutnya&#39;</span><span class="p">,</span> <span class="s1">&#39;berjumlah&#39;</span><span class="p">,</span> <span class="s1">&#39;berkali-kali&#39;</span><span class="p">,</span> <span class="s1">&#39;berkata&#39;</span><span class="p">,</span> <span class="s1">&#39;berkehendak&#39;</span><span class="p">,</span> <span class="s1">&#39;berkeinginan&#39;</span><span class="p">,</span> <span class="s1">&#39;berkenaan&#39;</span><span class="p">,</span> <span class="s1">&#39;berlainan&#39;</span><span class="p">,</span> <span class="s1">&#39;berlalu&#39;</span><span class="p">,</span> <span class="s1">&#39;berlangsung&#39;</span><span class="p">,</span> <span class="s1">&#39;berlebihan&#39;</span><span class="p">,</span> <span class="s1">&#39;bermacam&#39;</span><span class="p">,</span> <span class="s1">&#39;bermacam-macam&#39;</span><span class="p">,</span> <span class="s1">&#39;bermaksud&#39;</span><span class="p">,</span> <span class="s1">&#39;bermula&#39;</span><span class="p">,</span> <span class="s1">&#39;bersama&#39;</span><span class="p">,</span> <span class="s1">&#39;bersama-sama&#39;</span><span class="p">,</span> <span class="s1">&#39;bersiap&#39;</span><span class="p">,</span> <span class="s1">&#39;bersiap-siap&#39;</span><span class="p">,</span> <span class="s1">&#39;bertanya&#39;</span><span class="p">,</span> <span class="s1">&#39;bertanya-tanya&#39;</span><span class="p">,</span> <span class="s1">&#39;berturut&#39;</span><span class="p">,</span> <span class="s1">&#39;berturut-turut&#39;</span><span class="p">,</span> <span class="s1">&#39;bertutur&#39;</span><span class="p">,</span> <span class="s1">&#39;berujar&#39;</span><span class="p">,</span> <span class="s1">&#39;berupa&#39;</span><span class="p">,</span> <span class="s1">&#39;besar&#39;</span><span class="p">,</span> <span class="s1">&#39;betul&#39;</span><span class="p">,</span> <span class="s1">&#39;betulkah&#39;</span><span class="p">,</span> <span class="s1">&#39;biasa&#39;</span><span class="p">,</span> <span class="s1">&#39;biasanya&#39;</span><span class="p">,</span> <span class="s1">&#39;bila&#39;</span><span class="p">,</span> <span class="s1">&#39;bilakah&#39;</span><span class="p">,</span> <span class="s1">&#39;bisa&#39;</span><span class="p">,</span> <span class="s1">&#39;bisakah&#39;</span><span class="p">,</span> <span class="s1">&#39;boleh&#39;</span><span class="p">,</span> <span class="s1">&#39;bolehkah&#39;</span><span class="p">,</span> <span class="s1">&#39;bolehlah&#39;</span><span class="p">,</span> <span class="s1">&#39;buat&#39;</span><span class="p">,</span> <span class="s1">&#39;bukan&#39;</span><span class="p">,</span> <span class="s1">&#39;bukankah&#39;</span><span class="p">,</span> <span class="s1">&#39;bukanlah&#39;</span><span class="p">,</span> <span class="s1">&#39;bukannya&#39;</span><span class="p">,</span> <span class="s1">&#39;bulan&#39;</span><span class="p">,</span> <span class="s1">&#39;bung&#39;</span><span class="p">,</span> <span class="s1">&#39;cara&#39;</span><span class="p">,</span> <span class="s1">&#39;caranya&#39;</span><span class="p">,</span> <span class="s1">&#39;cukup&#39;</span><span class="p">,</span> <span class="s1">&#39;cukupkah&#39;</span><span class="p">,</span> <span class="s1">&#39;cukuplah&#39;</span><span class="p">,</span> <span class="s1">&#39;cuma&#39;</span><span class="p">,</span> <span class="s1">&#39;dahulu&#39;</span><span class="p">,</span> <span class="s1">&#39;dalam&#39;</span><span class="p">,</span> <span class="s1">&#39;dan&#39;</span><span class="p">,</span> <span class="s1">&#39;dapat&#39;</span><span class="p">,</span> <span class="s1">&#39;dari&#39;</span><span class="p">,</span> <span class="s1">&#39;daripada&#39;</span><span class="p">,</span> <span class="s1">&#39;datang&#39;</span><span class="p">,</span> <span class="s1">&#39;demi&#39;</span><span class="p">,</span> <span class="s1">&#39;demikian&#39;</span><span class="p">,</span> <span class="s1">&#39;demikianlah&#39;</span><span class="p">,</span> <span class="s1">&#39;dengan&#39;</span><span class="p">,</span> <span class="s1">&#39;depan&#39;</span><span class="p">,</span> <span class="s1">&#39;di&#39;</span><span class="p">,</span> <span class="s1">&#39;dia&#39;</span><span class="p">,</span> <span class="s1">&#39;diakhiri&#39;</span><span class="p">,</span> <span class="s1">&#39;diakhirinya&#39;</span><span class="p">,</span> <span class="s1">&#39;dialah&#39;</span><span class="p">,</span> <span class="s1">&#39;diantara&#39;</span><span class="p">,</span> <span class="s1">&#39;diantaranya&#39;</span><span class="p">,</span> <span class="s1">&#39;diberi&#39;</span><span class="p">,</span> <span class="s1">&#39;diberikan&#39;</span><span class="p">,</span> <span class="s1">&#39;diberikannya&#39;</span><span class="p">,</span> <span class="s1">&#39;dibuat&#39;</span><span class="p">,</span> <span class="s1">&#39;dibuatnya&#39;</span><span class="p">,</span> <span class="s1">&#39;didapat&#39;</span><span class="p">,</span> <span class="s1">&#39;didatangkan&#39;</span><span class="p">,</span> <span class="s1">&#39;digunakan&#39;</span><span class="p">,</span> <span class="s1">&#39;diibaratkan&#39;</span><span class="p">,</span> <span class="s1">&#39;diibaratkannya&#39;</span><span class="p">,</span> <span class="s1">&#39;diingat&#39;</span><span class="p">,</span> <span class="s1">&#39;diingatkan&#39;</span><span class="p">,</span> <span class="s1">&#39;diinginkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dijawab&#39;</span><span class="p">,</span> <span class="s1">&#39;dijelaskan&#39;</span><span class="p">,</span> <span class="s1">&#39;dijelaskannya&#39;</span><span class="p">,</span> <span class="s1">&#39;dikarenakan&#39;</span><span class="p">,</span> <span class="s1">&#39;dikatakan&#39;</span><span class="p">,</span> <span class="s1">&#39;dikatakannya&#39;</span><span class="p">,</span> <span class="s1">&#39;dikerjakan&#39;</span><span class="p">,</span> <span class="s1">&#39;diketahui&#39;</span><span class="p">,</span> <span class="s1">&#39;diketahuinya&#39;</span><span class="p">,</span> <span class="s1">&#39;dikiranya&#39;</span><span class="p">,</span> <span class="s1">&#39;dilakukan&#39;</span><span class="p">,</span> <span class="s1">&#39;dilalui&#39;</span><span class="p">,</span> <span class="s1">&#39;dilihat&#39;</span><span class="p">,</span> <span class="s1">&#39;dimaksud&#39;</span><span class="p">,</span> <span class="s1">&#39;dimaksudkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dimaksudkannya&#39;</span><span class="p">,</span> <span class="s1">&#39;dimaksudnya&#39;</span><span class="p">,</span> <span class="s1">&#39;diminta&#39;</span><span class="p">,</span> <span class="s1">&#39;dimintai&#39;</span><span class="p">,</span> <span class="s1">&#39;dimisalkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dimulai&#39;</span><span class="p">,</span> <span class="s1">&#39;dimulailah&#39;</span><span class="p">,</span> <span class="s1">&#39;dimulainya&#39;</span><span class="p">,</span> <span class="s1">&#39;dimungkinkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dini&#39;</span><span class="p">,</span> <span class="s1">&#39;dipastikan&#39;</span><span class="p">,</span> <span class="s1">&#39;diperbuat&#39;</span><span class="p">,</span> <span class="s1">&#39;diperbuatnya&#39;</span><span class="p">,</span> <span class="s1">&#39;dipergunakan&#39;</span><span class="p">,</span> <span class="s1">&#39;diperkirakan&#39;</span><span class="p">,</span> <span class="s1">&#39;diperlihatkan&#39;</span><span class="p">,</span> <span class="s1">&#39;diperlukan&#39;</span><span class="p">,</span> <span class="s1">&#39;diperlukannya&#39;</span><span class="p">,</span> <span class="s1">&#39;dipersoalkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dipertanyakan&#39;</span><span class="p">,</span> <span class="s1">&#39;dipunyai&#39;</span><span class="p">,</span> <span class="s1">&#39;diri&#39;</span><span class="p">,</span> <span class="s1">&#39;dirinya&#39;</span><span class="p">,</span> <span class="s1">&#39;disampaikan&#39;</span><span class="p">,</span> <span class="s1">&#39;disebut&#39;</span><span class="p">,</span> <span class="s1">&#39;disebutkan&#39;</span><span class="p">,</span> <span class="s1">&#39;disebutkannya&#39;</span><span class="p">,</span> <span class="s1">&#39;disini&#39;</span><span class="p">,</span> <span class="s1">&#39;disinilah&#39;</span><span class="p">,</span> <span class="s1">&#39;ditambahkan&#39;</span><span class="p">,</span> <span class="s1">&#39;ditambahkannya&#39;</span><span class="p">,</span> <span class="s1">&#39;ditanya&#39;</span><span class="p">,</span> <span class="s1">&#39;ditanyai&#39;</span><span class="p">,</span> <span class="s1">&#39;ditanyakan&#39;</span><span class="p">,</span> <span class="s1">&#39;ditegaskan&#39;</span><span class="p">,</span> <span class="s1">&#39;ditujukan&#39;</span><span class="p">,</span> <span class="s1">&#39;ditunjuk&#39;</span><span class="p">,</span> <span class="s1">&#39;ditunjuki&#39;</span><span class="p">,</span> <span class="s1">&#39;ditunjukkan&#39;</span><span class="p">,</span> <span class="s1">&#39;ditunjuknya&#39;</span><span class="p">,</span> <span class="s1">&#39;dituturkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dituturkannya&#39;</span><span class="p">,</span> <span class="s1">&#39;diucapkan&#39;</span><span class="p">,</span> <span class="s1">&#39;diucapkannya&#39;</span><span class="p">,</span> <span class="s1">&#39;diungkapkan&#39;</span><span class="p">,</span> <span class="s1">&#39;dong&#39;</span><span class="p">,</span> <span class="s1">&#39;dulu&#39;</span><span class="p">,</span> <span class="s1">&#39;empat&#39;</span><span class="p">,</span> <span class="s1">&#39;enggak&#39;</span><span class="p">,</span> <span class="s1">&#39;enggaklah&#39;</span><span class="p">,</span> <span class="s1">&#39;entah&#39;</span><span class="p">,</span> <span class="s1">&#39;entahlah&#39;</span><span class="p">,</span> <span class="s1">&#39;guna&#39;</span><span class="p">,</span> <span class="s1">&#39;gunakan&#39;</span><span class="p">,</span> <span class="s1">&#39;hal&#39;</span><span class="p">,</span> <span class="s1">&#39;hampir&#39;</span><span class="p">,</span> <span class="s1">&#39;hanya&#39;</span><span class="p">,</span> <span class="s1">&#39;hanyalah&#39;</span><span class="p">,</span> <span class="s1">&#39;hari&#39;</span><span class="p">,</span> <span class="s1">&#39;harus&#39;</span><span class="p">,</span> <span class="s1">&#39;haruslah&#39;</span><span class="p">,</span> <span class="s1">&#39;harusnya&#39;</span><span class="p">,</span> <span class="s1">&#39;hendak&#39;</span><span class="p">,</span> <span class="s1">&#39;hendaklah&#39;</span><span class="p">,</span> <span class="s1">&#39;hendaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;hingga&#39;</span><span class="p">,</span> <span class="s1">&#39;ia&#39;</span><span class="p">,</span> <span class="s1">&#39;ialah&#39;</span><span class="p">,</span> <span class="s1">&#39;ibarat&#39;</span><span class="p">,</span> <span class="s1">&#39;ibaratnya&#39;</span><span class="p">,</span> <span class="s1">&#39;ibu&#39;</span><span class="p">,</span> <span class="s1">&#39;ikut&#39;</span><span class="p">,</span> <span class="s1">&#39;ingat&#39;</span><span class="p">,</span> <span class="s1">&#39;ingat-ingat&#39;</span><span class="p">,</span> <span class="s1">&#39;ingin&#39;</span><span class="p">,</span> <span class="s1">&#39;inginkah&#39;</span><span class="p">,</span> <span class="s1">&#39;inginkan&#39;</span><span class="p">,</span> <span class="s1">&#39;ini&#39;</span><span class="p">,</span> <span class="s1">&#39;inikah&#39;</span><span class="p">,</span> <span class="s1">&#39;inilah&#39;</span><span class="p">,</span> <span class="s1">&#39;itu&#39;</span><span class="p">,</span> <span class="s1">&#39;itukah&#39;</span><span class="p">,</span> <span class="s1">&#39;itulah&#39;</span><span class="p">,</span> <span class="s1">&#39;jadi&#39;</span><span class="p">,</span> <span class="s1">&#39;jadilah&#39;</span><span class="p">,</span> <span class="s1">&#39;jadinya&#39;</span><span class="p">,</span> <span class="s1">&#39;jangan&#39;</span><span class="p">,</span> <span class="s1">&#39;jangankan&#39;</span><span class="p">,</span> <span class="s1">&#39;janganlah&#39;</span><span class="p">,</span> <span class="s1">&#39;jauh&#39;</span><span class="p">,</span> <span class="s1">&#39;jawab&#39;</span><span class="p">,</span> <span class="s1">&#39;jawaban&#39;</span><span class="p">,</span> <span class="s1">&#39;jawabnya&#39;</span><span class="p">,</span> <span class="s1">&#39;jelas&#39;</span><span class="p">,</span> <span class="s1">&#39;jelaskan&#39;</span><span class="p">,</span> <span class="s1">&#39;jelaslah&#39;</span><span class="p">,</span> <span class="s1">&#39;jelasnya&#39;</span><span class="p">,</span> <span class="s1">&#39;jika&#39;</span><span class="p">,</span> <span class="s1">&#39;jikalau&#39;</span><span class="p">,</span> <span class="s1">&#39;juga&#39;</span><span class="p">,</span> <span class="s1">&#39;jumlah&#39;</span><span class="p">,</span> <span class="s1">&#39;jumlahnya&#39;</span><span class="p">,</span> <span class="s1">&#39;justru&#39;</span><span class="p">,</span> <span class="s1">&#39;kala&#39;</span><span class="p">,</span> <span class="s1">&#39;kalau&#39;</span><span class="p">,</span> <span class="s1">&#39;kalaulah&#39;</span><span class="p">,</span> <span class="s1">&#39;kalaupun&#39;</span><span class="p">,</span> <span class="s1">&#39;kali&#39;</span><span class="p">,</span> <span class="s1">&#39;kalian&#39;</span><span class="p">,</span> <span class="s1">&#39;kami&#39;</span><span class="p">,</span> <span class="s1">&#39;kamilah&#39;</span><span class="p">,</span> <span class="s1">&#39;kamu&#39;</span><span class="p">,</span> <span class="s1">&#39;kamulah&#39;</span><span class="p">,</span> <span class="s1">&#39;kan&#39;</span><span class="p">,</span> <span class="s1">&#39;kapan&#39;</span><span class="p">,</span> <span class="s1">&#39;kapankah&#39;</span><span class="p">,</span> <span class="s1">&#39;kapanpun&#39;</span><span class="p">,</span> <span class="s1">&#39;karena&#39;</span><span class="p">,</span> <span class="s1">&#39;karenanya&#39;</span><span class="p">,</span> <span class="s1">&#39;kasus&#39;</span><span class="p">,</span> <span class="s1">&#39;kata&#39;</span><span class="p">,</span> <span class="s1">&#39;katakan&#39;</span><span class="p">,</span> <span class="s1">&#39;katakanlah&#39;</span><span class="p">,</span> <span class="s1">&#39;katanya&#39;</span><span class="p">,</span> <span class="s1">&#39;ke&#39;</span><span class="p">,</span> <span class="s1">&#39;keadaan&#39;</span><span class="p">,</span> <span class="s1">&#39;kebetulan&#39;</span><span class="p">,</span> <span class="s1">&#39;kecil&#39;</span><span class="p">,</span> <span class="s1">&#39;kedua&#39;</span><span class="p">,</span> <span class="s1">&#39;keduanya&#39;</span><span class="p">,</span> <span class="s1">&#39;keinginan&#39;</span><span class="p">,</span> <span class="s1">&#39;kelak&#39;</span><span class="p">,</span> <span class="s1">&#39;kelima&#39;</span><span class="p">,</span> <span class="s1">&#39;keluar&#39;</span><span class="p">,</span> <span class="s1">&#39;kembali&#39;</span><span class="p">,</span> <span class="s1">&#39;kemudian&#39;</span><span class="p">,</span> <span class="s1">&#39;kemungkinan&#39;</span><span class="p">,</span> <span class="s1">&#39;kemungkinannya&#39;</span><span class="p">,</span> <span class="s1">&#39;kenapa&#39;</span><span class="p">,</span> <span class="s1">&#39;kepada&#39;</span><span class="p">,</span> <span class="s1">&#39;kepadanya&#39;</span><span class="p">,</span> <span class="s1">&#39;kesampaian&#39;</span><span class="p">,</span> <span class="s1">&#39;keseluruhan&#39;</span><span class="p">,</span> <span class="s1">&#39;keseluruhannya&#39;</span><span class="p">,</span> <span class="s1">&#39;keterlaluan&#39;</span><span class="p">,</span> <span class="s1">&#39;ketika&#39;</span><span class="p">,</span> <span class="s1">&#39;khususnya&#39;</span><span class="p">,</span> <span class="s1">&#39;kini&#39;</span><span class="p">,</span> <span class="s1">&#39;kinilah&#39;</span><span class="p">,</span> <span class="s1">&#39;kira&#39;</span><span class="p">,</span> <span class="s1">&#39;kira-kira&#39;</span><span class="p">,</span> <span class="s1">&#39;kiranya&#39;</span><span class="p">,</span> <span class="s1">&#39;kita&#39;</span><span class="p">,</span> <span class="s1">&#39;kitalah&#39;</span><span class="p">,</span> <span class="s1">&#39;kok&#39;</span><span class="p">,</span> <span class="s1">&#39;kurang&#39;</span><span class="p">,</span> <span class="s1">&#39;lagi&#39;</span><span class="p">,</span> <span class="s1">&#39;lagian&#39;</span><span class="p">,</span> <span class="s1">&#39;lah&#39;</span><span class="p">,</span> <span class="s1">&#39;lain&#39;</span><span class="p">,</span> <span class="s1">&#39;lainnya&#39;</span><span class="p">,</span> <span class="s1">&#39;lalu&#39;</span><span class="p">,</span> <span class="s1">&#39;lama&#39;</span><span class="p">,</span> <span class="s1">&#39;lamanya&#39;</span><span class="p">,</span> <span class="s1">&#39;lanjut&#39;</span><span class="p">,</span> <span class="s1">&#39;lanjutnya&#39;</span><span class="p">,</span> <span class="s1">&#39;lebih&#39;</span><span class="p">,</span> <span class="s1">&#39;lewat&#39;</span><span class="p">,</span> <span class="s1">&#39;lima&#39;</span><span class="p">,</span> <span class="s1">&#39;luar&#39;</span><span class="p">,</span> <span class="s1">&#39;macam&#39;</span><span class="p">,</span> <span class="s1">&#39;maka&#39;</span><span class="p">,</span> <span class="s1">&#39;makanya&#39;</span><span class="p">,</span> <span class="s1">&#39;makin&#39;</span><span class="p">,</span> <span class="s1">&#39;malah&#39;</span><span class="p">,</span> <span class="s1">&#39;malahan&#39;</span><span class="p">,</span> <span class="s1">&#39;mampu&#39;</span><span class="p">,</span> <span class="s1">&#39;mampukah&#39;</span><span class="p">,</span> <span class="s1">&#39;mana&#39;</span><span class="p">,</span> <span class="s1">&#39;manakala&#39;</span><span class="p">,</span> <span class="s1">&#39;manalagi&#39;</span><span class="p">,</span> <span class="s1">&#39;masa&#39;</span><span class="p">,</span> <span class="s1">&#39;masalah&#39;</span><span class="p">,</span> <span class="s1">&#39;masalahnya&#39;</span><span class="p">,</span> <span class="s1">&#39;masih&#39;</span><span class="p">,</span> <span class="s1">&#39;masihkah&#39;</span><span class="p">,</span> <span class="s1">&#39;masing&#39;</span><span class="p">,</span> <span class="s1">&#39;masing-masing&#39;</span><span class="p">,</span> <span class="s1">&#39;mau&#39;</span><span class="p">,</span> <span class="s1">&#39;maupun&#39;</span><span class="p">,</span> <span class="s1">&#39;melainkan&#39;</span><span class="p">,</span> <span class="s1">&#39;melakukan&#39;</span><span class="p">,</span> <span class="s1">&#39;melalui&#39;</span><span class="p">,</span> <span class="s1">&#39;melihat&#39;</span><span class="p">,</span> <span class="s1">&#39;melihatnya&#39;</span><span class="p">,</span> <span class="s1">&#39;memang&#39;</span><span class="p">,</span> <span class="s1">&#39;memastikan&#39;</span><span class="p">,</span> <span class="s1">&#39;memberi&#39;</span><span class="p">,</span> <span class="s1">&#39;memberikan&#39;</span><span class="p">,</span> <span class="s1">&#39;membuat&#39;</span><span class="p">,</span> <span class="s1">&#39;memerlukan&#39;</span><span class="p">,</span> <span class="s1">&#39;memihak&#39;</span><span class="p">,</span> <span class="s1">&#39;meminta&#39;</span><span class="p">,</span> <span class="s1">&#39;memintakan&#39;</span><span class="p">,</span> <span class="s1">&#39;memisalkan&#39;</span><span class="p">,</span> <span class="s1">&#39;memperbuat&#39;</span><span class="p">,</span> <span class="s1">&#39;mempergunakan&#39;</span><span class="p">,</span> <span class="s1">&#39;memperkirakan&#39;</span><span class="p">,</span> <span class="s1">&#39;memperlihatkan&#39;</span><span class="p">,</span> <span class="s1">&#39;mempersiapkan&#39;</span><span class="p">,</span> <span class="s1">&#39;mempersoalkan&#39;</span><span class="p">,</span> <span class="s1">&#39;mempertanyakan&#39;</span><span class="p">,</span> <span class="s1">&#39;mempunyai&#39;</span><span class="p">,</span> <span class="s1">&#39;memulai&#39;</span><span class="p">,</span> <span class="s1">&#39;memungkinkan&#39;</span><span class="p">,</span> <span class="s1">&#39;menjadi&#39;</span><span class="p">,</span> <span class="s1">&#39;menjawab&#39;</span><span class="p">,</span> <span class="s1">&#39;menjelaskan&#39;</span><span class="p">,</span> <span class="s1">&#39;menuju&#39;</span><span class="p">,</span> <span class="s1">&#39;menurut&#39;</span><span class="p">,</span> <span class="s1">&#39;menuturkan&#39;</span><span class="p">,</span> <span class="s1">&#39;menyampaikan&#39;</span><span class="p">,</span> <span class="s1">&#39;menyangkut&#39;</span><span class="p">,</span> <span class="s1">&#39;menyatakan&#39;</span><span class="p">,</span> <span class="s1">&#39;menyebutkan&#39;</span><span class="p">,</span> <span class="s1">&#39;menyeluruh&#39;</span><span class="p">,</span> <span class="s1">&#39;menyiapkan&#39;</span><span class="p">,</span> <span class="s1">&#39;merasa&#39;</span><span class="p">,</span> <span class="s1">&#39;mereka&#39;</span><span class="p">,</span> <span class="s1">&#39;merekalah&#39;</span><span class="p">,</span> <span class="s1">&#39;merupakan&#39;</span><span class="p">,</span> <span class="s1">&#39;meski&#39;</span><span class="p">,</span> <span class="s1">&#39;meskipun&#39;</span><span class="p">,</span> <span class="s1">&#39;meyakini&#39;</span><span class="p">,</span> <span class="s1">&#39;meyakinkan&#39;</span><span class="p">,</span> <span class="s1">&#39;minta&#39;</span><span class="p">,</span> <span class="s1">&#39;mirip&#39;</span><span class="p">,</span> <span class="s1">&#39;misal&#39;</span><span class="p">,</span> <span class="s1">&#39;misalkan&#39;</span><span class="p">,</span> <span class="s1">&#39;misalnya&#39;</span><span class="p">,</span> <span class="s1">&#39;mula&#39;</span><span class="p">,</span> <span class="s1">&#39;mulai&#39;</span><span class="p">,</span> <span class="s1">&#39;mulailah&#39;</span><span class="p">,</span> <span class="s1">&#39;mulanya&#39;</span><span class="p">,</span> <span class="s1">&#39;mungkin&#39;</span><span class="p">,</span> <span class="s1">&#39;mungkinkah&#39;</span><span class="p">,</span> <span class="s1">&#39;nah&#39;</span><span class="p">,</span> <span class="s1">&#39;naik&#39;</span><span class="p">,</span> <span class="s1">&#39;namun&#39;</span><span class="p">,</span> <span class="s1">&#39;nanti&#39;</span><span class="p">,</span> <span class="s1">&#39;nantinya&#39;</span><span class="p">,</span> <span class="s1">&#39;nyaris&#39;</span><span class="p">,</span> <span class="s1">&#39;nyatanya&#39;</span><span class="p">,</span> <span class="s1">&#39;oleh&#39;</span><span class="p">,</span> <span class="s1">&#39;olehnya&#39;</span><span class="p">,</span> <span class="s1">&#39;pada&#39;</span><span class="p">,</span> <span class="s1">&#39;padahal&#39;</span><span class="p">,</span> <span class="s1">&#39;padanya&#39;</span><span class="p">,</span> <span class="s1">&#39;pak&#39;</span><span class="p">,</span> <span class="s1">&#39;paling&#39;</span><span class="p">,</span> <span class="s1">&#39;panjang&#39;</span><span class="p">,</span> <span class="s1">&#39;pantas&#39;</span><span class="p">,</span> <span class="s1">&#39;para&#39;</span><span class="p">,</span> <span class="s1">&#39;pasti&#39;</span><span class="p">,</span> <span class="s1">&#39;pastilah&#39;</span><span class="p">,</span> <span class="s1">&#39;penting&#39;</span><span class="p">,</span> <span class="s1">&#39;pentingnya&#39;</span><span class="p">,</span> <span class="s1">&#39;per&#39;</span><span class="p">,</span> <span class="s1">&#39;percuma&#39;</span><span class="p">,</span> <span class="s1">&#39;perlu&#39;</span><span class="p">,</span> <span class="s1">&#39;perlukah&#39;</span><span class="p">,</span> <span class="s1">&#39;perlunya&#39;</span><span class="p">,</span> <span class="s1">&#39;pernah&#39;</span><span class="p">,</span> <span class="s1">&#39;persoalan&#39;</span><span class="p">,</span> <span class="s1">&#39;pertama&#39;</span><span class="p">,</span> <span class="s1">&#39;pertama-tama&#39;</span><span class="p">,</span> <span class="s1">&#39;pertanyaan&#39;</span><span class="p">,</span> <span class="s1">&#39;pertanyakan&#39;</span><span class="p">,</span> <span class="s1">&#39;pihak&#39;</span><span class="p">,</span> <span class="s1">&#39;pihaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;pukul&#39;</span><span class="p">,</span> <span class="s1">&#39;pula&#39;</span><span class="p">,</span> <span class="s1">&#39;pun&#39;</span><span class="p">,</span> <span class="s1">&#39;punya&#39;</span><span class="p">,</span> <span class="s1">&#39;rasa&#39;</span><span class="p">,</span> <span class="s1">&#39;rasanya&#39;</span><span class="p">,</span> <span class="s1">&#39;rata&#39;</span><span class="p">,</span> <span class="s1">&#39;rupanya&#39;</span><span class="p">,</span> <span class="s1">&#39;saat&#39;</span><span class="p">,</span> <span class="s1">&#39;saatnya&#39;</span><span class="p">,</span> <span class="s1">&#39;saja&#39;</span><span class="p">,</span> <span class="s1">&#39;sajalah&#39;</span><span class="p">,</span> <span class="s1">&#39;salam&#39;</span><span class="p">,</span> <span class="s1">&#39;saling&#39;</span><span class="p">,</span> <span class="s1">&#39;sama&#39;</span><span class="p">,</span> <span class="s1">&#39;sama-sama&#39;</span><span class="p">,</span> <span class="s1">&#39;sambil&#39;</span><span class="p">,</span> <span class="s1">&#39;sampai&#39;</span><span class="p">,</span> <span class="s1">&#39;sampai-sampai&#39;</span><span class="p">,</span> <span class="s1">&#39;sampaikan&#39;</span><span class="p">,</span> <span class="s1">&#39;sana&#39;</span><span class="p">,</span> <span class="s1">&#39;sangat&#39;</span><span class="p">,</span> <span class="s1">&#39;sangatlah&#39;</span><span class="p">,</span> <span class="s1">&#39;sangkut&#39;</span><span class="p">,</span> <span class="s1">&#39;satu&#39;</span><span class="p">,</span> <span class="s1">&#39;saya&#39;</span><span class="p">,</span> <span class="s1">&#39;sayalah&#39;</span><span class="p">,</span> <span class="s1">&#39;se&#39;</span><span class="p">,</span> <span class="s1">&#39;sebab&#39;</span><span class="p">,</span> <span class="s1">&#39;sebabnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebagai&#39;</span><span class="p">,</span> <span class="s1">&#39;sebagaimana&#39;</span><span class="p">,</span> <span class="s1">&#39;sebagainya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebagian&#39;</span><span class="p">,</span> <span class="s1">&#39;sebaik&#39;</span><span class="p">,</span> <span class="s1">&#39;sebaik-baiknya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebaiknya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebaliknya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebanyak&#39;</span><span class="p">,</span> <span class="s1">&#39;sebelum&#39;</span><span class="p">,</span> <span class="s1">&#39;sebelumnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebenarnya&#39;</span><span class="p">,</span> <span class="s1">&#39;seberapa&#39;</span><span class="p">,</span> <span class="s1">&#39;sebesar&#39;</span><span class="p">,</span> <span class="s1">&#39;sebetulnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebisanya&#39;</span><span class="p">,</span> <span class="s1">&#39;sebuah&#39;</span><span class="p">,</span> <span class="s1">&#39;sebut&#39;</span><span class="p">,</span> <span class="s1">&#39;sebutlah&#39;</span><span class="p">,</span> <span class="s1">&#39;sebutnya&#39;</span><span class="p">,</span> <span class="s1">&#39;secara&#39;</span><span class="p">,</span> <span class="s1">&#39;secukupnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sedang&#39;</span><span class="p">,</span> <span class="s1">&#39;sedangkan&#39;</span><span class="p">,</span> <span class="s1">&#39;sedemikian&#39;</span><span class="p">,</span> <span class="s1">&#39;sedikit&#39;</span><span class="p">,</span> <span class="s1">&#39;sedikitnya&#39;</span><span class="p">,</span> <span class="s1">&#39;seenaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;segala&#39;</span><span class="p">,</span> <span class="s1">&#39;segalanya&#39;</span><span class="p">,</span> <span class="s1">&#39;segera&#39;</span><span class="p">,</span> <span class="s1">&#39;seharusnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sehingga&#39;</span><span class="p">,</span> <span class="s1">&#39;seingat&#39;</span><span class="p">,</span> <span class="s1">&#39;sejak&#39;</span><span class="p">,</span> <span class="s1">&#39;sejauh&#39;</span><span class="p">,</span> <span class="s1">&#39;sejenak&#39;</span><span class="p">,</span> <span class="s1">&#39;sejumlah&#39;</span><span class="p">,</span> <span class="s1">&#39;sekadar&#39;</span><span class="p">,</span> <span class="s1">&#39;sekadarnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sekali&#39;</span><span class="p">,</span> <span class="s1">&#39;sekali-kali&#39;</span><span class="p">,</span> <span class="s1">&#39;sekalian&#39;</span><span class="p">,</span> <span class="s1">&#39;sekaligus&#39;</span><span class="p">,</span> <span class="s1">&#39;sekalipun&#39;</span><span class="p">,</span> <span class="s1">&#39;sekarang&#39;</span><span class="p">,</span> <span class="s1">&#39;sekaranglah&#39;</span><span class="p">,</span> <span class="s1">&#39;sekecil&#39;</span><span class="p">,</span> <span class="s1">&#39;seketika&#39;</span><span class="p">,</span> <span class="s1">&#39;sekiranya&#39;</span><span class="p">,</span> <span class="s1">&#39;sekitar&#39;</span><span class="p">,</span> <span class="s1">&#39;sekitarnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sela&#39;</span><span class="p">,</span> <span class="s1">&#39;selain&#39;</span><span class="p">,</span> <span class="s1">&#39;selaku&#39;</span><span class="p">,</span> <span class="s1">&#39;selalu&#39;</span><span class="p">,</span> <span class="s1">&#39;selama&#39;</span><span class="p">,</span> <span class="s1">&#39;selama-lamanya&#39;</span><span class="p">,</span> <span class="s1">&#39;selamanya&#39;</span><span class="p">,</span> <span class="s1">&#39;selanjutnya&#39;</span><span class="p">,</span> <span class="s1">&#39;seluruh&#39;</span><span class="p">,</span> <span class="s1">&#39;seluruhnya&#39;</span><span class="p">,</span> <span class="s1">&#39;semacam&#39;</span><span class="p">,</span> <span class="s1">&#39;semakin&#39;</span><span class="p">,</span> <span class="s1">&#39;semampu&#39;</span><span class="p">,</span> <span class="s1">&#39;semampunya&#39;</span><span class="p">,</span> <span class="s1">&#39;semasa&#39;</span><span class="p">,</span> <span class="s1">&#39;semasih&#39;</span><span class="p">,</span> <span class="s1">&#39;semata&#39;</span><span class="p">,</span> <span class="s1">&#39;semata-mata&#39;</span><span class="p">,</span> <span class="s1">&#39;semaunya&#39;</span><span class="p">,</span> <span class="s1">&#39;sementara&#39;</span><span class="p">,</span> <span class="s1">&#39;semisal&#39;</span><span class="p">,</span> <span class="s1">&#39;semisalnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sempat&#39;</span><span class="p">,</span> <span class="s1">&#39;semua&#39;</span><span class="p">,</span> <span class="s1">&#39;semuanya&#39;</span><span class="p">,</span> <span class="s1">&#39;semula&#39;</span><span class="p">,</span> <span class="s1">&#39;sendiri&#39;</span><span class="p">,</span> <span class="s1">&#39;sendirian&#39;</span><span class="p">,</span> <span class="s1">&#39;sendirinya&#39;</span><span class="p">,</span> <span class="s1">&#39;seolah&#39;</span><span class="p">,</span> <span class="s1">&#39;seolah-olah&#39;</span><span class="p">,</span> <span class="s1">&#39;seorang&#39;</span><span class="p">,</span> <span class="s1">&#39;sepanjang&#39;</span><span class="p">,</span> <span class="s1">&#39;sepantasnya&#39;</span><span class="p">,</span> <span class="s1">&#39;sepantasnyalah&#39;</span><span class="p">,</span> <span class="s1">&#39;seperlunya&#39;</span><span class="p">,</span> <span class="s1">&#39;seperti&#39;</span><span class="p">,</span> <span class="s1">&#39;sepertinya&#39;</span><span class="p">,</span> <span class="s1">&#39;sepeserpun&#39;</span><span class="p">,</span> <span class="s1">&#39;sering&#39;</span><span class="p">,</span> <span class="s1">&#39;seringnya&#39;</span><span class="p">,</span> <span class="s1">&#39;serta&#39;</span><span class="p">,</span> <span class="s1">&#39;serupa&#39;</span><span class="p">,</span> <span class="s1">&#39;sesaat&#39;</span><span class="p">,</span> <span class="s1">&#39;sesampai&#39;</span><span class="p">,</span> <span class="s1">&#39;sesegera&#39;</span><span class="p">,</span> <span class="s1">&#39;sesekali&#39;</span><span class="p">,</span> <span class="s1">&#39;seseorang&#39;</span><span class="p">,</span> <span class="s1">&#39;sesuatu&#39;</span><span class="p">,</span> <span class="s1">&#39;sesuatunya&#39;</span><span class="p">,</span> <span class="s1">&#39;sesudah&#39;</span><span class="p">,</span> <span class="s1">&#39;sesudahnya&#39;</span><span class="p">,</span> <span class="s1">&#39;setelah&#39;</span><span class="p">,</span> <span class="s1">&#39;setempat&#39;</span><span class="p">,</span> <span class="s1">&#39;setengah&#39;</span><span class="p">,</span> <span class="s1">&#39;seterusnya&#39;</span><span class="p">,</span> <span class="s1">&#39;setiap&#39;</span><span class="p">,</span> <span class="s1">&#39;setiba&#39;</span><span class="p">,</span> <span class="s1">&#39;setibanya&#39;</span><span class="p">,</span> <span class="s1">&#39;setidak-tidaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;setidaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;setinggi&#39;</span><span class="p">,</span> <span class="s1">&#39;seusai&#39;</span><span class="p">,</span> <span class="s1">&#39;sewaktu&#39;</span><span class="p">,</span> <span class="s1">&#39;siap&#39;</span><span class="p">,</span> <span class="s1">&#39;siapa&#39;</span><span class="p">,</span> <span class="s1">&#39;siapakah&#39;</span><span class="p">,</span> <span class="s1">&#39;siapapun&#39;</span><span class="p">,</span> <span class="s1">&#39;sini&#39;</span><span class="p">,</span> <span class="s1">&#39;sinilah&#39;</span><span class="p">,</span> <span class="s1">&#39;soal&#39;</span><span class="p">,</span> <span class="s1">&#39;soalnya&#39;</span><span class="p">,</span> <span class="s1">&#39;suatu&#39;</span><span class="p">,</span> <span class="s1">&#39;sudah&#39;</span><span class="p">,</span> <span class="s1">&#39;sudahkah&#39;</span><span class="p">,</span> <span class="s1">&#39;sudahlah&#39;</span><span class="p">,</span> <span class="s1">&#39;supaya&#39;</span><span class="p">,</span> <span class="s1">&#39;tadi&#39;</span><span class="p">,</span> <span class="s1">&#39;tadinya&#39;</span><span class="p">,</span> <span class="s1">&#39;tahu&#39;</span><span class="p">,</span> <span class="s1">&#39;tahun&#39;</span><span class="p">,</span> <span class="s1">&#39;tak&#39;</span><span class="p">,</span> <span class="s1">&#39;tambah&#39;</span><span class="p">,</span> <span class="s1">&#39;tambahnya&#39;</span><span class="p">,</span> <span class="s1">&#39;tampak&#39;</span><span class="p">,</span> <span class="s1">&#39;tampaknya&#39;</span><span class="p">,</span> <span class="s1">&#39;tandas&#39;</span><span class="p">,</span> <span class="s1">&#39;tandasnya&#39;</span><span class="p">,</span> <span class="s1">&#39;tanpa&#39;</span><span class="p">,</span> <span class="s1">&#39;tanya&#39;</span><span class="p">,</span> <span class="s1">&#39;tanyakan&#39;</span><span class="p">,</span> <span class="s1">&#39;tanyanya&#39;</span><span class="p">,</span> <span class="s1">&#39;tapi&#39;</span><span class="p">,</span> <span class="s1">&#39;tegas&#39;</span><span class="p">,</span> <span class="s1">&#39;tegasnya&#39;</span><span class="p">,</span> <span class="s1">&#39;telah&#39;</span><span class="p">,</span> <span class="s1">&#39;tempat&#39;</span><span class="p">,</span> <span class="s1">&#39;tengah&#39;</span><span class="p">,</span> <span class="s1">&#39;tentang&#39;</span><span class="p">,</span> <span class="s1">&#39;tentu&#39;</span><span class="p">,</span> <span class="s1">&#39;tentulah&#39;</span><span class="p">,</span> <span class="s1">&#39;tentunya&#39;</span><span class="p">,</span> <span class="s1">&#39;tepat&#39;</span><span class="p">,</span> <span class="s1">&#39;terakhir&#39;</span><span class="p">,</span> <span class="s1">&#39;terang&#39;</span><span class="p">,</span> <span class="s1">&#39;terbanyak&#39;</span><span class="p">,</span> <span class="s1">&#39;terdahulu&#39;</span><span class="p">,</span> <span class="s1">&#39;terdapat&#39;</span><span class="p">,</span> <span class="s1">&#39;terdiri&#39;</span><span class="p">,</span> <span class="s1">&#39;terhadap&#39;</span><span class="p">,</span> <span class="s1">&#39;terhadapnya&#39;</span><span class="p">,</span> <span class="s1">&#39;teringat&#39;</span><span class="p">,</span> <span class="s1">&#39;teringat-ingat&#39;</span><span class="p">,</span> <span class="s1">&#39;terjadi&#39;</span><span class="p">,</span> <span class="s1">&#39;terjadilah&#39;</span><span class="p">,</span> <span class="s1">&#39;terjadinya&#39;</span><span class="p">,</span> <span class="s1">&#39;terkira&#39;</span><span class="p">,</span> <span class="s1">&#39;terlalu&#39;</span><span class="p">,</span> <span class="s1">&#39;terlebih&#39;</span><span class="p">,</span> <span class="s1">&#39;terlihat&#39;</span><span class="p">,</span> <span class="s1">&#39;termasuk&#39;</span><span class="p">,</span> <span class="s1">&#39;ternyata&#39;</span><span class="p">,</span> <span class="s1">&#39;tersampaikan&#39;</span><span class="p">,</span> <span class="s1">&#39;tersebut&#39;</span><span class="p">,</span> <span class="s1">&#39;tersebutlah&#39;</span><span class="p">,</span> <span class="s1">&#39;tertentu&#39;</span><span class="p">,</span> <span class="s1">&#39;tertuju&#39;</span><span class="p">,</span> <span class="s1">&#39;terus&#39;</span><span class="p">,</span> <span class="s1">&#39;terutama&#39;</span><span class="p">,</span> <span class="s1">&#39;tetap&#39;</span><span class="p">,</span> <span class="s1">&#39;tetapi&#39;</span><span class="p">,</span> <span class="s1">&#39;tiap&#39;</span><span class="p">,</span> <span class="s1">&#39;tiba&#39;</span><span class="p">,</span> <span class="s1">&#39;tiba-tiba&#39;</span><span class="p">,</span> <span class="s1">&#39;tidak&#39;</span><span class="p">,</span> <span class="s1">&#39;tidakkah&#39;</span><span class="p">,</span> <span class="s1">&#39;tidaklah&#39;</span><span class="p">,</span> <span class="s1">&#39;toh&#39;</span><span class="p">,</span> <span class="s1">&#39;tunjuk&#39;</span><span class="p">,</span> <span class="s1">&#39;turut&#39;</span><span class="p">,</span> <span class="s1">&#39;tutur&#39;</span><span class="p">,</span> <span class="s1">&#39;tuturnya&#39;</span><span class="p">,</span> <span class="s1">&#39;ucap&#39;</span><span class="p">,</span> <span class="s1">&#39;ucapnya&#39;</span><span class="p">,</span> <span class="s1">&#39;ujar&#39;</span><span class="p">,</span> <span class="s1">&#39;ujarnya&#39;</span><span class="p">,</span> <span class="s1">&#39;umum&#39;</span><span class="p">,</span> <span class="s1">&#39;umumnya&#39;</span><span class="p">,</span> <span class="s1">&#39;ungkap&#39;</span><span class="p">,</span> <span class="s1">&#39;ungkapnya&#39;</span><span class="p">,</span> <span class="s1">&#39;untuk&#39;</span><span class="p">,</span> <span class="s1">&#39;usah&#39;</span><span class="p">,</span> <span class="s1">&#39;usai&#39;</span><span class="p">,</span> <span class="s1">&#39;wah&#39;</span><span class="p">,</span> <span class="s1">&#39;wahai&#39;</span><span class="p">,</span> <span class="s1">&#39;waktu&#39;</span><span class="p">,</span> <span class="s1">&#39;waktunya&#39;</span><span class="p">,</span> <span class="s1">&#39;walau&#39;</span><span class="p">,</span> <span class="s1">&#39;walaupun&#39;</span><span class="p">,</span> <span class="s1">&#39;wong&#39;</span><span class="p">,</span> <span class="s1">&#39;yaitu&#39;</span><span class="p">,</span> <span class="s1">&#39;yakin&#39;</span><span class="p">,</span> <span class="s1">&#39;yakni&#39;</span><span class="p">,</span> <span class="s1">&#39;yang&#39;</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Fungsi untuk membersihkan teks: mengubah ke lowercase, menghapus angka dan tanda baca,</span>
+    <span class="c1"># serta menghapus stop words.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words_indonesia_manual</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+    <span class="c1"># Menerapkan fungsi pra-pemrosesan ke kolom &#39;berita&#39; dan menyimpannya di kolom baru &#39;berita_bersih&#39;.</span>
+    <span class="n">df_berita</span><span class="p">[</span><span class="s1">&#39;berita_bersih&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_berita</span><span class="p">[</span><span class="s1">&#39;berita&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">preprocess_text</span><span class="p">)</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">df_berita</span><span class="p">[</span><span class="s1">&#39;berita_bersih&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>berita_bersih</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>menteri koordinator menko bidang perekonomian ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>rangka memeriahkan pt surabaya industrial esta...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>wacana presiden prabowo subianto membentuk mem...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bpjs ketenagakerjaan kementerian agama kemenag...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>pemerintah membentuk satuan tugas pemutusan hu...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1495</th>
+      <td>anggota dewan keselamatan transportasi nasiona...</td>
+    </tr>
+    <tr>
+      <th>1496</th>
+      <td>israel membebaskan tahanan palestina kamis pem...</td>
+    </tr>
+    <tr>
+      <th>1497</th>
+      <td>hamas mengonfirmasi kematian kepala militernya...</td>
+    </tr>
+    <tr>
+      <th>1498</th>
+      <td>tim penyelam diduga menemukan dua black box ko...</td>
+    </tr>
+    <tr>
+      <th>1499</th>
+      <td>presiden as donald trump menyalahkan pemerinta...</td>
+    </tr>
+  </tbody>
+</table>
+<p>1500 rows × 1 columns</p>
+</div><br><label><b>dtype:</b> object</label></div></div>
+</div>
+</section>
+<section id="ekstraksi-fitur-topic-modeling-lda-mengubah-teks-bersih-menjadi-representasi-numerik-menggunakan-latent-dirichlet-allocation-lda-untuk-mengekstrak-topik-topik-utama-dalam-berita-hasilnya-akan-digunakan-sebagai-fitur-untuk-klasifikasi">
+<h3>3.  <strong>Ekstraksi Fitur (Topic Modeling - LDA)</strong>: Mengubah teks bersih menjadi representasi numerik menggunakan Latent Dirichlet Allocation (LDA) untuk mengekstrak topik-topik utama dalam berita. Hasilnya akan digunakan sebagai fitur untuk klasifikasi.<a class="headerlink" href="#ekstraksi-fitur-topic-modeling-lda-mengubah-teks-bersih-menjadi-representasi-numerik-menggunakan-latent-dirichlet-allocation-lda-untuk-mengekstrak-topik-topik-utama-dalam-berita-hasilnya-akan-digunakan-sebagai-fitur-untuk-klasifikasi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 3. Ekstraksi Fitur (Topic Modeling - LDA)</span>
+    <span class="c1"># Menggunakan CountVectorizer untuk mengubah teks bersih menjadi matriks hitungan token.</span>
+    <span class="c1"># max_df=0.95 berarti mengabaikan kata-kata yang muncul di lebih dari 95% dokumen.</span>
+    <span class="c1"># min_df=2 berarti mengabaikan kata-kata yang muncul di kurang dari 2 dokumen.</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">dtm</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_berita</span><span class="p">[</span><span class="s1">&#39;berita_bersih&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Menggunakan Latent Dirichlet Allocation (LDA) untuk melakukan topic modeling.</span>
+    <span class="c1"># n_components menentukan jumlah topik yang ingin diekstraksi.</span>
+    <span class="n">n_topics</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_topics</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="c1"># Melatih model LDA dan mengubah matriks hitungan menjadi distribusi topik untuk setiap dokumen.</span>
+    <span class="n">lda_features</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dtm</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ukuran fitur dari LDA: </span><span class="si">{</span><span class="n">lda_features</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Output shape (jumlah dokumen, jumlah topik) menunjukkan bahwa setiap dokumen direpresentasikan</span>
+    <span class="c1"># sebagai vektor probabilitas keanggotaan topik.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ukuran fitur dari LDA: (1500, 5)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan komponen LDA</span>
+<span class="c1"># Setiap baris merepresentasikan topik, dan setiap kolom merepresentasikan kata.</span>
+<span class="c1"># Nilai dalam matriks menunjukkan bobot kata dalam topik tersebut.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Komponen LDA (Distribusi Kata per Topik):&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()))</span>
+
+<span class="c1"># Untuk melihat kata-kata teratas per topik:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Kata-kata Teratas per Topik:&quot;</span><span class="p">)</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">topic_idx</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Topik #</span><span class="si">{</span><span class="n">topic_idx</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="mi">11</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Komponen LDA (Distribusi Kata per Topik):
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-4f46feff-aa89-4b5d-8138-3d78608390de" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aa</th>
+      <th>aan</th>
+      <th>aaron</th>
+      <th>abad</th>
+      <th>abadi</th>
+      <th>abang</th>
+      <th>abbas</th>
+      <th>abc</th>
+      <th>abdel</th>
+      <th>abdelaziz</th>
+      <th>...</th>
+      <th>zonasi</th>
+      <th>zonasinya</th>
+      <th>zone</th>
+      <th>zoom</th>
+      <th>zudan</th>
+      <th>zuhri</th>
+      <th>zulhas</th>
+      <th>zulhaszulhas</th>
+      <th>zulkifli</th>
+      <th>zwolle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.277527</td>
+      <td>5.199149</td>
+      <td>0.200000</td>
+      <td>0.201750</td>
+      <td>0.200660</td>
+      <td>3.925506</td>
+      <td>0.200000</td>
+      <td>2.272213</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>...</td>
+      <td>3.195763</td>
+      <td>2.199999</td>
+      <td>2.197512</td>
+      <td>0.208874</td>
+      <td>0.200043</td>
+      <td>0.200000</td>
+      <td>0.200059</td>
+      <td>0.200105</td>
+      <td>0.200434</td>
+      <td>0.200000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.200001</td>
+      <td>0.200000</td>
+      <td>2.194381</td>
+      <td>1.197013</td>
+      <td>0.200638</td>
+      <td>0.200019</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>4.199920</td>
+      <td>1.510884</td>
+      <td>...</td>
+      <td>0.200001</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200001</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200026</td>
+      <td>0.200086</td>
+      <td>0.200013</td>
+      <td>4.199834</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.200002</td>
+      <td>0.200000</td>
+      <td>0.205438</td>
+      <td>0.202663</td>
+      <td>9.197979</td>
+      <td>0.203203</td>
+      <td>0.200001</td>
+      <td>0.200001</td>
+      <td>0.200544</td>
+      <td>0.889116</td>
+      <td>...</td>
+      <td>0.202966</td>
+      <td>0.200000</td>
+      <td>0.200001</td>
+      <td>0.200001</td>
+      <td>0.200001</td>
+      <td>0.200407</td>
+      <td>0.200298</td>
+      <td>0.200001</td>
+      <td>0.200600</td>
+      <td>0.200166</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.122470</td>
+      <td>0.200850</td>
+      <td>0.200000</td>
+      <td>3.198573</td>
+      <td>0.200722</td>
+      <td>1.471271</td>
+      <td>9.207731</td>
+      <td>0.200000</td>
+      <td>0.200199</td>
+      <td>0.200000</td>
+      <td>...</td>
+      <td>0.208310</td>
+      <td>0.200000</td>
+      <td>0.202419</td>
+      <td>3.191124</td>
+      <td>10.199956</td>
+      <td>0.203249</td>
+      <td>46.199617</td>
+      <td>3.199807</td>
+      <td>19.198953</td>
+      <td>0.200000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.200001</td>
+      <td>0.200000</td>
+      <td>0.200181</td>
+      <td>0.200001</td>
+      <td>0.200000</td>
+      <td>0.200001</td>
+      <td>8.192268</td>
+      <td>2.127786</td>
+      <td>7.199336</td>
+      <td>0.200000</td>
+      <td>...</td>
+      <td>11.192960</td>
+      <td>0.200000</td>
+      <td>3.200069</td>
+      <td>0.200001</td>
+      <td>0.200000</td>
+      <td>6.196343</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 13695 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4f46feff-aa89-4b5d-8138-3d78608390de')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-4f46feff-aa89-4b5d-8138-3d78608390de button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4f46feff-aa89-4b5d-8138-3d78608390de');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-286b3a7a-c33f-4830-b3a2-8c6ef68d2f42">
+      <button class="colab-df-quickchart" onclick="quickchart('df-286b3a7a-c33f-4830-b3a2-8c6ef68d2f42')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-286b3a7a-c33f-4830-b3a2-8c6ef68d2f42 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kata-kata Teratas per Topik:
+Topik #0:
+laut pagar korban mengatakan warga orang kecamatan desa banjir yoon
+Topik #1:
+indonesia pemain piala timnas gol menit laga liga pertandingan poin
+Topik #2:
+indonesia timnas pelatih kluivert laut pssi pagar shin brics sertifikat
+Topik #3:
+rp persen program prabowo jakarta pemerintah indonesia cnn juta kpk
+Topik #4:
+israel senjata gencatan gaza presiden kebakaran as trump negara orang
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru">
+<h3>4.  <strong>Klasifikasi</strong>: Melatih model Naive Bayes dan SVM menggunakan fitur yang diekstraksi dan mengevaluasi performa kedua model dalam mengklasifikasikan berita baru.<a class="headerlink" href="#klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 4. Klasifikasi</span>
+    <span class="c1"># Mempersiapkan data untuk klasifikasi. X adalah fitur (hasil LDA), y adalah label (kategori berita).</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">lda_features</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_berita</span><span class="p">[</span><span class="s1">&#39;kategori&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Membagi data menjadi set pelatihan dan pengujian (80% pelatihan, 20% pengujian).</span>
+    <span class="c1"># random_state=42 memastikan pembagian yang sama setiap kali kode dijalankan.</span>
+    <span class="c1"># stratify=y memastikan proporsi setiap kelas (kategori) sama di set pelatihan dan pengujian.</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># --- Klasifikasi dengan Naive Bayes ---</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Classifier: Naive Bayes ---&quot;</span><span class="p">)</span>
+    <span class="c1"># Menginisialisasi model Naive Bayes Multinomial (cocok untuk data hitungan atau frekuensi).</span>
+    <span class="n">nb_classifier</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+    <span class="c1"># Melatih model Naive Bayes menggunakan data pelatihan.</span>
+    <span class="n">nb_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="c1"># Melakukan prediksi pada data pengujian.</span>
+    <span class="n">y_pred_nb</span> <span class="o">=</span> <span class="n">nb_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="c1"># Menghitung dan mencetak akurasi model.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi Naive Bayes:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">))</span>
+    <span class="c1"># Menampilkan laporan klasifikasi yang mencakup precision, recall, f1-score, dan support</span>
+    <span class="c1"># untuk setiap kelas. zero_division=0 mencegah warning jika ada kelas yang tidak memiliki prediksi.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Laporan Klasifikasi Naive Bayes:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># --- Klasifikasi dengan Support Vector Machine (SVM) ---</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Classifier: Support Vector Machine (SVM) ---&quot;</span><span class="p">)</span>
+    <span class="c1"># Menginisialisasi model SVM dengan kernel linear.</span>
+    <span class="n">svm_classifier</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="c1"># Melatih model SVM menggunakan data pelatihan.</span>
+    <span class="n">svm_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="c1"># Melakukan prediksi pada data pengujian.</span>
+    <span class="n">y_pred_svm</span> <span class="o">=</span> <span class="n">svm_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="c1"># Menghitung dan mencetak akurasi model.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi SVM:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">))</span>
+    <span class="c1"># Menampilkan laporan klasifikasi yang mencakup precision, recall, f1-score, dan support</span>
+    <span class="c1"># untuk setiap kelas. zero_division=0 mencegah warning jika ada kelas yang tidak memiliki prediksi.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Laporan Klasifikasi SVM:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: File &#39;Berita.csv&#39; tidak ditemukan. Pastikan file ada di direktori yang sama.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Terjadi error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Classifier: Naive Bayes ---
+Akurasi Naive Bayes: 0.7833333333333333
+Laporan Klasifikasi Naive Bayes:
+               precision    recall  f1-score   support
+
+      Ekonomi       0.62      0.87      0.72        75
+Internasional       0.98      0.77      0.87        75
+     Nasional       0.61      0.51      0.55        75
+     Olahraga       1.00      0.99      0.99        75
+
+     accuracy                           0.78       300
+    macro avg       0.80      0.78      0.78       300
+ weighted avg       0.80      0.78      0.78       300
+
+
+--- Classifier: Support Vector Machine (SVM) ---
+Akurasi SVM: 0.78
+Laporan Klasifikasi SVM:
+               precision    recall  f1-score   support
+
+      Ekonomi       0.62      0.89      0.73        75
+Internasional       0.95      0.77      0.85        75
+     Nasional       0.61      0.47      0.53        75
+     Olahraga       1.00      0.99      0.99        75
+
+     accuracy                           0.78       300
+    macro avg       0.80      0.78      0.78       300
+ weighted avg       0.80      0.78      0.78       300
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method">
+<h2>Analisis Soal 2: Clustering Email dengan Pencarian K Otomatis (Elbow Method)<a class="headerlink" href="#analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method" title="Link to this heading">#</a></h2>
+<p>Bagian ini bertujuan untuk melakukan <em>clustering</em> (pengelompokan) dokumen email secara otomatis. Metode yang digunakan adalah K-Means Clustering, dengan penentuan jumlah cluster (k) yang optimal menggunakan metode Elbow. Langkah-langkahnya adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.</p></li>
+<li><p><strong>Memuat dan Membersihkan Data Email</strong>: Membaca dataset email dari file CSV dan melakukan pra-pemrosesan teks dasar untuk membersihkan email.</p></li>
+<li><p><strong>Vektorisasi Teks (TF-IDF)</strong>: Mengubah teks email yang sudah bersih menjadi representasi numerik menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Ini memberikan bobot pada kata-kata berdasarkan seberapa sering muncul dalam dokumen dan seberapa unik kata tersebut di seluruh koleksi dokumen.</p></li>
+<li><p><strong>Mencari Jumlah Cluster Optimal dengan Elbow Method</strong>: Menggunakan metode Elbow untuk menghitung <em>Within-Cluster Sum of Squares</em> (WCSS) untuk berbagai jumlah cluster (k). Grafik WCSS versus k akan dibuat untuk membantu visualisasi dan penentuan “titik siku” (elbow) yang menunjukkan jumlah cluster optimal.</p></li>
+<li><p><strong>Melakukan Clustering Final dengan K yang Optimal</strong>: Menerapkan algoritma K-Means dengan jumlah cluster (k) yang ditentukan dari metode Elbow.</p></li>
+<li><p><strong>Menampilkan Hasil Clustering</strong>: Menampilkan distribusi dokumen di setiap cluster dan kata-kata paling penting (top terms) di setiap cluster.</p></li>
+<li><p><strong>Visualisasi Hasil Clustering Final</strong>: Mengurangi dimensi data TF-IDF menjadi 2 dimensi menggunakan Principal Component Analysis (PCA) untuk memvisualisasikan hasil clustering dalam scatter plot 2D. Setiap titik dalam plot merepresentasikan email, dan warnanya menunjukkan cluster tempat email tersebut dikelompokkan.</p></li>
+</ol>
+<section id="impor-library-mengimpor-semua-library-python-yang-diperlukan">
+<h3>1.  <strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.<a class="headerlink" href="#impor-library-mengimpor-semua-library-python-yang-diperlukan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Soal 2: Clustering Email dengan Pencarian K Otomatis ---</span>
+
+<span class="c1"># 1. Impor Library</span>
+<span class="c1"># Mengimpor library yang dibutuhkan untuk analisis data, pra-pemrosesan teks,</span>
+<span class="c1"># ekstraksi fitur, clustering, reduksi dimensi, dan visualisasi.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="memuat-dan-membersihkan-data-email-membaca-dataset-email-dari-file-csv-dan-melakukan-pra-pemrosesan-teks-dasar-untuk-membersihkan-email">
+<h3>2.  <strong>Memuat dan Membersihkan Data Email</strong>: Membaca dataset email dari file CSV dan melakukan pra-pemrosesan teks dasar untuk membersihkan email.<a class="headerlink" href="#memuat-dan-membersihkan-data-email-membaca-dataset-email-dari-file-csv-dan-melakukan-pra-pemrosesan-teks-dasar-untuk-membersihkan-email" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Analisis Soal 2: Clustering Email dengan Elbow Method ---&quot;</span><span class="p">)</span>
+    <span class="c1"># 2. Memuat dan Membersihkan Data Email</span>
+    <span class="c1"># Memuat dataset email dari file CSV. File ini memiliki encoding &#39;latin1&#39;.</span>
+    <span class="n">df_email</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;spam.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+    <span class="c1"># Memilih dua kolom pertama dan mengganti namanya menjadi &#39;label&#39; dan &#39;text&#39;.</span>
+    <span class="n">df_email</span> <span class="o">=</span> <span class="n">df_email</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">df_email</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">]</span>
+    <span class="c1"># Menghapus baris yang memiliki nilai kosong pada kolom &#39;text&#39;.</span>
+    <span class="n">df_email</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Fungsi untuk membersihkan teks email: mengubah ke lowercase, menghapus angka dan tanda baca,</span>
+    <span class="c1"># serta menghapus spasi berlebih.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">preprocess_email_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># Menerapkan fungsi pra-pemrosesan ke kolom &#39;text&#39; dan menyimpannya di kolom baru &#39;text_bersih&#39;.</span>
+    <span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;text_bersih&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">preprocess_email_text</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;text_bersih&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Analisis Soal 2: Clustering Email dengan Elbow Method ---
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text_bersih</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>go until jurong point crazy available only in ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ok lar joking wif u oni</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>free entry in a wkly comp to win fa cup final ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>u dun say so early hor u c already then say</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>nah i dont think he goes to usf he lives aroun...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5567</th>
+      <td>this is the nd time we have tried contact u u ...</td>
+    </tr>
+    <tr>
+      <th>5568</th>
+      <td>will ì_ b going to esplanade fr home</td>
+    </tr>
+    <tr>
+      <th>5569</th>
+      <td>pity was in mood for that soany other suggestions</td>
+    </tr>
+    <tr>
+      <th>5570</th>
+      <td>the guy did some bitching but i acted like id ...</td>
+    </tr>
+    <tr>
+      <th>5571</th>
+      <td>rofl its true to its name</td>
+    </tr>
+  </tbody>
+</table>
+<p>5572 rows × 1 columns</p>
+</div><br><label><b>dtype:</b> object</label></div></div>
+</div>
+</section>
+<section id="vektorisasi-teks-tf-idf-mengubah-teks-email-yang-sudah-bersih-menjadi-representasi-numerik-menggunakan-tf-idf-term-frequency-inverse-document-frequency-ini-memberikan-bobot-pada-kata-kata-berdasarkan-seberapa-sering-muncul-dalam-dokumen-dan-seberapa-unik-kata-tersebut-di-seluruh-koleksi-dokumen">
+<h3>3.  <strong>Vektorisasi Teks (TF-IDF)</strong>: Mengubah teks email yang sudah bersih menjadi representasi numerik menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Ini memberikan bobot pada kata-kata berdasarkan seberapa sering muncul dalam dokumen dan seberapa unik kata tersebut di seluruh koleksi dokumen.<a class="headerlink" href="#vektorisasi-teks-tf-idf-mengubah-teks-email-yang-sudah-bersih-menjadi-representasi-numerik-menggunakan-tf-idf-term-frequency-inverse-document-frequency-ini-memberikan-bobot-pada-kata-kata-berdasarkan-seberapa-sering-muncul-dalam-dokumen-dan-seberapa-unik-kata-tersebut-di-seluruh-koleksi-dokumen" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 3. Vektorisasi Teks (TF-IDF)</span>
+    <span class="c1"># Menggunakan TfidfVectorizer untuk mengubah teks bersih menjadi representasi numerik TF-IDF.</span>
+    <span class="c1"># max_df=0.90 mengabaikan kata-kata yang muncul di lebih dari 90% dokumen.</span>
+    <span class="c1"># min_df=5 mengabaikan kata-kata yang muncul di kurang dari 5 dokumen.</span>
+    <span class="c1"># stop_words=&#39;english&#39; menghapus stop words Bahasa Inggris bawaan sklearn.</span>
+    <span class="n">tfidf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+    <span class="c1"># Melatih vectorizer dan mengubah teks bersih menjadi matriks TF-IDF.</span>
+    <span class="n">X_tfidf</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;text_bersih&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data email berhasil diproses dan diubah menjadi fitur TF-IDF.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data email berhasil diproses dan diubah menjadi fitur TF-IDF.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan sebagian kecil dari matriks TF-IDF</span>
+<span class="c1"># Matriks TF-IDF bisa sangat besar, jadi kita hanya menampilkan beberapa baris dan kolom pertama.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sebagian kecil dari Matriks TF-IDF:&quot;</span><span class="p">)</span>
+<span class="c1"># Mengubah sparse matrix menjadi dense array untuk ditampilkan.</span>
+<span class="c1"># Hati-hati dengan ini untuk dataset yang sangat besar karena bisa memakan banyak memori.</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ukuran Matriks TF-IDF:&quot;</span><span class="p">,</span> <span class="n">X_tfidf</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># Output shape (jumlah dokumen, jumlah kata unik setelah filter)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sebagian kecil dari Matriks TF-IDF:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-6b5877bd-5c84-4803-ae99-36c09a891ff8" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>abiola</th>
+      <th>able</th>
+      <th>abt</th>
+      <th>accept</th>
+      <th>access</th>
+      <th>account</th>
+      <th>activate</th>
+      <th>actually</th>
+      <th>ad</th>
+      <th>add</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-6b5877bd-5c84-4803-ae99-36c09a891ff8')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-6b5877bd-5c84-4803-ae99-36c09a891ff8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-6b5877bd-5c84-4803-ae99-36c09a891ff8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-7aa56d08-ef3c-40b6-91df-904361d6eeed">
+      <button class="colab-df-quickchart" onclick="quickchart('df-7aa56d08-ef3c-40b6-91df-904361d6eeed')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-7aa56d08-ef3c-40b6-91df-904361d6eeed button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ukuran Matriks TF-IDF: (5572, 1489)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mencari-jumlah-cluster-optimal-dengan-elbow-method-menggunakan-metode-elbow-untuk-menghitung-within-cluster-sum-of-squares-wcss-untuk-berbagai-jumlah-cluster-k-grafik-wcss-versus-k-akan-dibuat-untuk-membantu-visualisasi-dan-penentuan-titik-siku-elbow-yang-menunjukkan-jumlah-cluster-optimal">
+<h3>4.  <strong>Mencari Jumlah Cluster Optimal dengan Elbow Method</strong>: Menggunakan metode Elbow untuk menghitung <em>Within-Cluster Sum of Squares</em> (WCSS) untuk berbagai jumlah cluster (k). Grafik WCSS versus k akan dibuat untuk membantu visualisasi dan penentuan “titik siku” (elbow) yang menunjukkan jumlah cluster optimal.<a class="headerlink" href="#mencari-jumlah-cluster-optimal-dengan-elbow-method-menggunakan-metode-elbow-untuk-menghitung-within-cluster-sum-of-squares-wcss-untuk-berbagai-jumlah-cluster-k-grafik-wcss-versus-k-akan-dibuat-untuk-membantu-visualisasi-dan-penentuan-titik-siku-elbow-yang-menunjukkan-jumlah-cluster-optimal" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+    <span class="c1"># 4. Mencari Jumlah Cluster Optimal dengan Elbow Method</span>
+    <span class="c1"># Elbow method digunakan untuk menentukan jumlah cluster (k) yang optimal.</span>
+    <span class="c1"># Ini menghitung Within-Cluster Sum of Squares (WCSS) untuk berbagai nilai k.</span>
+    <span class="n">wcss</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># List untuk menyimpan nilai WCSS</span>
+    <span class="n">K_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="c1"># Mencoba jumlah cluster dari 2 hingga 10</span>
+
+    <span class="c1"># Melakukan clustering untuk setiap nilai k dalam rentang K_range dan menyimpan nilai inertia (WCSS).</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K_range</span><span class="p">:</span>
+        <span class="n">kmeans_temp</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># n_init=10 menjalankan algoritma 10 kali dengan inisialisasi centroid yang berbeda.</span>
+        <span class="n">kmeans_temp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">)</span>
+        <span class="n">wcss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans_temp</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span> <span class="c1"># inertia_ adalah nilai WCSS untuk model KMeans.</span>
+
+    <span class="c1"># Plotting Elbow Method</span>
+    <span class="c1"># Membuat grafik WCSS versus jumlah cluster (k).</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">K_range</span><span class="p">,</span> <span class="n">wcss</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Elbow Method untuk Menentukan Jumlah Cluster Optimal&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Cluster (k)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;WCSS (Inertia)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">K_range</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dari grafik di atas, carilah titik &#39;siku&#39; (elbow).&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Titik di mana penurunan WCSS mulai melandai secara signifikan adalah jumlah cluster (k) yang optimal.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Misalnya, jika siku ada di k=3 atau k=4, itu adalah pilihan yang baik.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/de18ffd186dbfeb421d69e11f7f05760058fe47d997c042cfc4f8563a50733fe.png" src="_images/de18ffd186dbfeb421d69e11f7f05760058fe47d997c042cfc4f8563a50733fe.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dari grafik di atas, carilah titik &#39;siku&#39; (elbow).
+Titik di mana penurunan WCSS mulai melandai secara signifikan adalah jumlah cluster (k) yang optimal.
+Misalnya, jika siku ada di k=3 atau k=4, itu adalah pilihan yang baik.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="melakukan-clustering-final-dengan-k-yang-optimal-menerapkan-algoritma-k-means-dengan-jumlah-cluster-k-yang-ditentukan-dari-metode-elbow">
+<h3>5.  <strong>Melakukan Clustering Final dengan K yang Optimal</strong>: Menerapkan algoritma K-Means dengan jumlah cluster (k) yang ditentukan dari metode Elbow.<a class="headerlink" href="#melakukan-clustering-final-dengan-k-yang-optimal-menerapkan-algoritma-k-means-dengan-jumlah-cluster-k-yang-ditentukan-dari-metode-elbow" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 5. Melakukan Clustering Final dengan K yang Optimal</span>
+    <span class="c1"># Berdasarkan grafik, Anda dapat memilih nilai optimal_k.</span>
+    <span class="c1"># Di sini, kita menggunakan 4 sebagai contoh, namun Anda harus menyesuaikannya berdasarkan plot Elbow Method.</span>
+    <span class="n">optimal_k</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">berhasil Melakukan clustering final dengan k = </span><span class="si">{</span><span class="n">optimal_k</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Melakukan clustering KMeans dengan jumlah cluster optimal yang dipilih.</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">optimal_k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">)</span>
+    <span class="c1"># Menambahkan label cluster ke DataFrame asli.</span>
+    <span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>berhasil Melakukan clustering final dengan k = 4...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menampilkan-hasil-clustering-menampilkan-distribusi-dokumen-di-setiap-cluster-dan-kata-kata-paling-penting-top-terms-di-setiap-cluster">
+<h3>6.  <strong>Menampilkan Hasil Clustering</strong>: Menampilkan distribusi dokumen di setiap cluster dan kata-kata paling penting (top terms) di setiap cluster.<a class="headerlink" href="#menampilkan-hasil-clustering-menampilkan-distribusi-dokumen-di-setiap-cluster-dan-kata-kata-paling-penting-top-terms-di-setiap-cluster" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 6. Menampilkan Hasil Clustering</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi Dokumen per Cluster (k=</span><span class="si">{</span><span class="n">optimal_k</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+    <span class="c1"># Menampilkan jumlah dokumen di setiap cluster.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top 10 Terms per Cluster:&quot;</span><span class="p">)</span>
+    <span class="c1"># Menemukan 10 kata paling penting (dengan skor TF-IDF tertinggi) untuk setiap centroid cluster.</span>
+    <span class="n">order_centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">terms</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">optimal_k</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cluster </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">order_centroids</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">terms</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Dokumen per Cluster (k=4):
+cluster
+0    4898
+1     268
+3     226
+2     180
+Name: count, dtype: int64
+
+Top 10 Terms per Cluster:
+Cluster 0: im just ur dont ltgt know got like good come
+Cluster 1: time oh come wat im just good like tomorrow want
+Cluster 2: ill later sorry meeting im text yeah aight right let
+Cluster 3: ok lor thanx come ur ill leave im prob yup
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-hasil-clustering-final-mengurangi-dimensi-data-tf-idf-menjadi-2-dimensi-menggunakan-principal-component-analysis-pca-untuk-memvisualisasikan-hasil-clustering-dalam-scatter-plot-2d-setiap-titik-dalam-plot-merepresentasikan-email-dan-warnanya-menunjukkan-cluster-tempat-email-tersebut-dikelompokkan">
+<h3>7.  <strong>Visualisasi Hasil Clustering Final</strong>: Mengurangi dimensi data TF-IDF menjadi 2 dimensi menggunakan Principal Component Analysis (PCA) untuk memvisualisasikan hasil clustering dalam scatter plot 2D. Setiap titik dalam plot merepresentasikan email, dan warnanya menunjukkan cluster tempat email tersebut dikelompokkan.<a class="headerlink" href="#visualisasi-hasil-clustering-final-mengurangi-dimensi-data-tf-idf-menjadi-2-dimensi-menggunakan-principal-component-analysis-pca-untuk-memvisualisasikan-hasil-clustering-dalam-scatter-plot-2d-setiap-titik-dalam-plot-merepresentasikan-email-dan-warnanya-menunjukkan-cluster-tempat-email-tersebut-dikelompokkan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 7. Visualisasi Hasil Clustering Final (menggunakan PCA)</span>
+    <span class="c1"># Menggunakan Principal Component Analysis (PCA) untuk mengurangi dimensi data TF-IDF menjadi 2 dimensi</span>
+    <span class="c1"># agar bisa divisualisasikan dalam scatter plot 2D.</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">scatter_plot_points</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span> <span class="c1"># Mengubah sparse matrix menjadi dense array untuk PCA.</span>
+
+    <span class="c1"># Membuat DataFrame baru untuk visualisasi.</span>
+    <span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;pca_1&#39;</span><span class="p">:</span> <span class="n">scatter_plot_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s1">&#39;pca_2&#39;</span><span class="p">:</span> <span class="n">scatter_plot_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;cluster&#39;</span><span class="p">:</span> <span class="n">df_email</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="c1"># Menggunakan label cluster dari hasil KMeans.</span>
+    <span class="p">})</span>
+
+    <span class="c1"># Membuat scatter plot dari hasil PCA, mewarnai titik berdasarkan cluster.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pca_1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pca_2&#39;</span><span class="p">,</span>
+        <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="c1"># Warna titik berdasarkan kolom &#39;cluster&#39;.</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;hsv&quot;</span><span class="p">,</span> <span class="n">optimal_k</span><span class="p">),</span> <span class="c1"># Menggunakan palet warna untuk membedakan cluster.</span>
+        <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="c1"># Menampilkan legenda untuk cluster.</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span> <span class="c1"># Mengatur transparansi titik.</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Visualisasi Cluster Email (k=</span><span class="si">{</span><span class="n">optimal_k</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Komponen Utama 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Komponen Utama 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: File &#39;spam.csv&#39; tidak ditemukan.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Terjadi error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2bbfb61de1cc4027e321c24c95d09424418c676a0ee531fb1c21ad052c28c2e9.png" src="_images/2bbfb61de1cc4027e321c24c95d09424418c676a0ee531fb1c21ad052c28c2e9.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modeling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">klasifikasi menggunakann LDA</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-1-klasifikasi-berita">Analisis Soal 1: Klasifikasi Berita</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data-berita-membaca-dataset-berita-dari-file-csv">1.  <strong>Memuat Data Berita</strong>: Membaca dataset berita dari file CSV.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pra-pemrosesan-teks-membersihkan-teks-berita-dari-karakter-yang-tidak-relevan-angka-dan-stop-words-kata-kata-umum-yang-tidak-memiliki-makna-diskriminatif">2.  <strong>Pra-pemrosesan Teks</strong>: Membersihkan teks berita dari karakter yang tidak relevan, angka, dan <em>stop words</em> (kata-kata umum yang tidak memiliki makna diskriminatif).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-topic-modeling-lda-mengubah-teks-bersih-menjadi-representasi-numerik-menggunakan-latent-dirichlet-allocation-lda-untuk-mengekstrak-topik-topik-utama-dalam-berita-hasilnya-akan-digunakan-sebagai-fitur-untuk-klasifikasi">3.  <strong>Ekstraksi Fitur (Topic Modeling - LDA)</strong>: Mengubah teks bersih menjadi representasi numerik menggunakan Latent Dirichlet Allocation (LDA) untuk mengekstrak topik-topik utama dalam berita. Hasilnya akan digunakan sebagai fitur untuk klasifikasi.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru">4.  <strong>Klasifikasi</strong>: Melatih model Naive Bayes dan SVM menggunakan fitur yang diekstraksi dan mengevaluasi performa kedua model dalam mengklasifikasikan berita baru.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method">Analisis Soal 2: Clustering Email dengan Pencarian K Otomatis (Elbow Method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impor-library-mengimpor-semua-library-python-yang-diperlukan">1.  <strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dan-membersihkan-data-email-membaca-dataset-email-dari-file-csv-dan-melakukan-pra-pemrosesan-teks-dasar-untuk-membersihkan-email">2.  <strong>Memuat dan Membersihkan Data Email</strong>: Membaca dataset email dari file CSV dan melakukan pra-pemrosesan teks dasar untuk membersihkan email.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorisasi-teks-tf-idf-mengubah-teks-email-yang-sudah-bersih-menjadi-representasi-numerik-menggunakan-tf-idf-term-frequency-inverse-document-frequency-ini-memberikan-bobot-pada-kata-kata-berdasarkan-seberapa-sering-muncul-dalam-dokumen-dan-seberapa-unik-kata-tersebut-di-seluruh-koleksi-dokumen">3.  <strong>Vektorisasi Teks (TF-IDF)</strong>: Mengubah teks email yang sudah bersih menjadi representasi numerik menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Ini memberikan bobot pada kata-kata berdasarkan seberapa sering muncul dalam dokumen dan seberapa unik kata tersebut di seluruh koleksi dokumen.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-jumlah-cluster-optimal-dengan-elbow-method-menggunakan-metode-elbow-untuk-menghitung-within-cluster-sum-of-squares-wcss-untuk-berbagai-jumlah-cluster-k-grafik-wcss-versus-k-akan-dibuat-untuk-membantu-visualisasi-dan-penentuan-titik-siku-elbow-yang-menunjukkan-jumlah-cluster-optimal">4.  <strong>Mencari Jumlah Cluster Optimal dengan Elbow Method</strong>: Menggunakan metode Elbow untuk menghitung <em>Within-Cluster Sum of Squares</em> (WCSS) untuk berbagai jumlah cluster (k). Grafik WCSS versus k akan dibuat untuk membantu visualisasi dan penentuan “titik siku” (elbow) yang menunjukkan jumlah cluster optimal.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-final-dengan-k-yang-optimal-menerapkan-algoritma-k-means-dengan-jumlah-cluster-k-yang-ditentukan-dari-metode-elbow">5.  <strong>Melakukan Clustering Final dengan K yang Optimal</strong>: Menerapkan algoritma K-Means dengan jumlah cluster (k) yang ditentukan dari metode Elbow.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-clustering-menampilkan-distribusi-dokumen-di-setiap-cluster-dan-kata-kata-paling-penting-top-terms-di-setiap-cluster">6.  <strong>Menampilkan Hasil Clustering</strong>: Menampilkan distribusi dokumen di setiap cluster dan kata-kata paling penting (top terms) di setiap cluster.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-clustering-final-mengurangi-dimensi-data-tf-idf-menjadi-2-dimensi-menggunakan-principal-component-analysis-pca-untuk-memvisualisasikan-hasil-clustering-dalam-scatter-plot-2d-setiap-titik-dalam-plot-merepresentasikan-email-dan-warnanya-menunjukkan-cluster-tempat-email-tersebut-dikelompokkan">7.  <strong>Visualisasi Hasil Clustering Final</strong>: Mengurangi dimensi data TF-IDF menjadi 2 dimensi menggunakan Principal Component Analysis (PCA) untuk memvisualisasikan hasil clustering dalam scatter plot 2D. Setiap titik dalam plot merepresentasikan email, dan warnanya menunjukkan cluster tempat email tersebut dikelompokkan.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alhamdy Wahyu alfiansyah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
