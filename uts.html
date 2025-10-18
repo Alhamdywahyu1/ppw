@@ -385,7 +385,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru">4.  <strong>Klasifikasi</strong>: Melatih model Naive Bayes dan SVM menggunakan fitur yang diekstraksi dan mengevaluasi performa kedua model dalam mengklasifikasikan berita baru.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method">Analisis Soal 2: Clustering Email dengan Pencarian K Otomatis (Elbow Method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-2-clustering-email">Analisis Soal 2: Clustering Email</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impor-library-mengimpor-semua-library-python-yang-diperlukan">1.  <strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dan-membersihkan-data-email-membaca-dataset-email-dari-file-csv-dan-melakukan-pra-pemrosesan-teks-dasar-untuk-membersihkan-email">2.  <strong>Memuat dan Membersihkan Data Email</strong>: Membaca dataset email dari file CSV dan melakukan pra-pemrosesan teks dasar untuk membersihkan email.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorisasi-teks-tf-idf-mengubah-teks-email-yang-sudah-bersih-menjadi-representasi-numerik-menggunakan-tf-idf-term-frequency-inverse-document-frequency-ini-memberikan-bobot-pada-kata-kata-berdasarkan-seberapa-sering-muncul-dalam-dokumen-dan-seberapa-unik-kata-tersebut-di-seluruh-koleksi-dokumen">3.  <strong>Vektorisasi Teks (TF-IDF)</strong>: Mengubah teks email yang sudah bersih menjadi representasi numerik menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Ini memberikan bobot pada kata-kata berdasarkan seberapa sering muncul dalam dokumen dan seberapa unik kata tersebut di seluruh koleksi dokumen.</a></li>
@@ -968,7 +968,7 @@ Data Berita.csv berhasil dimuat.
 
     <span class="c1"># Menggunakan Latent Dirichlet Allocation (LDA) untuk melakukan topic modeling.</span>
     <span class="c1"># n_components menentukan jumlah topik yang ingin diekstraksi.</span>
-    <span class="n">n_topics</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">n_topics</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_topics</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
     <span class="c1"># Melatih model LDA dan mengubah matriks hitungan menjadi distribusi topik untuk setiap dokumen.</span>
     <span class="n">lda_features</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dtm</span><span class="p">)</span>
@@ -979,7 +979,7 @@ Data Berita.csv berhasil dimuat.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ukuran fitur dari LDA: (1500, 5)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ukuran fitur dari LDA: (1500, 10)
 </pre></div>
 </div>
 </div>
@@ -992,12 +992,27 @@ Data Berita.csv berhasil dimuat.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Komponen LDA (Distribusi Kata per Topik):&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()))</span>
 
-<span class="c1"># Untuk melihat kata-kata teratas per topik:</span>
+<span class="c1"># Untuk melihat kata-kata teratas per topik dalam bentuk tabel:</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Kata-kata Teratas per Topik:&quot;</span><span class="p">)</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">top_words</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">topic_idx</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Topik #</span><span class="si">{</span><span class="n">topic_idx</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="mi">11</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
+    <span class="n">top_words</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Topik #</span><span class="si">{</span><span class="n">topic_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="mi">11</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">top_words</span><span class="p">))</span>
+
+<span class="c1"># Menampilkan bobot topik per berita</span>
+<span class="c1"># Setiap baris merepresentasikan berita, dan setiap kolom merepresentasikan topik.</span>
+<span class="c1"># Nilai dalam sel menunjukkan bobot atau probabilitas berita tersebut termasuk dalam topik tertentu.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Bobot Topik per Berita:&quot;</span><span class="p">)</span>
+<span class="c1"># Membuat DataFrame dari lda_features dengan kolom yang diberi nama sesuai topik</span>
+<span class="n">df_topic_weights</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lda_features</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Topik #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_topics</span><span class="p">)])</span>
+
+<span class="c1"># Menampilkan beberapa baris pertama dari DataFrame</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_topic_weights</span><span class="p">)</span>
+
+<span class="c1"># Jika Anda ingin melihat bobot topik untuk semua berita, Anda bisa menghilangkan .head()</span>
+<span class="c1"># display(df_topic_weights)</span>
 </pre></div>
 </div>
 </div>
@@ -1006,7 +1021,7 @@ Data Berita.csv berhasil dimuat.
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-4f46feff-aa89-4b5d-8138-3d78608390de" class="colab-df-container">
+  <div id="df-f28d2253-e3c9-478a-83a7-214f55c05994" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1051,132 +1066,252 @@ Data Berita.csv berhasil dimuat.
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.277527</td>
-      <td>5.199149</td>
-      <td>0.200000</td>
-      <td>0.201750</td>
-      <td>0.200660</td>
-      <td>3.925506</td>
-      <td>0.200000</td>
-      <td>2.272213</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
+      <td>0.100038</td>
+      <td>0.100023</td>
+      <td>0.100000</td>
+      <td>0.100008</td>
+      <td>0.100000</td>
+      <td>1.631790</td>
+      <td>0.100000</td>
+      <td>3.099998</td>
+      <td>0.100003</td>
+      <td>0.100000</td>
       <td>...</td>
-      <td>3.195763</td>
-      <td>2.199999</td>
-      <td>2.197512</td>
-      <td>0.208874</td>
-      <td>0.200043</td>
-      <td>0.200000</td>
-      <td>0.200059</td>
-      <td>0.200105</td>
-      <td>0.200434</td>
-      <td>0.200000</td>
+      <td>0.100000</td>
+      <td>2.099602</td>
+      <td>0.100024</td>
+      <td>0.111267</td>
+      <td>0.1</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.200001</td>
-      <td>0.200000</td>
-      <td>2.194381</td>
-      <td>1.197013</td>
-      <td>0.200638</td>
-      <td>0.200019</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>4.199920</td>
-      <td>1.510884</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>2.099962</td>
+      <td>1.099973</td>
+      <td>0.100004</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>4.099990</td>
+      <td>1.207626</td>
       <td>...</td>
-      <td>0.200001</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200001</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200026</td>
-      <td>0.200086</td>
-      <td>0.200013</td>
-      <td>4.199834</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.1</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100002</td>
+      <td>0.100000</td>
+      <td>4.099997</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.200002</td>
-      <td>0.200000</td>
-      <td>0.205438</td>
-      <td>0.202663</td>
-      <td>9.197979</td>
-      <td>0.203203</td>
-      <td>0.200001</td>
-      <td>0.200001</td>
-      <td>0.200544</td>
-      <td>0.889116</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100036</td>
+      <td>0.100017</td>
+      <td>8.084463</td>
+      <td>0.100007</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100001</td>
+      <td>0.992374</td>
       <td>...</td>
-      <td>0.202966</td>
-      <td>0.200000</td>
-      <td>0.200001</td>
-      <td>0.200001</td>
-      <td>0.200001</td>
-      <td>0.200407</td>
-      <td>0.200298</td>
-      <td>0.200001</td>
-      <td>0.200600</td>
-      <td>0.200166</td>
+      <td>0.100002</td>
+      <td>0.100000</td>
+      <td>1.099765</td>
+      <td>0.100000</td>
+      <td>0.1</td>
+      <td>0.100000</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
+      <td>0.100001</td>
+      <td>0.100002</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.122470</td>
-      <td>0.200850</td>
-      <td>0.200000</td>
-      <td>3.198573</td>
-      <td>0.200722</td>
-      <td>1.471271</td>
-      <td>9.207731</td>
-      <td>0.200000</td>
-      <td>0.200199</td>
-      <td>0.200000</td>
+      <td>4.099819</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>1.239499</td>
+      <td>0.100001</td>
+      <td>2.722450</td>
+      <td>8.099987</td>
+      <td>0.100003</td>
+      <td>0.100002</td>
+      <td>0.100000</td>
       <td>...</td>
-      <td>0.208310</td>
-      <td>0.200000</td>
-      <td>0.202419</td>
-      <td>3.191124</td>
-      <td>10.199956</td>
-      <td>0.203249</td>
-      <td>46.199617</td>
-      <td>3.199807</td>
-      <td>19.198953</td>
-      <td>0.200000</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>3.088554</td>
+      <td>10.1</td>
+      <td>0.100000</td>
+      <td>0.121294</td>
+      <td>3.099611</td>
+      <td>0.202521</td>
+      <td>0.100000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.200001</td>
-      <td>0.200000</td>
-      <td>0.200181</td>
-      <td>0.200001</td>
-      <td>0.200000</td>
-      <td>0.200001</td>
-      <td>8.192268</td>
-      <td>2.127786</td>
-      <td>7.199336</td>
-      <td>0.200000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>7.995964</td>
+      <td>0.100031</td>
+      <td>7.099988</td>
+      <td>0.100000</td>
       <td>...</td>
-      <td>11.192960</td>
-      <td>0.200000</td>
-      <td>3.200069</td>
-      <td>0.200001</td>
-      <td>0.200000</td>
-      <td>6.196343</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100345</td>
+      <td>0.100000</td>
+      <td>0.1</td>
+      <td>4.099996</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.100000</td>
+      <td>0.100002</td>
+      <td>0.100000</td>
+      <td>0.100020</td>
+      <td>0.100000</td>
+      <td>0.945726</td>
+      <td>1.204010</td>
+      <td>1.099969</td>
+      <td>0.100006</td>
+      <td>0.100000</td>
+      <td>...</td>
+      <td>0.100025</td>
+      <td>0.100000</td>
+      <td>0.100006</td>
+      <td>0.100130</td>
+      <td>0.1</td>
+      <td>0.100002</td>
+      <td>0.100042</td>
+      <td>0.100218</td>
+      <td>0.100057</td>
+      <td>0.100001</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.100135</td>
+      <td>0.100010</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>1.115516</td>
+      <td>0.100023</td>
+      <td>0.100008</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>...</td>
+      <td>0.100014</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100044</td>
+      <td>0.1</td>
+      <td>0.100000</td>
+      <td>0.100006</td>
+      <td>0.100007</td>
+      <td>0.641430</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.100009</td>
+      <td>0.100002</td>
+      <td>0.100000</td>
+      <td>1.960439</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>...</td>
+      <td>14.099958</td>
+      <td>0.100398</td>
+      <td>0.100006</td>
+      <td>0.100000</td>
+      <td>0.1</td>
+      <td>0.100000</td>
+      <td>0.100003</td>
+      <td>0.100036</td>
+      <td>0.100003</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.100000</td>
+      <td>5.099962</td>
+      <td>0.100000</td>
+      <td>0.100044</td>
+      <td>0.100015</td>
+      <td>0.100004</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
+      <td>...</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>4.099854</td>
+      <td>0.100004</td>
+      <td>0.1</td>
+      <td>0.100002</td>
+      <td>46.078653</td>
+      <td>0.100111</td>
+      <td>18.455987</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
+      <td>0.100030</td>
+      <td>0.100000</td>
+      <td>0.100010</td>
+      <td>0.100000</td>
+      <td>...</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.1</td>
+      <td>2.100000</td>
+      <td>0.100001</td>
+      <td>0.100016</td>
+      <td>0.100001</td>
+      <td>0.100000</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 13695 columns</p>
+<p>10 rows × 13695 columns</p>
 </div>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-4f46feff-aa89-4b5d-8138-3d78608390de')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f28d2253-e3c9-478a-83a7-214f55c05994')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1228,12 +1363,12 @@ Data Berita.csv berhasil dimuat.
 
     <script>
       const buttonEl =
-        document.querySelector('#df-4f46feff-aa89-4b5d-8138-3d78608390de button.colab-df-convert');
+        document.querySelector('#df-f28d2253-e3c9-478a-83a7-214f55c05994 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-4f46feff-aa89-4b5d-8138-3d78608390de');
+        const element = document.querySelector('#df-f28d2253-e3c9-478a-83a7-214f55c05994');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1253,8 +1388,8 @@ Data Berita.csv berhasil dimuat.
   </div>
 
 
-    <div id="df-286b3a7a-c33f-4830-b3a2-8c6ef68d2f42">
-      <button class="colab-df-quickchart" onclick="quickchart('df-286b3a7a-c33f-4830-b3a2-8c6ef68d2f42')"
+    <div id="df-f18e49bb-2de5-4f94-8a9a-186d00176ce5">
+      <button class="colab-df-quickchart" onclick="quickchart('df-f18e49bb-2de5-4f94-8a9a-186d00176ce5')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -1373,7 +1508,7 @@ Data Berita.csv berhasil dimuat.
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-286b3a7a-c33f-4830-b3a2-8c6ef68d2f42 button');
+            document.querySelector('#df-f18e49bb-2de5-4f94-8a9a-186d00176ce5 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -1383,19 +1518,831 @@ Data Berita.csv berhasil dimuat.
     </div>
   </div>
 </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kata-kata Teratas per Topik:
-Topik #0:
-laut pagar korban mengatakan warga orang kecamatan desa banjir yoon
-Topik #1:
-indonesia pemain piala timnas gol menit laga liga pertandingan poin
-Topik #2:
-indonesia timnas pelatih kluivert laut pssi pagar shin brics sertifikat
-Topik #3:
-rp persen program prabowo jakarta pemerintah indonesia cnn juta kpk
-Topik #4:
-israel senjata gencatan gaza presiden kebakaran as trump negara orang
 </pre></div>
 </div>
+<div class="output text_html">
+  <div id="df-bfe9fc3e-ede2-4c14-bf1b-e4bc308d32fe" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topik #0</th>
+      <th>Topik #1</th>
+      <th>Topik #2</th>
+      <th>Topik #3</th>
+      <th>Topik #4</th>
+      <th>Topik #5</th>
+      <th>Topik #6</th>
+      <th>Topik #7</th>
+      <th>Topik #8</th>
+      <th>Topik #9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>korban</td>
+      <td>indonesia</td>
+      <td>indonesia</td>
+      <td>kpk</td>
+      <td>israel</td>
+      <td>prabowo</td>
+      <td>korban</td>
+      <td>laut</td>
+      <td>persen</td>
+      <td>thailand</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>yoon</td>
+      <td>pemain</td>
+      <td>timnas</td>
+      <td>rp</td>
+      <td>senjata</td>
+      <td>program</td>
+      <td>jakarta</td>
+      <td>pagar</td>
+      <td>rp</td>
+      <td>vietnam</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>warga</td>
+      <td>piala</td>
+      <td>pelatih</td>
+      <td>tersangka</td>
+      <td>gencatan</td>
+      <td>makan</td>
+      <td>pelaku</td>
+      <td>tangerang</td>
+      <td>ppn</td>
+      <td>suara</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>air</td>
+      <td>timnas</td>
+      <td>kluivert</td>
+      <td>korupsi</td>
+      <td>gaza</td>
+      <td>presiden</td>
+      <td>mobil</td>
+      <td>nelayan</td>
+      <td>harga</td>
+      <td>nguyen</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>banjir</td>
+      <td>gol</td>
+      <td>pssi</td>
+      <td>hasto</td>
+      <td>kebakaran</td>
+      <td>indonesia</td>
+      <td>polisi</td>
+      <td>kkp</td>
+      <td>pajak</td>
+      <td>filipina</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>mengatakan</td>
+      <td>laga</td>
+      <td>shin</td>
+      <td>hukum</td>
+      <td>trump</td>
+      <td>bergizi</td>
+      <td>orang</td>
+      <td>misterius</td>
+      <td>masyarakat</td>
+      <td>singapura</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>pesawat</td>
+      <td>menit</td>
+      <td>sertifikat</td>
+      <td>uang</td>
+      <td>hamas</td>
+      <td>gratis</td>
+      <td>gunung</td>
+      <td>perikanan</td>
+      <td>juta</td>
+      <td>xuan</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>selatan</td>
+      <td>liga</td>
+      <td>brics</td>
+      <td>pdip</td>
+      <td>as</td>
+      <td>menteri</td>
+      <td>mengatakan</td>
+      <td>kelautan</td>
+      <td>pemerintah</td>
+      <td>menit</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>darurat</td>
+      <td>poin</td>
+      <td>erick</td>
+      <td>terkait</td>
+      <td>palestina</td>
+      <td>pemerintah</td>
+      <td>penembakan</td>
+      <td>desa</td>
+      <td>minyak</td>
+      <td>son</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>orang</td>
+      <td>pertandingan</td>
+      <td>hgb</td>
+      <td>dpr</td>
+      <td>orang</td>
+      <td>mbg</td>
+      <td>cnn</td>
+      <td>kementerian</td>
+      <td>kenaikan</td>
+      <td>jakarta</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bfe9fc3e-ede2-4c14-bf1b-e4bc308d32fe')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-bfe9fc3e-ede2-4c14-bf1b-e4bc308d32fe button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-bfe9fc3e-ede2-4c14-bf1b-e4bc308d32fe');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-0617aea4-1669-4016-8fb5-349966c808b7">
+      <button class="colab-df-quickchart" onclick="quickchart('df-0617aea4-1669-4016-8fb5-349966c808b7')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-0617aea4-1669-4016-8fb5-349966c808b7 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bobot Topik per Berita:
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-411f0650-58d1-4db5-a309-577e77e92642" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topik #0</th>
+      <th>Topik #1</th>
+      <th>Topik #2</th>
+      <th>Topik #3</th>
+      <th>Topik #4</th>
+      <th>Topik #5</th>
+      <th>Topik #6</th>
+      <th>Topik #7</th>
+      <th>Topik #8</th>
+      <th>Topik #9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000433</td>
+      <td>0.000433</td>
+      <td>0.000433</td>
+      <td>0.410410</td>
+      <td>0.000433</td>
+      <td>0.044048</td>
+      <td>0.000433</td>
+      <td>0.000433</td>
+      <td>0.542511</td>
+      <td>0.000433</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000388</td>
+      <td>0.000388</td>
+      <td>0.000388</td>
+      <td>0.000388</td>
+      <td>0.000388</td>
+      <td>0.000388</td>
+      <td>0.310106</td>
+      <td>0.193302</td>
+      <td>0.493878</td>
+      <td>0.000388</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.000483</td>
+      <td>0.000483</td>
+      <td>0.000483</td>
+      <td>0.000483</td>
+      <td>0.000483</td>
+      <td>0.910472</td>
+      <td>0.000483</td>
+      <td>0.000483</td>
+      <td>0.085662</td>
+      <td>0.000483</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.023755</td>
+      <td>0.000667</td>
+      <td>0.138801</td>
+      <td>0.071235</td>
+      <td>0.000667</td>
+      <td>0.096515</td>
+      <td>0.000667</td>
+      <td>0.000667</td>
+      <td>0.262610</td>
+      <td>0.404416</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000568</td>
+      <td>0.000568</td>
+      <td>0.000568</td>
+      <td>0.647726</td>
+      <td>0.000568</td>
+      <td>0.199048</td>
+      <td>0.000568</td>
+      <td>0.000568</td>
+      <td>0.149248</td>
+      <td>0.000568</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1495</th>
+      <td>0.585908</td>
+      <td>0.000800</td>
+      <td>0.000800</td>
+      <td>0.000800</td>
+      <td>0.391515</td>
+      <td>0.000800</td>
+      <td>0.000800</td>
+      <td>0.016976</td>
+      <td>0.000800</td>
+      <td>0.000800</td>
+    </tr>
+    <tr>
+      <th>1496</th>
+      <td>0.055382</td>
+      <td>0.000431</td>
+      <td>0.000431</td>
+      <td>0.000431</td>
+      <td>0.891140</td>
+      <td>0.000431</td>
+      <td>0.000431</td>
+      <td>0.007647</td>
+      <td>0.000431</td>
+      <td>0.043244</td>
+    </tr>
+    <tr>
+      <th>1497</th>
+      <td>0.000544</td>
+      <td>0.000544</td>
+      <td>0.000544</td>
+      <td>0.000544</td>
+      <td>0.995108</td>
+      <td>0.000544</td>
+      <td>0.000544</td>
+      <td>0.000544</td>
+      <td>0.000544</td>
+      <td>0.000544</td>
+    </tr>
+    <tr>
+      <th>1498</th>
+      <td>0.547640</td>
+      <td>0.000562</td>
+      <td>0.000562</td>
+      <td>0.000562</td>
+      <td>0.447864</td>
+      <td>0.000562</td>
+      <td>0.000562</td>
+      <td>0.000562</td>
+      <td>0.000562</td>
+      <td>0.000562</td>
+    </tr>
+    <tr>
+      <th>1499</th>
+      <td>0.297111</td>
+      <td>0.000500</td>
+      <td>0.000500</td>
+      <td>0.000500</td>
+      <td>0.660567</td>
+      <td>0.000500</td>
+      <td>0.000500</td>
+      <td>0.000500</td>
+      <td>0.038821</td>
+      <td>0.000500</td>
+    </tr>
+  </tbody>
+</table>
+<p>1500 rows × 10 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-411f0650-58d1-4db5-a309-577e77e92642')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-411f0650-58d1-4db5-a309-577e77e92642 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-411f0650-58d1-4db5-a309-577e77e92642');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-cc6f6317-f893-477d-8d51-0a230da82346">
+      <button class="colab-df-quickchart" onclick="quickchart('df-cc6f6317-f893-477d-8d51-0a230da82346')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-cc6f6317-f893-477d-8d51-0a230da82346 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_f4a3307c-8506-4d94-9ee5-8e6750298c20">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df_topic_weights')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_f4a3307c-8506-4d94-9ee5-8e6750298c20 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df_topic_weights');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 </section>
 <section id="klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru">
@@ -1485,8 +2432,8 @@ Internasional       0.95      0.77      0.85        75
 </div>
 </section>
 </section>
-<section id="analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method">
-<h2>Analisis Soal 2: Clustering Email dengan Pencarian K Otomatis (Elbow Method)<a class="headerlink" href="#analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method" title="Link to this heading">#</a></h2>
+<section id="analisis-soal-2-clustering-email">
+<h2>Analisis Soal 2: Clustering Email<a class="headerlink" href="#analisis-soal-2-clustering-email" title="Link to this heading">#</a></h2>
 <p>Bagian ini bertujuan untuk melakukan <em>clustering</em> (pengelompokan) dokumen email secara otomatis. Metode yang digunakan adalah K-Means Clustering, dengan penentuan jumlah cluster (k) yang optimal menggunakan metode Elbow. Langkah-langkahnya adalah sebagai berikut:</p>
 <ol class="arabic simple">
 <li><p><strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.</p></li>
@@ -1653,7 +2600,7 @@ Internasional       0.95      0.77      0.85        75
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sebagian kecil dari Matriks TF-IDF:&quot;</span><span class="p">)</span>
 <span class="c1"># Mengubah sparse matrix menjadi dense array untuk ditampilkan.</span>
 <span class="c1"># Hati-hati dengan ini untuk dataset yang sangat besar karena bisa memakan banyak memori.</span>
-<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ukuran Matriks TF-IDF:&quot;</span><span class="p">,</span> <span class="n">X_tfidf</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="c1"># Output shape (jumlah dokumen, jumlah kata unik setelah filter)</span>
@@ -1665,7 +2612,7 @@ Internasional       0.95      0.77      0.85        75
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-6b5877bd-5c84-4803-ae99-36c09a891ff8" class="colab-df-container">
+  <div id="df-1cbd174d-5500-466d-825c-a4c5a3773887" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1694,6 +2641,17 @@ Internasional       0.95      0.77      0.85        75
       <th>actually</th>
       <th>ad</th>
       <th>add</th>
+      <th>...</th>
+      <th>yr</th>
+      <th>yrs</th>
+      <th>yun</th>
+      <th>yup</th>
+      <th>zed</th>
+      <th>åwk</th>
+      <th>ì_</th>
+      <th>ìï</th>
+      <th>û_</th>
+      <th>ûò</th>
     </tr>
   </thead>
   <tbody>
@@ -1706,6 +2664,17 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1722,6 +2691,17 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1732,6 +2712,17 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1748,6 +2739,17 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1761,35 +2763,44 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5567</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1797,12 +2808,23 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>5568</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1810,12 +2832,23 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.471801</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>5569</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1823,17 +2856,77 @@ Internasional       0.95      0.77      0.85        75
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5570</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5571</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
+<p>5572 rows × 1489 columns</p>
 </div>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-6b5877bd-5c84-4803-ae99-36c09a891ff8')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-1cbd174d-5500-466d-825c-a4c5a3773887')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1885,12 +2978,12 @@ Internasional       0.95      0.77      0.85        75
 
     <script>
       const buttonEl =
-        document.querySelector('#df-6b5877bd-5c84-4803-ae99-36c09a891ff8 button.colab-df-convert');
+        document.querySelector('#df-1cbd174d-5500-466d-825c-a4c5a3773887 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-6b5877bd-5c84-4803-ae99-36c09a891ff8');
+        const element = document.querySelector('#df-1cbd174d-5500-466d-825c-a4c5a3773887');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1910,8 +3003,8 @@ Internasional       0.95      0.77      0.85        75
   </div>
 
 
-    <div id="df-7aa56d08-ef3c-40b6-91df-904361d6eeed">
-      <button class="colab-df-quickchart" onclick="quickchart('df-7aa56d08-ef3c-40b6-91df-904361d6eeed')"
+    <div id="df-3afaf83c-061b-4887-ac9f-012b51bafb07">
+      <button class="colab-df-quickchart" onclick="quickchart('df-3afaf83c-061b-4887-ac9f-012b51bafb07')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -2030,7 +3123,7 @@ Internasional       0.95      0.77      0.85        75
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-7aa56d08-ef3c-40b6-91df-904361d6eeed button');
+            document.querySelector('#df-3afaf83c-061b-4887-ac9f-012b51bafb07 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -2265,7 +3358,7 @@ Cluster 3: ok lor thanx come ur ill leave im prob yup
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-melatih-model-naive-bayes-dan-svm-menggunakan-fitur-yang-diekstraksi-dan-mengevaluasi-performa-kedua-model-dalam-mengklasifikasikan-berita-baru">4.  <strong>Klasifikasi</strong>: Melatih model Naive Bayes dan SVM menggunakan fitur yang diekstraksi dan mengevaluasi performa kedua model dalam mengklasifikasikan berita baru.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-2-clustering-email-dengan-pencarian-k-otomatis-elbow-method">Analisis Soal 2: Clustering Email dengan Pencarian K Otomatis (Elbow Method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-soal-2-clustering-email">Analisis Soal 2: Clustering Email</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impor-library-mengimpor-semua-library-python-yang-diperlukan">1.  <strong>Impor Library</strong>: Mengimpor semua library Python yang diperlukan.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-dan-membersihkan-data-email-membaca-dataset-email-dari-file-csv-dan-melakukan-pra-pemrosesan-teks-dasar-untuk-membersihkan-email">2.  <strong>Memuat dan Membersihkan Data Email</strong>: Membaca dataset email dari file CSV dan melakukan pra-pemrosesan teks dasar untuk membersihkan email.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorisasi-teks-tf-idf-mengubah-teks-email-yang-sudah-bersih-menjadi-representasi-numerik-menggunakan-tf-idf-term-frequency-inverse-document-frequency-ini-memberikan-bobot-pada-kata-kata-berdasarkan-seberapa-sering-muncul-dalam-dokumen-dan-seberapa-unik-kata-tersebut-di-seluruh-koleksi-dokumen">3.  <strong>Vektorisasi Teks (TF-IDF)</strong>: Mengubah teks email yang sudah bersih menjadi representasi numerik menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Ini memberikan bobot pada kata-kata berdasarkan seberapa sering muncul dalam dokumen dan seberapa unik kata tersebut di seluruh koleksi dokumen.</a></li>
