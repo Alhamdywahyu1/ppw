@@ -411,7 +411,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-pembagian-sesi">melakukan pembagian sesi</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-sesi-untuk-tiap-orang">membuat sesi untuk tiap orang</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-ke-halaman-web-mana-saja-user-dalam-1-sesi">melihat ke halaman web mana saja user dalam 1 sesi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-ringkasn-tindakan-dari-seluruh-sesi-milik-si-user">membuat ringkasn tindakan dari seluruh sesi milik si user</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-mayoritas-tindakan-dari-seluruh-sesi-milik-si-user">membuat mayoritas tindakan dari seluruh sesi milik si user</a></li>
 </ul>
 
             </nav>
@@ -8583,33 +8583,35 @@ document.write(`
 </div></div>
 </div>
 </section>
-<section id="membuat-ringkasn-tindakan-dari-seluruh-sesi-milik-si-user">
-<h1>membuat ringkasn tindakan dari seluruh sesi milik si user<a class="headerlink" href="#membuat-ringkasn-tindakan-dari-seluruh-sesi-milik-si-user" title="Link to this heading">#</a></h1>
+<section id="membuat-mayoritas-tindakan-dari-seluruh-sesi-milik-si-user">
+<h1>membuat mayoritas tindakan dari seluruh sesi milik si user<a class="headerlink" href="#membuat-mayoritas-tindakan-dari-seluruh-sesi-milik-si-user" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the pivot table using pd.crosstab with &#39;host&#39; as index</span>
-<span class="n">user_page_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the &#39;host&#39; from the &#39;Session_User_ID&#39; index</span>
+<span class="n">session_page_matrix</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">session_page_matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># Convert counts to 0 or 1 (visited or not visited)</span>
-<span class="c1"># Any value &gt; 0 means the page was visited by that user, so set to 1.</span>
-<span class="c1"># Otherwise, it was not visited, so set to 0.</span>
-<span class="n">user_page_matrix</span> <span class="o">=</span> <span class="n">user_page_matrix</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Group by &#39;host&#39; and calculate the mean for each page.</span>
+<span class="c1"># The mean will represent the proportion of sessions in which a page was visited.</span>
+<span class="n">user_page_matrix_majority</span> <span class="o">=</span> <span class="n">session_page_matrix</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabel baru &#39;user_page_matrix&#39; telah dibuat berdasarkan user (tanpa sesi). 5 baris pertama:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">user_page_matrix</span><span class="p">)</span>
+<span class="c1"># Apply the majority rule: if the proportion is &gt; 0.5, set to 1; otherwise, set to 0.</span>
+<span class="n">user_page_matrix_majority</span> <span class="o">=</span> <span class="n">user_page_matrix_majority</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabel baru &#39;user_page_matrix_majority&#39; telah dibuat berdasarkan tindakan mayoritas di tiap sesi. 5 baris pertama:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">user_page_matrix_majority</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-2279446866.py:7: FutureWarning: DataFrame.applymap has been deprecated. Use DataFrame.map instead.
-  user_page_matrix = user_page_matrix.applymap(lambda x: 1 if x &gt; 0 else 0)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-2791522759.py:9: FutureWarning: DataFrame.applymap has been deprecated. Use DataFrame.map instead.
+  user_page_matrix_majority = user_page_matrix_majority.applymap(lambda x: 1 if x &gt; 0.5 else 0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabel baru &#39;user_page_matrix&#39; telah dibuat berdasarkan user (tanpa sesi). 5 baris pertama:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabel baru &#39;user_page_matrix_majority&#39; telah dibuat berdasarkan tindakan mayoritas di tiap sesi. 5 baris pertama:
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-71869a58-3fce-4293-af58-7231196d9164" class="colab-df-container">
+  <div id="df-d0acde34-cf0c-4392-847a-30f9122b8590" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -8752,11 +8754,11 @@ document.write(`
       <th>01-dynamic-c.wokingham.luna.net</th>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -8942,12 +8944,12 @@ document.write(`
     </tr>
   </tbody>
 </table>
-<p>113441 rows × 112 columns</p>
+<p>112598 rows × 112 columns</p>
 </div>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-71869a58-3fce-4293-af58-7231196d9164')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d0acde34-cf0c-4392-847a-30f9122b8590')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -8999,12 +9001,12 @@ document.write(`
 
     <script>
       const buttonEl =
-        document.querySelector('#df-71869a58-3fce-4293-af58-7231196d9164 button.colab-df-convert');
+        document.querySelector('#df-d0acde34-cf0c-4392-847a-30f9122b8590 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-71869a58-3fce-4293-af58-7231196d9164');
+        const element = document.querySelector('#df-d0acde34-cf0c-4392-847a-30f9122b8590');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -9024,8 +9026,8 @@ document.write(`
   </div>
 
 
-    <div id="df-2ca99141-2381-4272-9482-2c55a384a815">
-      <button class="colab-df-quickchart" onclick="quickchart('df-2ca99141-2381-4272-9482-2c55a384a815')"
+    <div id="df-6605b3f4-0b4a-4cae-8144-402425eddcd0">
+      <button class="colab-df-quickchart" onclick="quickchart('df-6605b3f4-0b4a-4cae-8144-402425eddcd0')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -9144,14 +9146,14 @@ document.write(`
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-2ca99141-2381-4272-9482-2c55a384a815 button');
+            document.querySelector('#df-6605b3f4-0b4a-4cae-8144-402425eddcd0 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
       </script>
     </div>
 
-  <div id="id_97acea00-bffd-4873-98e8-56bd503d03e2">
+  <div id="id_f3f9b00e-340f-4f7c-90fd-cb8827104138">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -9183,7 +9185,7 @@ document.write(`
         fill: #FFFFFF;
       }
     </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('user_page_matrix')"
+    <button class="colab-df-generate" onclick="generateWithVariable('user_page_matrix_majority')"
             title="Generate code using this dataframe."
             style="display:none;">
 
@@ -9195,12 +9197,12 @@ document.write(`
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_97acea00-bffd-4873-98e8-56bd503d03e2 button.colab-df-generate');
+        document.querySelector('#id_f3f9b00e-340f-4f7c-90fd-cb8827104138 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('user_page_matrix');
+        google.colab.notebook.generateWithVariable('user_page_matrix_majority');
       }
       })();
     </script>
@@ -9283,7 +9285,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-pembagian-sesi">melakukan pembagian sesi</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-sesi-untuk-tiap-orang">membuat sesi untuk tiap orang</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-ke-halaman-web-mana-saja-user-dalam-1-sesi">melihat ke halaman web mana saja user dalam 1 sesi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-ringkasn-tindakan-dari-seluruh-sesi-milik-si-user">membuat ringkasn tindakan dari seluruh sesi milik si user</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-mayoritas-tindakan-dari-seluruh-sesi-milik-si-user">membuat mayoritas tindakan dari seluruh sesi milik si user</a></li>
 </ul>
 
   </nav></div>
