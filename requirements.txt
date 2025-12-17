@@ -1,0 +1,6 @@
+streamlit
+networkx
+matplotlib
+pandas
+PyPDF2
+nltk
