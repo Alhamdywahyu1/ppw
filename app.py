@@ -24,21 +24,31 @@ except LookupError:
 # 1. FUNGSI HELPER (Download & Proses)
 # ==========================================
 
+# Ganti fungsi download_pdf_from_arxiv yang lama dengan yang ini:
+
 def download_pdf_from_arxiv(paper_id):
-    """Mendownload PDF dari arXiv berdasarkan ID."""
-    # URL format arXiv PDF
+    """Mendownload PDF dengan Debugging Error."""
     url = f"https://arxiv.org/pdf/{paper_id}.pdf"
     
-    # Header user-agent agar tidak dianggap bot berbahaya oleh arXiv
+    # User-Agent yang lebih lengkap untuk menipu sistem anti-bot
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Referer": "https://arxiv.org/"
     }
     
-    response = requests.get(url, headers=headers)
-    
-    if response.status_code == 200:
-        return io.BytesIO(response.content)
-    else:
+    try:
+        response = requests.get(url, headers=headers, timeout=10) # Tambah timeout
+        
+        if response.status_code == 200:
+            return io.BytesIO(response.content)
+        else:
+            # Tampilkan error di layar web agar user tahu
+            st.error(f"Gagal download dari ArXiv. Status Code: {response.status_code}")
+            st.error("Kemungkinan ID salah atau ArXiv memblokir sementara.")
+            return None
+            
+    except Exception as e:
+        st.error(f"Terjadi error koneksi: {e}")
         return None
 
 def extract_text_from_pdf(pdf_file):
