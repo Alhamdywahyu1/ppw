@@ -5,10 +5,12 @@ import pandas as pd
 import PyPDF2
 import re
 import nltk
+import requests
+import io
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.tokenize import word_tokenize
 
-# --- Download NLTK resources (hanya berjalan sekali) ---
+# --- Download NLTK resources (Cek & Download) ---
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
@@ -19,47 +21,57 @@ except LookupError:
     nltk.download('stopwords')
 
 # ==========================================
-# 1. FUNGSI HELPER (Proses Data)
+# 1. FUNGSI HELPER (Download & Proses)
 # ==========================================
 
-def extract_text_from_pdf(uploaded_file):
-    """Mengekstrak teks mentah dari file PDF yang diupload."""
-    pdf_reader = PyPDF2.PdfReader(uploaded_file)
-    text = ""
-    for page in pdf_reader.pages:
-        text += page.extract_text() + " "
-    return text
+def download_pdf_from_arxiv(paper_id):
+    """Mendownload PDF dari arXiv berdasarkan ID."""
+    # URL format arXiv PDF
+    url = f"https://arxiv.org/pdf/{paper_id}.pdf"
+    
+    # Header user-agent agar tidak dianggap bot berbahaya oleh arXiv
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        return io.BytesIO(response.content)
+    else:
+        return None
+
+def extract_text_from_pdf(pdf_file):
+    """Mengekstrak teks mentah dari file object PDF."""
+    try:
+        pdf_reader = PyPDF2.PdfReader(pdf_file)
+        text = ""
+        for page in pdf_reader.pages:
+            extract = page.extract_text()
+            if extract:
+                text += extract + " "
+        return text
+    except Exception as e:
+        return None
 
 def clean_and_tokenize(text):
     """Membersihkan teks, menghapus stopwords, dan tokenisasi."""
-    # 1. Lowercase
     text = text.lower()
-    
-    # 2. Hapus karakter non-huruf (angka, simbol)
     text = re.sub(r'[^a-zA-Z\s]', '', text)
-    
-    # 3. Tokenisasi
     tokens = word_tokenize(text)
     
-    # 4. Filter Stopwords (Ubah 'english' ke 'indonesian' jika perlu)
     stop_words = set(stopwords.words('english')) 
-    
-    # Tambahkan custom stopword jika perlu (misal: 'et', 'al' untuk paper)
-    custom_stops = {'et', 'al', 'fig', 'table', 'data', 'using', 'based', 'model'} 
+    custom_stops = {'et', 'al', 'fig', 'table', 'data', 'using', 'based', 'model', 'results', 'show', 'proposed'} 
     stop_words.update(custom_stops)
     
     filtered_tokens = [w for w in tokens if w not in stop_words and len(w) > 2]
     return filtered_tokens
 
 def build_cooccurrence_graph(tokens, window_size=3):
-    """Membangun graph co-occurrence dari list token."""
+    """Membangun graph co-occurrence."""
     graph = nx.Graph()
-    
-    # Loop melalui token dengan sliding window
     for i in range(len(tokens) - window_size + 1):
         window = tokens[i : i + window_size]
-        
-        # Hubungkan setiap kata dalam window satu sama lain
         for j in range(len(window)):
             for k in range(j + 1, len(window)):
                 w1, w2 = sorted([window[j], window[k]])
@@ -71,107 +83,105 @@ def build_cooccurrence_graph(tokens, window_size=3):
     return graph
 
 # ==========================================
-# 2. VISUALISASI (Menggunakan Kode Sebelumnya)
+# 2. VISUALISASI
 # ==========================================
 
 def plot_graph(graph, pagerank_scores, threshold=2):
-    """Fungsi plotting yang sudah dimodifikasi dengan ketebalan dinamis."""
-    
-    # Buat figure baru (Ukuran disesuaikan agar muat di web)
-    fig, ax = plt.subplots(figsize=(20, 16))
-    
-    # Layout
+    fig, ax = plt.subplots(figsize=(12, 10)) # Ukuran disesuaikan
     pos = nx.spring_layout(graph, k=0.15, iterations=50, seed=42)
     
-    # Node Size berdasarkan PageRank
-    # Skala dikurangi sedikit agar tidak terlalu menutupi layar web
-    node_sizes = [v * 30000 for v in pagerank_scores.values()]
-    
-    # Draw Nodes
+    node_sizes = [v * 20000 for v in pagerank_scores.values()]
     nx.draw_networkx_nodes(graph, pos, node_size=node_sizes, node_color='skyblue', alpha=0.8, ax=ax)
     
-    # --- EDGE DYNAMIC WIDTH ---
     edges = graph.edges(data=True)
     weights = [data['weight'] for u, v, data in edges]
     max_weight = max(weights) if weights else 1
+    edge_widths = [(w / max_weight) * 3 for w in weights]
     
-    # Normalisasi ketebalan
-    edge_widths = [(w / max_weight) * 4 for w in weights]
+    nx.draw_networkx_edges(graph, pos, width=edge_widths, alpha=0.3, edge_color='gray', ax=ax)
     
-    nx.draw_networkx_edges(graph, pos, width=edge_widths, alpha=0.4, edge_color='gray', ax=ax)
+    nx.draw_networkx_labels(graph, pos, font_size=9, font_weight='bold', ax=ax)
     
-    # --- LABELS ---
-    # Label Node
-    nx.draw_networkx_labels(graph, pos, font_size=10, font_weight='bold', ax=ax)
-    
-    # Label Edge (Hanya tampilkan jika weight >= threshold)
     edge_labels = {}
     for u, v, data in edges:
         if data['weight'] >= threshold:
             edge_labels[(u, v)] = str(data['weight'])
             
-    nx.draw_networkx_edge_labels(graph, pos, edge_labels=edge_labels, font_color='red', font_size=8, ax=ax)
+    nx.draw_networkx_edge_labels(graph, pos, edge_labels=edge_labels, font_color='red', font_size=7, ax=ax)
     
     ax.axis('off')
     return fig
 
 # ==========================================
-# 3. LOGIKA UTAMA STREAMLIT
+# 3. INTERFACE UTAMA
 # ==========================================
 
-st.set_page_config(layout="wide", page_title="Paper Keyword Analyzer")
+st.set_page_config(layout="wide", page_title="ArXiv Keyword Graph")
 
-st.title("📄 Paper Keyword Extractor & Graph Visualization")
-st.markdown("Upload file PDF paper, aplikasi akan mengekstrak kata kunci penting menggunakan **PageRank** dan memvisualisasikan hubungannya.")
+st.title("arxiv Graph Analyzer")
+st.markdown("Masukkan ID Paper arXiv untuk melihat visualisasi hubungan kata kuncinya.")
 
-# Sidebar untuk upload dan setting
+# Sidebar Settings
 with st.sidebar:
-    st.header("Upload")
-    uploaded_file = st.file_uploader("Pilih file PDF", type="pdf")
+    st.header("Input Paper")
     
-    st.header("Settings")
-    window_size = st.slider("Window Size (Co-occurrence)", 2, 5, 3)
-    top_n_words = st.slider("Jumlah Kata Kunci Ditampilkan", 5, 20, 10)
-    edge_threshold = st.slider("Threshold Label Edge (Minimal Bobot)", 1, 10, 2)
+    # --- BAGIAN INPUT ID ---
+    # Default value diisi ID paper defaultmu
+    input_arxiv_id = st.text_input("Masukkan ArXiv ID:", value="1706.03762")
+    st.caption("Contoh ID: 1706.03762 (Attention Is All You Need)")
+    
+    st.divider()
+    
+    st.header("Graph Settings")
+    window_size = st.slider("Window Size", 2, 5, 3)
+    top_n_words = st.slider("Jumlah Keyword", 5, 20, 10)
+    edge_threshold = st.slider("Threshold Edge Label", 1, 20, 5)
+    
+    # Tombol untuk memproses
+    process_btn = st.button("Analisis Paper")
 
-if uploaded_file is not None:
-    # 1. Ekstraksi Teks
-    with st.spinner('Mengekstrak teks dari PDF...'):
-        raw_text = extract_text_from_pdf(uploaded_file)
+# Logika Proses
+# Kita jalankan jika tombol ditekan ATAU jika input ID ada isinya (saat pertama load)
+if input_arxiv_id:
+    
+    with st.spinner(f'Mendownload Paper ID: {input_arxiv_id}...'):
+        pdf_file = download_pdf_from_arxiv(input_arxiv_id)
+    
+    if pdf_file:
+        # Ekstraksi Teks
+        raw_text = extract_text_from_pdf(pdf_file)
         
-    # Tampilkan preview teks (opsional)
-    with st.expander("Lihat Teks Asli (Preview 500 karakter)"):
-        st.text(raw_text[:500] + "...")
-        
-    # 2. Preprocessing
-    tokens = clean_and_tokenize(raw_text)
-    st.success(f"Berhasil memproses {len(tokens)} kata bersih.")
-
-    # 3. Build Graph & PageRank
-    if len(tokens) > 0:
-        with st.spinner('Membangun Graph dan Menghitung PageRank...'):
-            graph = build_cooccurrence_graph(tokens, window_size=window_size)
-            pagerank_scores = nx.pagerank(graph, weight='weight')
+        if raw_text:
+            # Preprocessing
+            tokens = clean_and_tokenize(raw_text)
             
-            # Urutkan keyword
-            sorted_keywords = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)
-        
-        # --- TAMPILKAN HASIL ---
-        
-        col1, col2 = st.columns([1, 2])
-        
-        with col1:
-            st.subheader(f"Top {top_n_words} Keywords")
-            # Buat DataFrame untuk tampilan rapi
-            df_keywords = pd.DataFrame(sorted_keywords[:top_n_words], columns=["Kata Kunci", "Score PageRank"])
-            st.dataframe(df_keywords, use_container_width=True)
+            # Info singkat
+            st.success(f"Berhasil mengambil paper! Ditemukan {len(tokens)} kata relevan.")
             
-        with col2:
-            st.subheader("Visualisasi Graph")
-            st.caption(f"Menampilkan hubungan antar kata. Ketebalan garis = kekuatan hubungan.")
-            # Render plot
-            fig = plot_graph(graph, pagerank_scores, threshold=edge_threshold)
-            st.pyplot(fig)
-            
+            # Graph Processing
+            if len(tokens) > 0:
+                with st.spinner('Menghitung PageRank...'):
+                    graph = build_cooccurrence_graph(tokens, window_size=window_size)
+                    pagerank_scores = nx.pagerank(graph, weight='weight')
+                    sorted_keywords = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)
+                
+                # Layout Kolom Hasil
+                col1, col2 = st.columns([1, 2])
+                
+                with col1:
+                    st.subheader("Top Keywords")
+                    df_keywords = pd.DataFrame(sorted_keywords[:top_n_words], columns=["Kata", "Score"])
+                    st.dataframe(df_keywords, use_container_width=True)
+                    
+                    st.info("Tips: Ubah 'Threshold Edge Label' di sidebar jika gambar terlalu penuh angka.")
+                    
+                with col2:
+                    st.subheader("Visualisasi Graph")
+                    fig = plot_graph(graph, pagerank_scores, threshold=edge_threshold)
+                    st.pyplot(fig)
+            else:
+                st.warning("Teks paper terlalu pendek atau tidak terbaca.")
+        else:
+            st.error("Gagal mengekstrak teks dari PDF. Mungkin PDF berisi gambar scan.")
     else:
-        st.warning("Tidak ada teks yang valid ditemukan setelah pembersihan. Coba periksa file PDF.")
+        st.error(f"Gagal mendownload paper dengan ID {input_arxiv_id}. Cek kembali ID-nya.")
