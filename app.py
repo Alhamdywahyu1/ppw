@@ -11,15 +11,22 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
 # --- Download NLTK resources (Cek & Download) ---
+# --- Download NLTK resources ---
+# Kita download paksa di awal agar aman di cloud
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab') # <--- INI PENTING UNTUK NLTK TERBARU
+
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
     nltk.download('punkt')
+
 try:
     nltk.data.find('corpora/stopwords')
 except LookupError:
     nltk.download('stopwords')
-
 # ==========================================
 # 1. FUNGSI HELPER (Download & Proses)
 # ==========================================
