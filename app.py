@@ -135,7 +135,7 @@ def plot_graph(graph, pagerank_scores, threshold=2):
 
 st.set_page_config(layout="wide", page_title="ArXiv Keyword Graph")
 
-st.title("arxiv Graph Analyzer")
+st.title("ektrak informasi dari paper")
 st.markdown("Masukkan ID Paper arXiv untuk melihat visualisasi hubungan kata kuncinya.")
 
 # Sidebar Settings
@@ -145,7 +145,7 @@ with st.sidebar:
     # --- BAGIAN INPUT ID ---
     # Default value diisi ID paper defaultmu
     input_arxiv_id = st.text_input("Masukkan ArXiv ID:", value="1706.03762")
-    st.caption("Contoh ID: 1706.03762 (Attention Is All You Need)")
+    st.caption("Contoh ID: 1706.03762")
     
     st.divider()
     
